@@ -1,10 +1,8 @@
-import { AnimatePresence, motion } from "framer-motion";
-
 const SelectProject = ({ fadeVariants, isProjectSelected, setIsProjectSelected }) => {
   return (
-    <AnimatePresence>
+    <>
       {!isProjectSelected && (
-        <motion.div {...fadeVariants}
+        <div
           style={{ backgroundColor: 'rgba(0, 0, 0, .4)', backgroundSize: '150% 150%' }}
           className="font-body w-screen h-screen z-50 absolute flex left-0 right-0 up-0 down-0">
           <div
@@ -16,9 +14,9 @@ const SelectProject = ({ fadeVariants, isProjectSelected, setIsProjectSelected }
             <button className="btn rounded-none" onClick={() => { setIsProjectSelected(true) }}>Project4</button>
             <button className="btn rounded-none rounded-b" onClick={() => { setIsProjectSelected(true) }}>Project5</button>
           </div>
-        </motion.div>)
+        </div>)
       }
-    </AnimatePresence>
+    </>
   );
 }
 

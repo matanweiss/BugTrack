@@ -1,9 +1,8 @@
 import { Route, Switch, useLocation } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import Home from './components/Home';
-import Item from './components/Item';
-import Login from './components/Login';
-import Register from './components/Register';
+import Dashboard from './pages/Dashboard';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import "./tailwind.css";
 
 const fadeVariants = {

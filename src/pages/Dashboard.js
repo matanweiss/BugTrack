@@ -1,9 +1,9 @@
-import NavBar from "./NavBar";
+import NavBar from "../components/NavBar";
 import { useEffect, useRef, useState } from "react";
 // import SelectProject from "./SelectProject";
-import DashboardMenu from "./DashboardMenu";
-import Item from "./Item";
-import Lists from "./Lists";
+import DashboardMenu from "../components/DashboardMenu";
+import Item from "../components/Item";
+import Lists from "../components/Lists";
 
 const Dashboard = () => {
 

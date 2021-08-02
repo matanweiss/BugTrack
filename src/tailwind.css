@@ -671,6 +671,10 @@ h3{
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.pointer-events-none{
+  pointer-events: none;
+}
+
 .absolute{
   position: absolute;
 }
@@ -842,6 +846,10 @@ h3{
   margin-right: 0.75rem;
 }
 
+.mt-2{
+  margin-top: 0.5rem;
+}
+
 .block{
   display: block;
 }
@@ -962,6 +970,16 @@ h3{
 .flex-shrink-0{
   -webkit-flex-shrink: 0;
           flex-shrink: 0;
+}
+
+.origin-right{
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.origin-left{
+  -webkit-transform-origin: left;
+          transform-origin: left;
 }
 
 .-translate-y-1\/2{
