@@ -74,9 +74,7 @@ const Dashboard = () => {
       /> */}
       <div className="font-body flex flex-col h-screen">
         <NavBar title={'Project Title'} />
-        <div
-          className="animate-fadeIn mx-4 md:px-4 min-h-0 flex md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl"
-        >
+        <div className="animate-fadeIn mx-4 md:px-4 min-h-0 flex md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl">
           {Boolean(SelectedItem.length) && <Item SelectedItem={SelectedItem} setSelectedItem={setSelectedItem} />}
           <Lists props={listProps} dashboardMenuProps={dashboardMenuProps} />
         </div>

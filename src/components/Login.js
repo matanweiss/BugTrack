@@ -22,10 +22,10 @@ const Login = () => {
           <label className="p-1">Password</label>
           <input type="password" className="p-1 focus:border-red-500 transition mb-8 rounded-md outline-none border-2 border-red-300" />
           <div className="flex flex-col sm:flex-row-reverse justify-between sm:items-center">
-            <button type="button" className="btn block mb-4 sm:m-0">Login</button>
-            <Link to={'/forgot-password'} className="self-center font-medium text-red-400 after:border-red-300 after:border-b-2 after:block hover:text-red-500 after:transform after:transition after:scale-x-0 hover:after:scale-x-100 transition">Forgot your password?</Link>
+            <button type="button" className="btn btn-hover block mb-4 sm:m-0">Login</button>
+            <Link to={'/forgot-password'} className="self-center font-medium text-red-500 after:border-red-400 after:border-b-2 after:block hover:text-red-500 after:transform after:transition after:scale-x-0 hover:after:scale-x-100 transition">Forgot your password?</Link>
           </div>
-          <button className='btn2 mt-4 text-red-700'>Login as guest</button>
+          <button className='btn2 btn-hover mt-4 text-red-700'>Login as guest</button>
         </form>
       </div>
     </>

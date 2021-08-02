@@ -9,7 +9,7 @@ const Home = () => {
         <div className="mb-12 mt-8">
           <h1 className="mb-2 font-medium tracking-wide">TRACK EVERY ASPECT OF YOUR PROJECT</h1>
           <p>We built the best platform to keep track of your projects with your team</p>
-          <Link to='/login' whileTap={{ scale: 1.1 }} className="inline-block mt-6 btn">GET STARTED</Link>
+          <Link to='/login' className="btn-hover inline-block mt-6 btn">GET STARTED</Link>
         </div>
         <h3 className="mb-4 md:mb-10 mt-20 font-medium text-center tracking-wide text-red-600">BugTrack benefits</h3>
         <div className="space-y-8 mb-20 grid gap-x-10 items-stretch md:space-y-0 md:grid-cols-3">
@@ -33,10 +33,10 @@ const Home = () => {
       <div className="bg-red-600 font-body text-white" style={{ height: '50vh' }}>
         <div className="max-w-3xl mx-4 grid grid-cols-2  grid-rows-4 h-full md:grid-cols-4 md:mx-auto">
           <h2 className="text-red-900 col-span-full row-span-2 md:row-span-3 m-auto" >©MW</h2>
-          <Link to='/' className="m-auto">Terms of use</Link>
-          <Link to='/' className="m-auto">Privacy notice</Link>
-          <Link to='/' className="m-auto">FAQ</Link>
-          <Link to='/' className="m-auto">Contact us</Link>
+          <Link to='/' className="btn-hover m-auto">Terms of use</Link>
+          <Link to='/' className="btn-hover m-auto">Privacy notice</Link>
+          <Link to='/' className="btn-hover m-auto">FAQ</Link>
+          <Link to='/' className="btn-hover m-auto">Contact us</Link>
         </div>
       </div>
 

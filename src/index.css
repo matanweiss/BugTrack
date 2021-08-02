@@ -15,9 +15,12 @@
     @apply text-2xl;
   }
   .btn{
-    @apply bg-red-600 text-white p-2 rounded-md transition hover:bg-red-500;
+    @apply bg-red-600 text-white p-2 rounded-md transition;
   }
   .btn2{
-    @apply border-2 border-red-600 text-red-600 p-2 rounded-md hover:scale-105 hover:shadow-lg hover:-translate-y-1 transition-all;
+    @apply border-2 border-red-600 text-red-600 p-2 rounded-md transition-all;
+  }
+  .btn-hover{
+    @apply hover:scale-105 hover:shadow-md hover:-translate-y-0.5 transition;
   }
 }
