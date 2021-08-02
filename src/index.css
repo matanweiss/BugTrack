@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  h1{
+    @apply text-4xl;
+  }
+  h2{
+    @apply text-3xl;
+  }
+  h3{
+    @apply text-2xl;
+  }
+  .btn{
+    @apply bg-red-600 text-white p-2 rounded-md transition hover:bg-red-500;
+  }
+  .btn2{
+    @apply border-2 border-red-600 text-red-600 p-2 rounded-md hover:scale-105 hover:shadow-lg hover:-translate-y-1 transition-all;
+  }
+}
