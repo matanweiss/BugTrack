@@ -17,25 +17,20 @@ function App() {
   const location = useLocation();
 
   return (
-    <>
-      <Switch location={location} key={location.key}>
-        <Route exact path="/">
-          <Home fadeVariants={fadeVariants} />
-        </Route>
-        <Route path="/login">
-          <Login fadeVariants={fadeVariants} />
-        </Route>
-        <Route path="/register">
-          <Register fadeVariants={fadeVariants} />
-        </Route>
-        <Route exact path="/dashboard">
-          <Dashboard fadeVariants={fadeVariants} />
-        </Route>
-        <Route path="/dashboard/:id">
-          <Item fadeVariants={fadeVariants} />
-        </Route>
-      </Switch>
-    </>
+    <Switch location={location} key={location.key}>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/register">
+        <Register  />
+      </Route>
+      <Route exact path="/dashboard">
+        <Dashboard />
+      </Route>
+    </Switch>
   );
 }
 

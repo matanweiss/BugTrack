@@ -1,11 +1,9 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import NavBar from "./NavBar";
 
+const Login = () => {
 
-
-
-const Login = ({ fadeVariants }) => {
   const history = useHistory();
 
   const handleLogin = e => {
@@ -16,8 +14,7 @@ const Login = ({ fadeVariants }) => {
   return (
     <>
       <NavBar />
-      <motion.div {...fadeVariants}
-        className="max-w-md font-body mx-4 sm:mx-auto border-2 border-red-200 rounded-md p-8 sm:px-12 my-8">
+      <div className='animate-fadeIn max-w-md font-body mx-4 sm:mx-auto border-2 border-red-200 rounded-md p-8 sm:px-12 my-8'>
         <form onSubmit={handleLogin} className="flex flex-col">
           <h4 className="mx-auto font-medium mb-6">Please enter your login details:</h4>
           <label className="p-1">Email</label>
@@ -30,7 +27,7 @@ const Login = ({ fadeVariants }) => {
           </div>
           <button className='btn2 mt-4 text-red-700'>Login as guest</button>
         </form>
-      </motion.div>
+      </div>
     </>
   );
 }

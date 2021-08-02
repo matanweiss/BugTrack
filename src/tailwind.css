@@ -974,6 +974,72 @@ h3{
           transform: var(--tw-transform);
 }
 
+@-webkit-keyframes fadeOut{
+  0%{
+    opacity: 1;
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+
+  100%{
+    opacity: 0;
+    -webkit-transform: rotateX(20deg);
+            transform: rotateX(20deg);
+  }
+}
+
+@keyframes fadeOut{
+  0%{
+    opacity: 1;
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+
+  100%{
+    opacity: 0;
+    -webkit-transform: rotateX(20deg);
+            transform: rotateX(20deg);
+  }
+}
+
+.animate-fadeOut{
+  -webkit-animation: fadeOut .1s;
+          animation: fadeOut .1s;
+}
+
+@-webkit-keyframes fadeIn{
+  0%{
+    opacity: 0;
+    -webkit-transform: rotateX(20deg);
+            transform: rotateX(20deg);
+  }
+
+  100%{
+    opacity: 1;
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+    -webkit-transform: rotateX(20deg);
+            transform: rotateX(20deg);
+  }
+
+  100%{
+    opacity: 1;
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+}
+
+.animate-fadeIn{
+  -webkit-animation: fadeIn .6s;
+          animation: fadeIn .6s;
+}
+
 .cursor-pointer{
   cursor: pointer;
 }

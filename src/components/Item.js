@@ -1,8 +1,6 @@
-import { motion } from "framer-motion";
-
 const Item = ({ SelectedItem, setSelectedItem }) => {
   return (
-    <motion.div layout className='py-8 items-start flex w-full flex-col h-56'>
+    <div className='animate-fadeIn py-8 items-start flex w-full flex-col h-56'>
       <div className="flex items-center w-full">
         <svg className="mr-2 hidden md:inline w-6 h-6" onClick={() => setSelectedItem([])}
           fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -12,7 +10,7 @@ const Item = ({ SelectedItem, setSelectedItem }) => {
         <svg className="hidden md:inline ml-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
       </div>
       <p className='pt-4 md:p-4 md:ml-4 text-gray-400'>no description yet</p>
-    </motion.div>
+    </div>
   );
 }
 

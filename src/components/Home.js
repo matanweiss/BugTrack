@@ -1,13 +1,11 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 
-const Home = ({ fadeVariants }) => {
+const Home = () => {
   return (
     <>
       <NavBar />
-      <motion.div {...fadeVariants}
-        className="leading-7 font-body md:max-w-3xl px-4 sm:max-w-xl sm:mx-auto">
+      <div className="animate-fadeIn leading-7 font-body md:max-w-3xl px-4 sm:max-w-xl sm:mx-auto">
         <div className="mb-12 mt-8">
           <h1 className="mb-2 font-medium tracking-wide">TRACK EVERY ASPECT OF YOUR PROJECT</h1>
           <p>We built the best platform to keep track of your projects with your team</p>
@@ -31,7 +29,7 @@ const Home = ({ fadeVariants }) => {
             <p>build faster Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
           </div>
         </div>
-      </motion.div>
+      </div>
       <div className="bg-red-600 font-body text-white" style={{ height: '50vh' }}>
         <div className="max-w-3xl mx-4 grid grid-cols-2  grid-rows-4 h-full md:grid-cols-4 md:mx-auto">
           <h2 className="text-red-900 col-span-full row-span-2 md:row-span-3 m-auto" >©MW</h2>

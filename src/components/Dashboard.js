@@ -1,12 +1,11 @@
 import NavBar from "./NavBar";
-import { AnimateSharedLayout, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 // import SelectProject from "./SelectProject";
 import DashboardMenu from "./DashboardMenu";
 import Item from "./Item";
 import Lists from "./Lists";
 
-const Dashboard = ({ fadeVariants }) => {
+const Dashboard = () => {
 
   const scrollXContainerRef = useRef();
   // const [isProjectSelected, setIsProjectSelected] = useState(false);
@@ -46,7 +45,7 @@ const Dashboard = ({ fadeVariants }) => {
   }
 
   const listProps = {
-    scrollXContainerRef, fadeVariants, sideBarActiveItem, needLeftArrow, needRightArrow, SelectedItem,
+    scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow, SelectedItem,
     setSideBarActiveItem, setIsMenuOpen, setSelectedItem, scrollBack, scrollForward, checkIfNeedArrows
   }
 
@@ -69,25 +68,25 @@ const Dashboard = ({ fadeVariants }) => {
   }, []);
 
   return (
-    <AnimateSharedLayout>
-      {/* <SelectProject setIsProjectSelected={setIsProjectSelected} fadeVariants={fadeVariants}
+    <>
+      {/* <SelectProject setIsProjectSelected={setIsProjectSelected}
         isProjectSelected={isProjectSelected}
       /> */}
       <div className="font-body flex flex-col h-screen">
         <NavBar title={'Project Title'} />
-        <motion.div {...fadeVariants} layout
-          className="mx-4 md:px-4 min-h-0 flex md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl"
+        <div
+          className="animate-fadeIn mx-4 md:px-4 min-h-0 flex md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl"
         >
           {Boolean(SelectedItem.length) && <Item SelectedItem={SelectedItem} setSelectedItem={setSelectedItem} />}
           <Lists props={listProps} dashboardMenuProps={dashboardMenuProps} />
-        </motion.div>
+        </div>
 
         {/* mobile buttons*/}
         <div className='md:hidden mt-auto'>
           {isMenuOpen && (
-            <motion.div {...fadeVariants} exit={{ opacity: 0, transition: { duration: 0.1 } }}>
+            <div>
               <DashboardMenu props={dashboardMenuProps} />
-            </motion.div>
+            </div>
           )}
           <div className="flex h-16 fill-current text-red-600">
             {SelectedItem.length
@@ -111,7 +110,7 @@ const Dashboard = ({ fadeVariants }) => {
         <div className="min-h-[4rem] hidden md:block"></div>
       </div>
 
-    </AnimateSharedLayout>
+    </>
   );
 }
 
