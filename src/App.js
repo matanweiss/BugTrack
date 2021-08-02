@@ -5,12 +5,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import "./tailwind.css";
 
-const fadeVariants = {
-  exit: { opacity: 0 },
-  initial: { rotateX: '-20deg', opacity: 0 },
-  animate: { opacity: 1, rotateX: 0 }
-}
-
 function App() {
 
   const location = useLocation();

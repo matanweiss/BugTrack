@@ -1032,6 +1032,25 @@ h3{
           animation: fadeIn .6s;
 }
 
+@-webkit-keyframes spin{
+  to{
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin{
+  to{
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.animate-spin{
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
 .cursor-pointer{
   cursor: pointer;
 }
