@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
@@ -19,25 +18,23 @@ function App() {
 
   return (
     <>
-      <AnimatePresence exitBeforeEnter>
-        <Switch location={location} key={location.key}>
-          <Route exact path="/">
-            <Home fadeVariants={fadeVariants} />
-          </Route>
-          <Route path="/login">
-            <Login fadeVariants={fadeVariants} />
-          </Route>
-          <Route path="/register">
-            <Register fadeVariants={fadeVariants} />
-          </Route>
-          <Route exact path="/dashboard">
-            <Dashboard fadeVariants={fadeVariants} />
-          </Route>
-          <Route path="/dashboard/:id">
-            <Item fadeVariants={fadeVariants} />
-          </Route>
-        </Switch>
-      </AnimatePresence>
+      <Switch location={location} key={location.key}>
+        <Route exact path="/">
+          <Home fadeVariants={fadeVariants} />
+        </Route>
+        <Route path="/login">
+          <Login fadeVariants={fadeVariants} />
+        </Route>
+        <Route path="/register">
+          <Register fadeVariants={fadeVariants} />
+        </Route>
+        <Route exact path="/dashboard">
+          <Dashboard fadeVariants={fadeVariants} />
+        </Route>
+        <Route path="/dashboard/:id">
+          <Item fadeVariants={fadeVariants} />
+        </Route>
+      </Switch>
     </>
   );
 }
