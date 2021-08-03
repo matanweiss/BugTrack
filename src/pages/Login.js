@@ -1,31 +1,34 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
 const Login = () => {
 
-  const history = useHistory();
-
   const handleLogin = e => {
     e.preventDefault();
-    history.push("/dashboard");
+    
   }
 
   return (
     <>
       <NavBar />
-      <div className='animate-fadeIn max-w-md font-body mx-4 sm:mx-auto border-2 border-red-200 rounded-md p-8 sm:px-12 my-8'>
+      <div className='animate-fadeIn max-w-lg font-body mx-4 sm:mx-auto border-2 border-red-200 rounded-md p-8 md:px-12 my-8'>
         <form onSubmit={handleLogin} className="flex flex-col">
           <h4 className="mx-auto font-medium mb-6">Please enter your login details:</h4>
-          <label className="p-1">Email</label>
-          <input type="email" className="p-1 focus:border-red-500 transition mb-4 rounded-md outline-none border-2 border-red-300" />
-          <label className="p-1">Password</label>
-          <input type="password" className="p-1 focus:border-red-500 transition mb-8 rounded-md outline-none border-2 border-red-300" />
-          <div className="flex flex-col sm:flex-row-reverse justify-between sm:items-center">
-            <button type="button" className="btn btn-hover block mb-4 sm:m-0">Login</button>
-            <Link to={'/forgot-password'} className="self-center font-medium text-red-500 after:border-red-400 after:border-b-2 after:block hover:text-red-500 after:transform after:transition after:scale-x-0 hover:after:scale-x-100 transition">Forgot your password?</Link>
+          <div className='relative'>
+            <input required type="email" placeholder='Email address' className="peer placeholder-input" />
+            <label for='email' className='placeholder-label'>Email address</label>
           </div>
-          <button className='btn2 btn-hover mt-4 text-red-700'>Login as guest</button>
+          <div className='relative mt-6 mb-8'>
+            <input required type="password" placeholder='Password' className="peer placeholder-input" />
+            <label for='password' className='placeholder-label'>Password</label>
+          </div>
+          <div className="grid md:grid-cols-2 gap-x-4 gap-y-3 md:gap-y-6">
+            <button className="btn btn-hover">Login</button>
+            <Link to='/dashboard' className='btn2 btn-hover text-center'>Login as guest</Link>
+            <Link to='/forgot-password' className="m-auto self-center font-medium text-red-600 underline-hover">Forgot your password?</Link>
+            <Link to='/register' className='m-auto text-sm font-medium text-red-600 underline-hover'>No account? Register here!</Link>
+          </div>
         </form>
       </div>
     </>
