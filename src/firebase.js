@@ -32,7 +32,17 @@ export const addItem = async (projectTitle, listTitle, newItem) => {
   const id = await db.collection(projectTitle).doc('id count').get();
   newItem.id = id.data().number;
   newItem.createdAt = date;
-  const result = await db.collection(projectTitle).doc('Lists').collection(listTitle).add(newItem);
+  const result = await db.collection(projectTitle).doc('Lists').collection(listTitle).doc(newItem.id.toString()).set(newItem);
   await db.collection(projectTitle).doc('id count').set({ 'number': id.data().number + 1 });
+  return result;
+}
+
+export const editItem = async (projectTitle, listTitle, editedItem) => {
+  const result = await db.collection(projectTitle).doc('Lists').collection(listTitle).doc(editedItem.id.toString()).set(editedItem);
+  return result;
+}
+
+export const removeItem = async (projectTitle, listTitle, id) => {
+  const result = await db.collection(projectTitle).doc('Lists').collection(listTitle).doc(id.toString()).delete();
   return result;
 }

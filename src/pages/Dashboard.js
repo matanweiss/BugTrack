@@ -14,6 +14,9 @@ const Dashboard = () => {
   const [SelectedItem, setSelectedItem] = useState([]);
   const [needLeftArrow, setNeedLeftArrow] = useState(true);
   const [needRightArrow, setNeedRightArrow] = useState(true);
+  const [currentList, setCurrentList] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  const [reloadTrigger, setReloadTrigger] = useState(false);
 
 
   const scrollBack = () => {
@@ -37,6 +40,7 @@ const Dashboard = () => {
     const scrollLeft = scrollXContainerRef.current.scrollLeft;
     const currentPage = Math.round(scrollLeft / offsetWidth) + 1;
     const numberOfPages = Math.round(scrollWidth / offsetWidth);
+    
 
     if (numberOfPages > currentPage) setNeedRightArrow(true);
     else setNeedRightArrow(false);
@@ -45,13 +49,18 @@ const Dashboard = () => {
   }
 
   const listProps = {
-    scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow, SelectedItem,
-    setSideBarActiveItem, setIsMenuOpen, setSelectedItem, scrollBack, scrollForward, checkIfNeedArrows
+    scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow, SelectedItem, reloadTrigger, 
+    setSideBarActiveItem, setIsMenuOpen, setSelectedItem, scrollBack, scrollForward, checkIfNeedArrows,
+    setReloadTrigger, setCurrentList
   }
 
   const dashboardMenuProps = {
     sideBarActiveItem, setSideBarActiveItem,
     setIsMenuOpen, checkIfNeedArrows
+  }
+
+  const itemProps = {
+    isEditing, setIsEditing, currentList, SelectedItem, setSelectedItem, reloadTrigger, setReloadTrigger
   }
 
   useEffect(() => {
@@ -75,7 +84,7 @@ const Dashboard = () => {
       <div className="font-body flex flex-col h-screen">
         <NavBar title={'Project Title'} />
         <div className="animate-fadeIn mx-4 md:px-4 min-h-0 flex md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl">
-          {Boolean(SelectedItem.length) && <Item SelectedItem={SelectedItem} setSelectedItem={setSelectedItem} />}
+          {Boolean(SelectedItem.length) && <Item props={itemProps} />}
           <Lists props={listProps} dashboardMenuProps={dashboardMenuProps} />
         </div>
 
@@ -91,8 +100,11 @@ const Dashboard = () => {
               ? <>
                 <span className='w-6 h-6 m-auto opacity-0'></span>
                 <svg className='w-6 h-6 m-auto' onClick={() => setSelectedItem([])}
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                <svg className="m-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <svg onClick={() => setIsEditing(!isEditing)}  
+                  className="m-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
               </>
               : <>
                 <svg className={`w-6 h-6 m-auto ${needLeftArrow ? null : 'opacity-0'}`} onClick={scrollBack}

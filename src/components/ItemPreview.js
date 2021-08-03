@@ -1,7 +1,12 @@
-const ItemPreview = ({ item, setIsItemSelected }) => {
+const ItemPreview = ({ item, setIsItemSelected, setCurrentList }) => {
 
+  const handleClick = e => {
+    setCurrentList(e.target.parentElement.id);
+    setIsItemSelected([item]);
+  }
   return (
-    <div onClick={() => setIsItemSelected([item])}
+    <div  onClick={handleClick}
+    //onClick={() => setIsItemSelected([item])}
       className='animate-fadeIn rounded-lg border cursor-default shadow h-14 mx-1 my-4 p-2 hover:bg-gray-100 transition flex items-center'
     >{item.title}
       {item.bug && (<div className='btn ml-2 self-start text-sm p-1 hover:bg-red-600' >bug</div>)}

@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
@@ -17,11 +16,11 @@ const Login = () => {
           <h4 className="mx-auto font-medium mb-6">Please enter your login details:</h4>
           <div className='relative'>
             <input required type="email" placeholder='Email address' className="peer placeholder-input" />
-            <label for='email' className='placeholder-label'>Email address</label>
+            <label className='placeholder-label'>Email address</label>
           </div>
           <div className='relative mt-6 mb-8'>
             <input required type="password" placeholder='Password' className="peer placeholder-input" />
-            <label for='password' className='placeholder-label'>Password</label>
+            <label className='placeholder-label'>Password</label>
           </div>
           <div className="grid md:grid-cols-2 gap-x-4 gap-y-3 md:gap-y-6">
             <button className="btn btn-hover">Login</button>

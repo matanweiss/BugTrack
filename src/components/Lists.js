@@ -19,11 +19,11 @@ const Lists = ({ props, dashboardMenuProps }) => {
   }
 
   const showList = (title, list) =>
-    <div key={title} className="overflow-y-auto w-full flex-shrink-0 "
+    <div key={title} className="overflow-y-auto w-full flex-shrink-0 " id={title}
       style={{ scrollbarWidth: 'none', scrollSnapAlign: 'center' }} ref={scrollYContainerRef} >
       <h3 className='sticky top-0 bg-white pt-4 pb-1 text-center'>{title}</h3>
-      {list.map(item => <ItemPreview item={item} key={item.id} setIsItemSelected={props.setSelectedItem} />)}
-      <AddItem listTitle={title} />
+      {list.map(item => <ItemPreview setCurrentList={props.setCurrentList} item={item} key={item.id} setIsItemSelected={props.setSelectedItem} />)}
+      <AddItem listTitle={title} setReloadTrigger={props.setReloadTrigger} reloadTrigger={props.reloadTrigger} />
     </div>
 
 
@@ -35,12 +35,12 @@ const Lists = ({ props, dashboardMenuProps }) => {
   }
 
   useEffect(() => {
-
+    setIsLoading(true);
     getLists('project 1').then(lists => {
       setLists(lists);
       setIsLoading(false);
     });
-  }, [])
+  }, [props.reloadTrigger])
 
   return (
     <div className={`${props.SelectedItem.length ? 'hidden' : ''} w-full flex`}>
