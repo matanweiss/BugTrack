@@ -27,6 +27,11 @@ export const getLists = async projectTitle => {
   return lists;
 }
 
+export const getItem = async (projectTitle, listTitle, id) => {
+  const result = await db.collection(projectTitle).doc('Lists').collection(listTitle).doc(id).get();
+  return result.data();
+}
+
 export const addItem = async (projectTitle, listTitle, newItem) => {
   const date = firebase.firestore.Timestamp.fromDate(new Date());
   const id = await db.collection(projectTitle).doc('id count').get();

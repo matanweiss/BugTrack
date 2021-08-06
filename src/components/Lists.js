@@ -8,8 +8,8 @@ const Lists = ({ props, dashboardMenuProps }) => {
 
   const [lists, setLists] = useState({});
   const scrollYContainerRef = useRef();
-  
-
+  const [reloadTrigger, setReloadTrigger] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const filterList = (title, list) => {
     const filteredList = list.filter(item => (props.sideBarActiveItem === 'bugs') ? item.bug : true)
@@ -19,11 +19,11 @@ const Lists = ({ props, dashboardMenuProps }) => {
   }
 
   const showList = (title, list) =>
-    <div key={title} className="overflow-y-auto w-full flex-shrink-0 " id={title}
+    <div key={title} className="overflow-y-auto w-full flex-shrink-0 "
       style={{ scrollbarWidth: 'none', scrollSnapAlign: 'center' }} ref={scrollYContainerRef} >
       <h3 className='sticky top-0 bg-white pt-4 pb-1 text-center'>{title}</h3>
-      {list.map(item => <ItemPreview setCurrentList={props.setCurrentList} item={item} key={item.id} setIsItemSelected={props.setSelectedItem} />)}
-      <AddItem listTitle={title} setReloadTrigger={props.setReloadTrigger} reloadTrigger={props.reloadTrigger} />
+      {list.map(item => <ItemPreview listTitle={title} item={item} key={item.id} />)}
+      <AddItem listTitle={title} setReloadTrigger={setReloadTrigger} reloadTrigger={reloadTrigger} />
     </div>
 
 
@@ -37,14 +37,12 @@ const Lists = ({ props, dashboardMenuProps }) => {
   useEffect(() => {
     getLists('project 1').then(lists => {
       setLists(lists);
-      props.setIsLoading(false);
-      props.setSelectedItem([]);
-      props.setIsEditing(false);
+      setIsLoading(false);
     });
-  }, [props.reloadTrigger])
+  }, [reloadTrigger])
 
   return (
-    <div className={`${props.SelectedItem.length ? 'hidden' : ''} w-full flex`}>
+    <div className='w-full flex'>
       <div className="sticky top-0 hidden md:block">
         <DashboardMenu props={dashboardMenuProps} />
       </div>
@@ -54,7 +52,7 @@ const Lists = ({ props, dashboardMenuProps }) => {
       <div className="animate-fadeIn flex pb-4 w-full overflow-x-auto" ref={props.scrollXContainerRef}
         style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none' }}
       >
-        {props.isLoading
+        {isLoading
           ?
           <div className='w-full h-24 md:h-full flex'>
             <div className='m-auto animate-spin'>
