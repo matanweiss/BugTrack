@@ -17,6 +17,7 @@ const Dashboard = () => {
   const [currentList, setCurrentList] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [reloadTrigger, setReloadTrigger] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
 
   const scrollBack = () => {
@@ -51,7 +52,7 @@ const Dashboard = () => {
   const listProps = {
     scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow, SelectedItem, reloadTrigger, 
     setSideBarActiveItem, setIsMenuOpen, setSelectedItem, scrollBack, scrollForward, checkIfNeedArrows,
-    setReloadTrigger, setCurrentList
+    setReloadTrigger, setCurrentList, isLoading, setIsLoading, setIsEditing
   }
 
   const dashboardMenuProps = {
@@ -60,7 +61,8 @@ const Dashboard = () => {
   }
 
   const itemProps = {
-    isEditing, setIsEditing, currentList, SelectedItem, setSelectedItem, reloadTrigger, setReloadTrigger
+    isEditing, setIsEditing, currentList, SelectedItem, setSelectedItem, reloadTrigger, setReloadTrigger,
+    isLoading, setIsLoading
   }
 
   useEffect(() => {

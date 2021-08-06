@@ -8,29 +8,24 @@ const Item = ({ props }) => {
   const [isFeature, setIsFeature] = useState(props.SelectedItem[0].feature);
   const [titleInput, setTitleInput] = useState(props.SelectedItem[0].title);
   const [descriptionInput, setDescriptionInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
-    setIsLoading(true);
+    props.setIsLoading(true);
     const editedItem = {
       id: props.SelectedItem[0].id, title: titleInput, bug: isBug, feature: isFeature, createdAt: props.SelectedItem[0].createdAt
     }
     if (descriptionInput.length) editedItem.description = descriptionInput;
     editItem('project 1', props.currentList, editedItem).then(() => {
-      setIsLoading(false);
-      props.setIsEditing(false);
       props.setReloadTrigger(!props.reloadTrigger);
-      props.setSelectedItem([]);
     });
   }
 
   const handleDelete = () => {
-    setIsLoading(true);
+    props.setIsLoading(true);
     removeItem('project 1', props.currentList, props.SelectedItem[0].id).then(() => {
-      setIsLoading(false);
       props.setReloadTrigger(!props.reloadTrigger);
-      props.setSelectedItem([]);
     });
   }
 
@@ -66,7 +61,7 @@ const Item = ({ props }) => {
           className='resize-none h-full p-2 w-full focus:border-red-500 transition mb-4 rounded-md outline-none border-2 border-red-300'>
         </textarea>
       </div>
-      {isLoading ?
+      {props.isLoading ?
         <div className='flex h-full'>
           <svg className='animate-spin m-auto' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12H19C19 15.866 15.866 19 12 19V22Z" fill="currentColor" /><path d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z" fill="currentColor" /></svg>
         </div>

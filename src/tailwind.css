@@ -1656,6 +1656,10 @@ h3{
     height: auto;
   }
 
+  .md\:h-full{
+    height: 100%;
+  }
+
   .md\:w-auto{
     width: auto;
   }

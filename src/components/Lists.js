@@ -8,7 +8,7 @@ const Lists = ({ props, dashboardMenuProps }) => {
 
   const [lists, setLists] = useState({});
   const scrollYContainerRef = useRef();
-  const [isLoading, setIsLoading] = useState(true);
+  
 
 
   const filterList = (title, list) => {
@@ -35,10 +35,11 @@ const Lists = ({ props, dashboardMenuProps }) => {
   }
 
   useEffect(() => {
-    setIsLoading(true);
     getLists('project 1').then(lists => {
       setLists(lists);
-      setIsLoading(false);
+      props.setIsLoading(false);
+      props.setSelectedItem([]);
+      props.setIsEditing(false);
     });
   }, [props.reloadTrigger])
 
@@ -53,9 +54,9 @@ const Lists = ({ props, dashboardMenuProps }) => {
       <div className="animate-fadeIn flex pb-4 w-full overflow-x-auto" ref={props.scrollXContainerRef}
         style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none' }}
       >
-        {isLoading
+        {props.isLoading
           ?
-          <div className='w-full h-full flex'>
+          <div className='w-full h-24 md:h-full flex'>
             <div className='m-auto animate-spin'>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12H19C19 15.866 15.866 19 12 19V22Z" fill="currentColor" /><path d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z" fill="currentColor" /></svg>
             </div>
