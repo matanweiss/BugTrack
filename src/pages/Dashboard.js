@@ -1,13 +1,12 @@
 import NavBar from "../components/NavBar";
 import { useEffect, useRef, useState } from "react";
-// import SelectProject from "./SelectProject";
 import DashboardMenu from "../components/DashboardMenu";
 import Lists from "../components/Lists";
+import SelectProject from "../components/SelectProject";
 
-const Dashboard = () => {
+const Dashboard = ({ props }) => {
 
   const scrollXContainerRef = useRef();
-  // const [isProjectSelected, setIsProjectSelected] = useState(false);
   const [sideBarActiveItem, setSideBarActiveItem] = useState('all');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [needLeftArrow, setNeedLeftArrow] = useState(true);
@@ -44,13 +43,19 @@ const Dashboard = () => {
 
   const listProps = {
     scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow,
-    setSideBarActiveItem, setIsMenuOpen, scrollBack, scrollForward, checkIfNeedArrows
+    setSideBarActiveItem, setIsMenuOpen, scrollBack, scrollForward, checkIfNeedArrows,
+    isProjectSelected: props.isProjectSelected, selectedProject: props.selectedProject,
+    lists: props.lists, isLoading: props.isLoading
   }
 
   const dashboardMenuProps = {
     sideBarActiveItem, setSideBarActiveItem,
     setIsMenuOpen, checkIfNeedArrows
   }
+
+  const selectProjectProps = { 
+    setSelectedProject: props.setSelectedProject, setIsProjectSelected: props.setIsProjectSelected
+   };
 
   useEffect(() => {
     checkIfNeedArrows();
@@ -67,11 +72,9 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* <SelectProject setIsProjectSelected={setIsProjectSelected}
-        isProjectSelected={isProjectSelected}
-      /> */}
+      {!props.isProjectSelected && <SelectProject props={selectProjectProps} />}
       <div className="font-body flex flex-col h-screen">
-        <NavBar title={'Project Title'} />
+        <NavBar title={props.selectedProject} setIsProjectSelected={props.setIsProjectSelected} />
         <div className="animate-fadeIn mx-4 md:px-4 min-h-0 flex md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl">
           <Lists props={listProps} dashboardMenuProps={dashboardMenuProps} />
         </div>

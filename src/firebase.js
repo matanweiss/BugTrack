@@ -51,3 +51,8 @@ export const removeItem = async (projectTitle, listTitle, id) => {
   const result = await db.collection(projectTitle).doc('Lists').collection(listTitle).doc(id.toString()).delete();
   return result;
 }
+
+export const getProjects = async () => {
+  const result = await db.collection('guestUser').doc('projects').get();
+  return result.data();
+}

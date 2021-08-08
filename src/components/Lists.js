@@ -1,15 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import DashboardMenu from "./DashboardMenu";
 import ItemPreview from "./ItemPreview";
-import { getLists } from '../firebase';
 import AddItem from "./AddItem";
 
 const Lists = ({ props, dashboardMenuProps }) => {
 
-  const [lists, setLists] = useState({});
   const scrollYContainerRef = useRef();
   const [reloadTrigger, setReloadTrigger] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const filterList = (title, list) => {
     const filteredList = list.filter(item => (props.sideBarActiveItem === 'bugs') ? item.bug : true)
@@ -29,17 +26,15 @@ const Lists = ({ props, dashboardMenuProps }) => {
 
   const printLists = () => {
     let arr = [];
-    for (const [key, value] of Object.entries(lists)) arr.push(filterList(key, value))
+    for (const [key, value] of Object.entries(props.lists)) arr.push(filterList(key, value))
     setTimeout(() => { props.checkIfNeedArrows(); }, 400);
     return arr;
   }
 
-  useEffect(() => {
-    getLists('project 1').then(lists => {
-      setLists(lists);
-      setIsLoading(false);
-    });
-  }, [reloadTrigger])
+  const renderSpinner = () =>
+    <div className='flex h-full w-full'>
+      <svg className='animate-spin m-auto' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12H19C19 15.866 15.866 19 12 19V22Z" fill="currentColor" /><path d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z" fill="currentColor" /></svg>
+    </div>
 
   return (
     <div className='w-full flex'>
@@ -52,14 +47,7 @@ const Lists = ({ props, dashboardMenuProps }) => {
       <div className="animate-fadeIn flex pb-4 w-full overflow-x-auto" ref={props.scrollXContainerRef}
         style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none' }}
       >
-        {isLoading
-          ?
-          <div className='w-full h-24 md:h-full flex'>
-            <div className='m-auto animate-spin'>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12H19C19 15.866 15.866 19 12 19V22Z" fill="currentColor" /><path d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z" fill="currentColor" /></svg>
-            </div>
-          </div>
-          : printLists()}
+        {props.isLoading ? renderSpinner() : props.isProjectSelected && printLists()}
       </div>
       {props.needRightArrow && <svg className="w-6 h-6 absolute hidden md:block top-1/2 -translate-y-1/2 right-1.5 text-gray-400" onClick={props.scrollForward}
         fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>

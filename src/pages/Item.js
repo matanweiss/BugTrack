@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { editItem, getItem, removeItem } from "../firebase";
 
-const Item = () => {
+const Item = ({ selectedProject }) => {
 
   const history = useHistory();
   const { list, id } = useParams();
@@ -28,7 +28,7 @@ const Item = () => {
       }
       else history.push('/dashboard');
     });
-  }, [needReload, id, list])
+  }, [needReload, id, list, history])
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -101,7 +101,7 @@ const Item = () => {
 
   const renderViewMode = () =>
     <>
-      <div className="flex items-center h-16 w-full">
+      <div className="animate-fadeIn flex items-center h-16 w-full">
         <svg className="mr-2 flex-shrink-0 hidden md:inline w-6 h-6" onClick={() => history.goBack()}
           fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
         <h2 className='truncate'>{item.title}</h2>
@@ -117,8 +117,8 @@ const Item = () => {
 
   return (
     <div className="font-body flex flex-col h-screen">
-      <NavBar title={'Project Title'} />
-      <div className="animate-fadeIn mx-4 md:px-4 min-h-0 md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl">
+      <NavBar title={selectedProject} />
+      <div className="animate-fadeIn mx-4 md:px-4 min-h-[7rem] md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl">
         {isLoading
           ? renderSpinner()
           : isEditing ? renderEditMode() : renderViewMode()
