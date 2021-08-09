@@ -14,7 +14,7 @@ const Register = () => {
           </div>
           <div className='relative mt-6 mb-8'>
             <input required type="password" placeholder='Password' className="peer placeholder-input"/>       
-            <label for='password' className='placeholder-label'>Password</label>
+            <label className='placeholder-label'>Password</label>
           </div>
           <button className='btn btn-hover'>Register</button>
           <Link to='/login' className='m-auto mt-4 text-sm font-medium text-red-600 underline-hover'>Have an account? Log in here</Link>

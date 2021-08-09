@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { addItem } from "../firebase";
 
-const AddItem = ({ listTitle, reloadTrigger, setReloadTrigger }) => {
+const AddItem = ({ listTitle, reloadLists, setReloadLists }) => {
 
   const input = useRef();
   const div = useRef();
@@ -34,7 +34,7 @@ const AddItem = ({ listTitle, reloadTrigger, setReloadTrigger }) => {
       setIsLoading(false);
       setIsAddingItem(false);
       input.current.value = '';
-      setReloadTrigger(!reloadTrigger);
+      setReloadLists(!reloadLists);
     });
   }
 

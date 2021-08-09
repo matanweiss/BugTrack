@@ -24,7 +24,7 @@ const Login = () => {
           </div>
           <div className="grid md:grid-cols-2 gap-x-4 gap-y-3 md:gap-y-6">
             <button className="btn btn-hover">Login</button>
-            <Link to='/dashboard' className='btn2 btn-hover text-center'>Login as guest</Link>
+            <Link to='/dashboard' className='btn2 btn-hover hover:bg-white text-center'>Login as guest</Link>
             <Link to='/forgot-password' className="m-auto self-center font-medium text-red-600 underline-hover">Forgot your password?</Link>
             <Link to='/register' className='m-auto text-sm font-medium text-red-600 underline-hover'>No account? Register here!</Link>
           </div>

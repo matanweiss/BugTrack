@@ -44,18 +44,14 @@ const Dashboard = ({ props }) => {
   const listProps = {
     scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow,
     setSideBarActiveItem, setIsMenuOpen, scrollBack, scrollForward, checkIfNeedArrows,
-    isProjectSelected: props.isProjectSelected, selectedProject: props.selectedProject,
-    lists: props.lists, isLoading: props.isLoading
+    selectedProject: props.selectedProject, lists: props.lists, isLoading: props.isLoading,
+    reloadLists: props.reloadLists, setReloadLists: props.setReloadLists
   }
 
   const dashboardMenuProps = {
     sideBarActiveItem, setSideBarActiveItem,
     setIsMenuOpen, checkIfNeedArrows
   }
-
-  const selectProjectProps = { 
-    setSelectedProject: props.setSelectedProject, setIsProjectSelected: props.setIsProjectSelected
-   };
 
   useEffect(() => {
     checkIfNeedArrows();
@@ -72,10 +68,10 @@ const Dashboard = ({ props }) => {
 
   return (
     <>
-      {!props.isProjectSelected && <SelectProject props={selectProjectProps} />}
-      <div className="font-body flex flex-col h-screen">
-        <NavBar title={props.selectedProject} setIsProjectSelected={props.setIsProjectSelected} />
-        <div className="animate-fadeIn mx-4 md:px-4 min-h-0 flex md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl">
+      {!props.selectedProject && <SelectProject setSelectedProject={props.setSelectedProject} />}
+      <div className="font-body flex flex-col h-screen md:bg-gray-50">
+        <NavBar title={props.selectedProject} setSelectedProject={props.setSelectedProject} />
+        <div className="animate-fadeIn mx-4 md:px-4 min-h-0 flex border-red-200 md:w-full max-w-2xl md:mx-auto relative md:rounded-xl bg-white md:border-2">
           <Lists props={listProps} dashboardMenuProps={dashboardMenuProps} />
         </div>
 

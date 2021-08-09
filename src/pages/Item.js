@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { editItem, getItem, removeItem } from "../firebase";
 
-const Item = ({ selectedProject }) => {
+const Item = ({ props }) => {
 
   const history = useHistory();
   const { list, id } = useParams();
@@ -14,21 +14,21 @@ const Item = ({ selectedProject }) => {
   const [descriptionInput, setDescriptionInput] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [needReload, setNeedReload] = useState(false);
+  const [reloadItem, setReloadItem] = useState(false);
 
   useEffect(() => {
-    getItem('project 1', list, id).then(item => {
-      if (item) {
-        setItem(item);
-        setIsBug(item.bug);
-        setIsFeature(item.feature);
-        setTitleInput(item.title);
-        if (item.description) setDescriptionInput(item.description);
-        setIsLoading(false);
-      }
-      else history.push('/dashboard');
+    getItem(props.selectedProject, list, id).then(item => {
+      setItem(item);
+      setIsBug(item.bug);
+      setIsFeature(item.feature);
+      setTitleInput(item.title);
+      if (item.description) setDescriptionInput(item.description);
+      setIsLoading(false);
+    }).catch(err => {
+      console.error(err);
+      history.push('/dashboard');
     });
-  }, [needReload, id, list, history])
+  }, [reloadItem, id, list, history, props.selectedProject])
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -37,15 +37,16 @@ const Item = ({ selectedProject }) => {
       id, title: titleInput, bug: isBug, feature: isFeature, createdAt: item.createdAt
     }
     if (descriptionInput) editedItem.description = descriptionInput;
-    editItem('project 1', list, editedItem).then(() => {
-      setNeedReload(!needReload);
+    editItem(props.selectedProject, list, editedItem).then(() => {
+      setReloadItem(!reloadItem);
       setIsEditing(false);
     });
   }
 
   const handleDelete = () => {
     setIsLoading(true);
-    removeItem('project 1', list, id).then(() => {
+    removeItem(props.selectedProject, list, id).then(() => {
+      props.setReloadLists(!props.reloadLists);
       history.push('/dashboard');
     });
   }
@@ -117,7 +118,7 @@ const Item = ({ selectedProject }) => {
 
   return (
     <div className="font-body flex flex-col h-screen">
-      <NavBar title={selectedProject} />
+      <NavBar title={props.selectedProject} setSelectedProject={props.setSelectedProject} />
       <div className="animate-fadeIn mx-4 md:px-4 min-h-[7rem] md:shadow-xl md:w-full max-w-xl md:mx-auto relative md:rounded-xl">
         {isLoading
           ? renderSpinner()

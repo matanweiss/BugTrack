@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProjects } from "../firebase";
 
-const SelectProject = ({ props }) => {
+const SelectProject = ({ setSelectedProject }) => {
 
 
   const [needToFadeOut, setNeedToFadeOut] = useState(false);
@@ -9,9 +9,8 @@ const SelectProject = ({ props }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleSelection = e => {
-    props.setSelectedProject(e.target.id);
     setNeedToFadeOut(true);
-    setTimeout(() => { props.setIsProjectSelected(true); }, 290);
+    setTimeout(() => { setSelectedProject(e.target.id); }, 290);
   }
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const SelectProject = ({ props }) => {
       ${needToFadeOut ? 'animate-fadeOut' : 'animate-fadeIn'}`}
     >
       <div
-        className="pt-4 shadow-xl w-full rounded flex flex-col bg-white mx-4 my-auto md:m-auto md:w-2/3">
+        className="pt-4 shadow-xl w-full rounded max-w-3xl flex flex-col bg-white mx-4 my-auto md:m-auto md:w-2/3">
         <h3 className="text-center mb-4 text-red-600 md:text-4xl">Select your project:</h3>
         {isLoading ? renderSpinner() : renderProjects()}
       </div>

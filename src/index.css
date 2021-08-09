@@ -21,7 +21,7 @@
     @apply border-2 border-red-600 text-red-600 p-2 rounded-md transition-all;
   }
   .btn-hover{
-    @apply hover:scale-105 hover:shadow-md hover:-translate-y-0.5 transition;
+    @apply hover:shadow-lg hover:bg-red-500 transition
   }
   .placeholder-input{
     @apply placeholder-transparent w-full py-2 outline-none border-b-2 border-red-300 transition focus:border-red-500;

@@ -12,21 +12,26 @@ import "./tailwind.css";
 function App() {
 
   const location = useLocation();
-  const [isProjectSelected, setIsProjectSelected] = useState(false);
   const [selectedProject, setSelectedProject] = useState('');
   const [lists, setLists] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [reloadLists, setReloadLists] = useState(false);
 
   useEffect(() => {
-    if (isProjectSelected) getLists(selectedProject).then(lists => {
+    // setIsLoading(true);
+    if (selectedProject) getLists(selectedProject).then(lists => {
       setLists(lists);
       setIsLoading(false);
     });
-  }, [isProjectSelected])
+  }, [selectedProject, reloadLists])
 
-  const dashboardProps = { 
-    isProjectSelected, setIsProjectSelected, selectedProject, setSelectedProject, lists, setLists, isLoading
-   };
+  const dashboardProps = {
+    selectedProject, setSelectedProject, lists, setLists, isLoading, reloadLists, setReloadLists
+  };
+
+  const itemProps = {
+    selectedProject, setReloadLists, reloadLists, setSelectedProject
+  }
 
   return (
     <Switch location={location} key={location.key}>
@@ -43,7 +48,7 @@ function App() {
         <Dashboard props={dashboardProps} />
       </Route>
       <Route path="/dashboard/:list/:id">
-        <Item selectedProject={selectedProject}/>
+        <Item props={itemProps} />
       </Route>
       <Route path="/forgot-password">
         <ForgotPassword />
