@@ -1,11 +1,8 @@
-import { useRef } from "react";
-import DashboardMenu from "./DashboardMenu";
 import ItemPreview from "./ItemPreview";
 import AddItem from "./AddItem";
 
-const Lists = ({ props, dashboardMenuProps }) => {
+const Lists = ({ props }) => {
 
-  const scrollYContainerRef = useRef();
 
   const filterList = (title, list) => {
     const filteredList = list.filter(item => (props.sideBarActiveItem === 'bugs') ? item.bug : true)
@@ -16,7 +13,7 @@ const Lists = ({ props, dashboardMenuProps }) => {
 
   const showList = (title, list) =>
     <div key={title} className="overflow-y-auto w-full flex-shrink-0 "
-      style={{ scrollbarWidth: 'none', scrollSnapAlign: 'center' }} ref={scrollYContainerRef} >
+      style={{ scrollbarWidth: 'none', scrollSnapAlign: 'center' }} >
       <h3 className='sticky top-0 bg-white pt-4 pb-1 text-center'>{title}</h3>
       {list.map(item => <ItemPreview listTitle={title} item={item} key={item.id} />)}
       <AddItem listTitle={title} setReloadLists={props.setReloadLists} reloadLists={props.reloadLists} />
@@ -36,14 +33,12 @@ const Lists = ({ props, dashboardMenuProps }) => {
     </div>
 
   return (
-    <div className='w-full md:pr-4 flex'>
-      <div className="sticky top-0 hidden md:block">
-        <DashboardMenu props={dashboardMenuProps} />
-      </div>
-      {props.needLeftArrow && <svg className="w-6 h-6 absolute hidden md:inline top-1/2 -translate-y-1/2 left-[6.5rem] text-gray-400" onClick={props.scrollBack}
+    <div className='flex md:w-[30rem] h-full bg-white border-gray-200 md:shadow px-4 md:relative md:border-2 md:rounded-xl md:overflow-hidden'>
+
+      {props.needLeftArrow && <svg className="w-6 h-6 absolute hidden md:inline top-1/2 -translate-y-1/2 left-0 text-gray-400" onClick={props.scrollBack}
         fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
       }
-      <div className="animate-fadeIn flex pb-4 w-full overflow-x-auto" ref={props.scrollXContainerRef}
+      <div className="animate-fadeIn  flex w-full overflow-x-auto" ref={props.scrollXContainerRef}
         style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none' }}
       >
         {props.isLoading ? renderSpinner() : props.selectedProject && printLists()}

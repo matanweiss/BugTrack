@@ -10,7 +10,7 @@ const Register = () => {
           <p className='text-center font-medium mb-8'>Whats yo info:</p>
           <div className='relative'>
             <input required type="email" placeholder='Email address' className="peer placeholder-input"/>       
-            <label for='email' className='placeholder-label'>Email address</label>
+            <label className='placeholder-label'>Email address</label>
           </div>
           <div className='relative mt-6 mb-8'>
             <input required type="password" placeholder='Password' className="peer placeholder-input"/>       
