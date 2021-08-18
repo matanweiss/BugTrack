@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
 import { useHistory, useParams } from "react-router-dom";
-// import { editItem, getItem, removeItem } from "../firebase";
 
 const Item = () => {
 
   const { listId, itemId } = useParams();
-  const { isLoading, data } = useQuery('item', () => 
-    fetch(`http://localhost:5000/get-item/${listId}/${itemId}`).then(res => res.json())
+  const { isLoading, data } = useQuery('item', () =>
+    fetch(`http://localhost:5000/get-item/${itemId}`).then(res => res.json())
   );
 
   const container = useRef();
@@ -19,35 +18,39 @@ const Item = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    if(data){
+    if (data) {
       setIsBug(data.bug);
       setIsFeature(data.feature);
       setTitleInput(data.title);
       if (data.description) setDescriptionInput(data.description);
     }
-  },[data]);
+  }, [data]);
 
 
   const handleSubmit = e => {
     e.preventDefault();
-    // setIsLoading(true);
-    // const editedItem = {
-    //   itemId, title: titleInput, bug: isBug, feature: isFeature, createdAt: item.createdAt
-    // }
-    // if (descriptionInput) editedItem.description = descriptionInput;
-    // editItem(props.selectedProject, list, editedItem).then(() => {
-    //   setReloadItem(!reloadItem);
-    //   props.setReloadLists(!props.reloadLists);
-    //   setIsEditing(false);
-    // });
+    const editedItem = {
+      listId, itemId, title: titleInput, bug: isBug, feature: isFeature
+    }
+    if (descriptionInput) editedItem.description = descriptionInput;
+    fetch('http://localhost:5000/edit-item', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(editedItem)
+    }).then(res => {
+      setIsEditing(false);
+    }).catch(err => console.error(err.message));
   }
 
   const handleDelete = () => {
-    // setIsLoading(true);
-    // removeItem(props.selectedProject, list, id).then(() => {
-    //   props.setReloadLists(!props.reloadLists);
-    //   history.push('/dashboard');
-    // });
+    const IDs = {listId, itemId};
+    fetch('http://localhost:5000/delete-item', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(IDs)
+    }).then(res => {
+      history.goBack();
+    }).catch(err => console.error(err.message));
   }
 
   const handleMouseDown = e => {
@@ -128,7 +131,7 @@ const Item = () => {
     </>
 
   return (
-    <div className="font-body flex flex-col h-screen md:bg-gray-50">
+    <div className="font-body flex flex-col h-[calc(100vh-4rem)] md:bg-gray-50">
 
       <div className="flex relative md:mx-auto pt-2 md:space-x-8 md:pr-28 animate-fadeIn">
         <div className='hidden md:block self-start rounded-xl bg-white p-4 border-2 shadow border-gray-200'>

@@ -77,7 +77,7 @@ const Dashboard = ({ props }) => {
   }
 
   return (
-    <div className="font-body flex flex-col h-screen md:bg-gray-50">
+    <div className="font-body flex flex-col h-[calc(100vh-4rem)] md:bg-gray-50">
       <div className='hidden md:flex pt-2 max-w-6xl mx-auto md:pr-28 space-x-8 max-h-[calc(100vh-8rem)]'>
         <DashboardMenu props={dashboardMenuProps} />
         <Lists props={listProps} />

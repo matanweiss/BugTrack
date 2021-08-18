@@ -22,7 +22,7 @@ const Lists = ({ props }) => {
       style={{ scrollbarWidth: 'none', scrollSnapAlign: 'center' }} >
       <h3 className='sticky top-0 bg-white pt-4 pb-1 text-center'>{title}</h3>
       {list.map(item => <ItemPreview listId={id} item={item} key={item._id} />)}
-      <AddItem listTitle={title} setReloadLists={props.setReloadLists} reloadLists={props.reloadLists} />
+      <AddItem listId={id} />
     </div>
 
   const printLists = () => {

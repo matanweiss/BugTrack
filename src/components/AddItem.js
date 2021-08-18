@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { addItem } from "../firebase";
 
-const AddItem = ({ listTitle, reloadLists, setReloadLists }) => {
+const AddItem = ({ listId }) => {
 
   const input = useRef();
   const div = useRef();
@@ -22,20 +21,22 @@ const AddItem = ({ listTitle, reloadLists, setReloadLists }) => {
 
   const handleClick = () => {
     setIsAddingItem(!isAddingItem);
+    input.current.value = '';
     input.current.focus();
     input.current.scrollIntoView();
   }
 
   const handleSubmit = e => {
     e.preventDefault();
-    setIsLoading(true);
-    const newItem = { title: input.current.value, bug: false, feature: false };
-    addItem('project 1', listTitle, newItem).then(result => {
-      setIsLoading(false);
+    const newItem = { title: input.current.value, listId };
+    fetch('http://localhost:5000/create-item', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newItem)
+    }).then(res => {
       setIsAddingItem(false);
       input.current.value = '';
-      setReloadLists(!reloadLists);
-    });
+    }).catch(err => console.error(err.message));
   }
 
   return (

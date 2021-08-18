@@ -1030,6 +1030,18 @@ h3{
   height: 3rem;
 }
 
+.h-\[calc\(100vh-4rem\)\]{
+  height: calc(100vh - 4rem);
+}
+
+.h-\[calc\(100vh-5vh\)\]{
+  height: calc(100vh - 5vh);
+}
+
+.h-\[calc\(100vh-8rem\)\]{
+  height: calc(100vh - 8rem);
+}
+
 .max-h-\[calc\(100vh-8rem\)\]{
   max-height: calc(100vh - 8rem);
 }
@@ -1691,16 +1703,16 @@ h3{
     margin-right: auto;
   }
 
+  .md\:mb-4{
+    margin-bottom: 1rem;
+  }
+
   .md\:mr-auto{
     margin-right: auto;
   }
 
   .md\:mb-10{
     margin-bottom: 2.5rem;
-  }
-
-  .md\:mb-4{
-    margin-bottom: 1rem;
   }
 
   .md\:block{
@@ -1798,6 +1810,11 @@ h3{
   .md\:bg-gray-50{
     --tw-bg-opacity: 1;
     background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+  }
+
+  .md\:bg-gray-200{
+    --tw-bg-opacity: 1;
+    background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
   }
 
   .md\:p-1{
