@@ -40,7 +40,7 @@ const AddItem = ({ listTitle, reloadLists, setReloadLists }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div ref={div} className={`text-4xl min-h-[3.5rem] px-2 flex items-center justify-center text-gray-400 border-2 rounded-lg mx-1 duration-300 ${isAddingItem ? 'border-gray-400 shadow' : 'border-white'} `}>
+      <div ref={div} className={`text-4xl min-h-[3.5rem] px-2 md:mb-4 flex items-center justify-center text-gray-400 border-2 rounded-lg mx-1 duration-300 ${isAddingItem ? 'border-gray-400 shadow' : 'border-white'} `}>
         <input required ref={input}
           className={`h-full outline-none w-full text-black text-base duration-500 ${isAddingItem ? 'max-w-full' : 'max-w-0'}`}
         />

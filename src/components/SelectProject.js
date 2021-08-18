@@ -1,29 +1,25 @@
-import { useEffect, useState } from "react";
-import { getProjects } from "../firebase";
+import { useState } from "react";
+import { useQuery } from "react-query";
+import { useHistory } from "react-router-dom";
 
 const SelectProject = ({ setSelectedProject }) => {
 
+  const { isLoading, data } = useQuery('projects', () =>
+    fetch('http://localhost:5000/get-projects').then(res => res.json())
+  );
 
+  const history = useHistory();
   const [needToFadeOut, setNeedToFadeOut] = useState(false);
-  const [projects, setProjects] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const handleSelection = e => {
     setNeedToFadeOut(true);
-    setTimeout(() => { setSelectedProject(e.target.id); }, 290);
+    setTimeout(() => { history.push(`dashboard/${e.target.id}`) }, 290);
   }
-
-  useEffect(() => {
-    getProjects().then(projects => {
-      setProjects(projects.projects);
-      setIsLoading(false);
-    });
-  }, [])
 
   const renderProjects = () =>
     <>
-      {projects.map(project =>
-        <button key={project} id={project} className="btn hover:bg-red-500 rounded-none" onClick={handleSelection}>{project}</button>
+      {data.map(project =>
+        <button key={project._id} id={project._id} className="btn hover:bg-red-500 rounded-none" onClick={handleSelection}>{project.title}</button>
       )}
       <button className="btn hover:bg-red-500 rounded-none rounded-b flex justify-center" onClick={handleSelection}>
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>

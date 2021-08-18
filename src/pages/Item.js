@@ -1,55 +1,53 @@
 import { useEffect, useRef, useState } from "react";
+import { useQuery } from "react-query";
 import { useHistory, useParams } from "react-router-dom";
-import NavBar from "../components/NavBar";
-import { editItem, getItem, removeItem } from "../firebase";
+// import { editItem, getItem, removeItem } from "../firebase";
 
-const Item = ({ props }) => {
+const Item = () => {
+
+  const { listId, itemId } = useParams();
+  const { isLoading, data } = useQuery('item', () => 
+    fetch(`http://localhost:5000/get-item/${listId}/${itemId}`).then(res => res.json())
+  );
 
   const container = useRef();
   const history = useHistory();
-  const { list, id } = useParams();
-  const [item, setItem] = useState({});
-  const [isBug, setIsBug] = useState(item.bug);
-  const [isFeature, setIsFeature] = useState(item.feature);
-  const [titleInput, setTitleInput] = useState(item.title);
+  const [isBug, setIsBug] = useState(false);
+  const [isFeature, setIsFeature] = useState(false);
+  const [titleInput, setTitleInput] = useState('');
   const [descriptionInput, setDescriptionInput] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [reloadItem, setReloadItem] = useState(false);
 
   useEffect(() => {
-    getItem(props.selectedProject, list, id).then(item => {
-      setItem(item);
-      setIsBug(item.bug);
-      setIsFeature(item.feature);
-      setTitleInput(item.title);
-      if (item.description) setDescriptionInput(item.description);
-      setIsLoading(false);
-    }).catch(err => {
-      console.error(err.message);
-      history.push('/dashboard');
-    });
-  }, [reloadItem, id, list, history, props.selectedProject])
+    if(data){
+      setIsBug(data.bug);
+      setIsFeature(data.feature);
+      setTitleInput(data.title);
+      if (data.description) setDescriptionInput(data.description);
+    }
+  },[data]);
+
 
   const handleSubmit = e => {
     e.preventDefault();
-    setIsLoading(true);
-    const editedItem = {
-      id, title: titleInput, bug: isBug, feature: isFeature, createdAt: item.createdAt
-    }
-    if (descriptionInput) editedItem.description = descriptionInput;
-    editItem(props.selectedProject, list, editedItem).then(() => {
-      setReloadItem(!reloadItem);
-      setIsEditing(false);
-    });
+    // setIsLoading(true);
+    // const editedItem = {
+    //   itemId, title: titleInput, bug: isBug, feature: isFeature, createdAt: item.createdAt
+    // }
+    // if (descriptionInput) editedItem.description = descriptionInput;
+    // editItem(props.selectedProject, list, editedItem).then(() => {
+    //   setReloadItem(!reloadItem);
+    //   props.setReloadLists(!props.reloadLists);
+    //   setIsEditing(false);
+    // });
   }
 
   const handleDelete = () => {
-    setIsLoading(true);
-    removeItem(props.selectedProject, list, id).then(() => {
-      props.setReloadLists(!props.reloadLists);
-      history.push('/dashboard');
-    });
+    // setIsLoading(true);
+    // removeItem(props.selectedProject, list, id).then(() => {
+    //   props.setReloadLists(!props.reloadLists);
+    //   history.push('/dashboard');
+    // });
   }
 
   const handleMouseDown = e => {
@@ -64,9 +62,9 @@ const Item = ({ props }) => {
 
   const handleModeSwitch = () => {
     container.current.animate([
-      { opacity: 1, transform:'scale(1)' }, 
-      { opacity: 0, transform:'scale(0.98)' }, 
-      { opacity: 1, transform:'scale(1)' }], 
+      { opacity: 1, transform: 'scale(1)' },
+      { opacity: 0, transform: 'scale(0.98)' },
+      { opacity: 1, transform: 'scale(1)' }],
       { duration: 300 });
     setTimeout(() => { setIsEditing(!isEditing); }, 150);
   }
@@ -115,23 +113,22 @@ const Item = ({ props }) => {
   const renderViewMode = () =>
     <>
       <div className="flex justify-end">
-        {item.bug && (<div className='md:hidden btn ml-2 self-start text-sm p-1 hover:bg-red-600' >bug</div>)}
-        {item.feature && (<div className='md:hidden btn mx-2 self-start bg-green-600 hover:bg-green-600 text-sm inline p-1' >feature</div>)}
+        {data.bug && (<div className='md:hidden btn ml-2 self-start text-sm p-1 hover:bg-red-600' >bug</div>)}
+        {data.feature && (<div className='md:hidden btn mx-2 self-start bg-green-600 hover:bg-green-600 text-sm inline p-1' >feature</div>)}
       </div>
 
       <div className="flex md:pt-2 w-full">
-        <h3 className=''>{item.title}</h3>
-        {item.bug && (<div className='hidden md:block btn ml-2 self-start text-sm p-1 hover:bg-red-600' >bug</div>)}
-        {item.feature && (<div className='hidden md:block btn mx-2 self-start bg-green-600 hover:bg-green-600 text-sm inline p-1' >feature</div>)}
+        <h3 className=''>{data.title}</h3>
+        {data.bug && (<div className='hidden md:block btn ml-2 self-start text-sm p-1 hover:bg-red-600' >bug</div>)}
+        {data.feature && (<div className='hidden md:block btn mx-2 self-start bg-green-600 hover:bg-green-600 text-sm inline p-1' >feature</div>)}
       </div>
       <p className='pt-4 text-gray-400'>
-        {item.description ? item.description : 'no description yet'}
+        {data.description ? data.description : 'no description yet'}
       </p>
     </>
 
   return (
     <div className="font-body flex flex-col h-screen md:bg-gray-50">
-      <NavBar title={props.selectedProject} setSelectedProject={props.setSelectedProject} />
 
       <div className="flex relative md:mx-auto pt-2 md:space-x-8 md:pr-28 animate-fadeIn">
         <div className='hidden md:block self-start rounded-xl bg-white p-4 border-2 shadow border-gray-200'>

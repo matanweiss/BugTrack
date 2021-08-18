@@ -4,7 +4,6 @@ import NavBar from "../components/NavBar";
 const Home = () => {
   return (
     <>
-      <NavBar />
       <div className="animate-fadeIn leading-7 font-body md:max-w-3xl px-4 sm:max-w-xl sm:mx-auto">
         <div className="mb-12 mt-8">
           <h1 className="mb-2 font-medium tracking-wide">TRACK EVERY ASPECT OF YOUR PROJECT</h1>

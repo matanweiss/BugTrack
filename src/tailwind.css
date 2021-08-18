@@ -1699,6 +1699,10 @@ h3{
     margin-bottom: 2.5rem;
   }
 
+  .md\:mb-4{
+    margin-bottom: 1rem;
+  }
+
   .md\:block{
     display: block;
   }

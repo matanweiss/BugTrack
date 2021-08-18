@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const ItemPreview = ({ listTitle, item }) => {
-
+const ItemPreview = ({ listId, item }) => {
+  const location = useLocation();
   return (
-    <Link to={`dashboard/${listTitle}/${item.id}`}>
+    <Link to={`/dashboard/${listId}/${item._id}`}>
+    {/* <Link to={`${listId}/${item._id}`}> */}
       <div className='animate-fadeIn rounded-lg border cursor-default shadow min-h-[3.5rem] mx-1 my-4 p-2 hover:bg-gray-100 transition flex items-center'>
         {item.title}
         {item.bug && (<div className='btn ml-2 self-start text-sm p-1 hover:bg-red-600' >bug</div>)}

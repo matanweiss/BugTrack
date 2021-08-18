@@ -1,10 +1,11 @@
-import NavBar from "../components/NavBar";
 import { useEffect, useRef, useState } from "react";
 import DashboardMenu from "../components/DashboardMenu";
 import Lists from "../components/Lists";
-import SelectProject from "../components/SelectProject";
+import NavBar from "../components/NavBar";
 
 const Dashboard = ({ props }) => {
+
+
 
   const menuContainer = useRef();
   const scrollXContainerRef = useRef();
@@ -45,7 +46,7 @@ const Dashboard = ({ props }) => {
   const listProps = {
     scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow,
     setSideBarActiveItem, setIsMenuOpen, scrollBack, scrollForward, checkIfNeedArrows,
-    selectedProject: props.selectedProject, lists: props.lists, isLoading: props.isLoading,
+    selectedProject: props.selectedProject, lists: props.lists,
     reloadLists: props.reloadLists, setReloadLists: props.setReloadLists
   }
 
@@ -70,16 +71,14 @@ const Dashboard = ({ props }) => {
   const handleMenuOpen = () => {
     if (isMenuOpen) {
       setTimeout(() => { setIsMenuOpen(!isMenuOpen); }, 150);
-      menuContainer.current.animate([{ opacity: 1 }, { opacity: 0, transform:'scale(0.95)' }], { duration: 149 });
+      menuContainer.current.animate([{ opacity: 1 }, { opacity: 0, transform: 'scale(0.95)' }], { duration: 149 });
     }
     else setIsMenuOpen(!isMenuOpen);
   }
 
   return (
     <div className="font-body flex flex-col h-screen md:bg-gray-50">
-      {!props.selectedProject && <SelectProject setSelectedProject={props.setSelectedProject} />}
-      <NavBar title={props.selectedProject} setSelectedProject={props.setSelectedProject} />
-      <div className='hidden md:flex pt-2 max-w-6xl mx-auto md:pr-28 space-x-8 animate-fadeIn max-h-[calc(100vh-8rem)]'>
+      <div className='hidden md:flex pt-2 max-w-6xl mx-auto md:pr-28 space-x-8 max-h-[calc(100vh-8rem)]'>
         <DashboardMenu props={dashboardMenuProps} />
         <Lists props={listProps} />
       </div>
