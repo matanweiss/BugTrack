@@ -808,6 +808,10 @@ h3{
   pointer-events: none;
 }
 
+.fixed{
+  position: fixed;
+}
+
 .absolute{
   position: absolute;
 }
@@ -819,6 +823,13 @@ h3{
 .sticky{
   position: -webkit-sticky;
   position: sticky;
+}
+
+.inset-0{
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
 
 .top-0{
@@ -1018,6 +1029,10 @@ h3{
   height: 100vh;
 }
 
+.h-\[calc\(100vh-4rem\)\]{
+  height: calc(100vh - 4rem);
+}
+
 .h-56{
   height: 14rem;
 }
@@ -1028,18 +1043,6 @@ h3{
 
 .h-12{
   height: 3rem;
-}
-
-.h-\[calc\(100vh-4rem\)\]{
-  height: calc(100vh - 4rem);
-}
-
-.h-\[calc\(100vh-5vh\)\]{
-  height: calc(100vh - 5vh);
-}
-
-.h-\[calc\(100vh-8rem\)\]{
-  height: calc(100vh - 8rem);
 }
 
 .max-h-\[calc\(100vh-8rem\)\]{
@@ -1810,11 +1813,6 @@ h3{
   .md\:bg-gray-50{
     --tw-bg-opacity: 1;
     background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
-  }
-
-  .md\:bg-gray-200{
-    --tw-bg-opacity: 1;
-    background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
   }
 
   .md\:p-1{

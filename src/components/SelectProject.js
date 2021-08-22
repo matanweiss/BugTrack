@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
 
-const SelectProject = ({ setSelectedProject }) => {
+const SelectProject = () => {
 
   const { isLoading, data } = useQuery('projects', () =>
     fetch('http://localhost:5000/get-projects').then(res => res.json())
@@ -35,7 +35,7 @@ const SelectProject = ({ setSelectedProject }) => {
   return (
     <div
       style={{ backgroundColor: 'rgba(0, 0, 0, .4)' }}
-      className={`font-body w-screen h-screen z-50 absolute flex left-0 right-0 up-0 down-0 
+      className={`font-body w-screen h-screen z-50 absolute flex inset-0 
       ${needToFadeOut ? 'animate-fadeOut' : 'animate-fadeIn'}`}
     >
       <div

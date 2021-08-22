@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 const Lists = ({ props }) => {
 
   const { projectId } = useParams();
-  const { isLoading, data } = useQuery('lists', () =>
+  const { isLoading, data, refetch } = useQuery('lists', () =>
     fetch(`http://localhost:5000/get-lists/${projectId}`).then(res => res.json())
   );
 
@@ -22,7 +22,7 @@ const Lists = ({ props }) => {
       style={{ scrollbarWidth: 'none', scrollSnapAlign: 'center' }} >
       <h3 className='sticky top-0 bg-white pt-4 pb-1 text-center'>{title}</h3>
       {list.map(item => <ItemPreview listId={id} item={item} key={item._id} />)}
-      <AddItem listId={id} />
+      <AddItem listId={id} refetch={refetch} />
     </div>
 
   const printLists = () => {
