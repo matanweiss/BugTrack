@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  
   return (
     <div className="animate-fadeIn max-w-md font-body mx-4 sm:mx-auto border-2 border-red-200 rounded-md p-8 md:px-12 my-12">
       <form className="flex flex-col">

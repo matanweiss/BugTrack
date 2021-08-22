@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import "./tailwind.css";
 import { Route, Switch, useLocation } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query'
 import Dashboard from './pages/Dashboard';
 import ForgotPassword from './pages/forgotPassword';
 import Home from './pages/Home';
 import Item from './pages/Item';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import "./tailwind.css";
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import SelectProject from './components/SelectProject';
 import NavBar from './components/NavBar';
 
@@ -15,25 +14,6 @@ function App() {
 
   const queryClient = new QueryClient();
   const location = useLocation();
-  // const [selectedProject, setSelectedProject] = useState('');
-  const [lists, setLists] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [reloadLists, setReloadLists] = useState(false);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   if (selectedProject) getLists(selectedProject).then(lists => {
-  //     setLists(lists);
-  //     setIsLoading(false);
-  //   });
-  // }, [selectedProject, reloadLists])
-
-
-
-  const dashboardProps = {
-    // selectedProject, setSelectedProject, 
-    lists, setLists, isLoading, reloadLists, setReloadLists
-  };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -50,10 +30,10 @@ function App() {
         </Route>
         <Route exact path="/dashboard">
           <SelectProject />
-          <Dashboard props={dashboardProps} />
+          <Dashboard />
         </Route>
         <Route exact path="/dashboard/:projectId">
-          <Dashboard props={dashboardProps} />
+          <Dashboard />
         </Route>
         <Route path="/dashboard/:listId/:itemId">
           <Item />

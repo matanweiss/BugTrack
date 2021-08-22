@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import DashboardMenu from "../components/DashboardMenu";
 import Lists from "../components/Lists";
-import NavBar from "../components/NavBar";
 
-const Dashboard = ({ props }) => {
-
-
+const Dashboard = () => {
 
   const menuContainer = useRef();
   const scrollXContainerRef = useRef();
@@ -46,8 +43,6 @@ const Dashboard = ({ props }) => {
   const listProps = {
     scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow,
     setSideBarActiveItem, setIsMenuOpen, scrollBack, scrollForward, checkIfNeedArrows,
-    selectedProject: props.selectedProject, lists: props.lists,
-    reloadLists: props.reloadLists, setReloadLists: props.setReloadLists
   }
 
   const dashboardMenuProps = {

@@ -9,22 +9,6 @@ const Item = () => {
   const history = useHistory();
   const [isEditing, setIsEditing] = useState(false);
 
-  // const handleSubmit = e => {
-  // e.preventDefault();
-  // const editedItem = {
-  //   title: titleInput, bug: isBug, feature: isFeature
-  // }
-  // if (descriptionInput) editedItem.description = descriptionInput;
-  // fetch(`http://localhost:5000/edit-item/${listId}/${itemId}`, {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(editedItem)
-  // }).then(res => setIsEditing(false)
-  // ).catch(err => console.error(err.message));
-  // }
-
-
-
   const handleMouseDown = e => {
     e.target.style.transform = 'scale(0.85)';
     setTimeout(() => { e.target.style.transform = 'scale(1)'; }, 200);
