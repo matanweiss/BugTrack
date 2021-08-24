@@ -1,14 +1,40 @@
 import { useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useMutation } from "react-query";
+import { useHistory, useParams } from "react-router-dom";
 import ItemEdit from "../components/ItemEdit";
 import ItemView from "../components/ItemView";
 
 const Item = () => {
+  
+  const { listId, itemId } = useParams();
+
+  const editMutation = useMutation(e => {
+    e.preventDefault();
+    return fetch(`http://localhost:5000/edit-item/${listId}/${itemId}`, {
+      method: 'post',
+      body: JSON.stringify({ title: titleInput, bug: isBug, feature: isFeature, description: descriptionInput }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }, { onSuccess: () => setIsEditing(false) }
+  );
+
+  const deleteMutation = useMutation(() =>
+    fetch(`http://localhost:5000/delete-item/${listId}/${itemId}`, { method: 'DELETE', }),
+    { onSuccess: () => history.goBack() }
+  );
 
   const container = useRef();
   const history = useHistory();
   const [isEditing, setIsEditing] = useState(false);
+  const [isBug, setIsBug] = useState(false);
+  const [isFeature, setIsFeature] = useState(false);
+  const [titleInput, setTitleInput] = useState('');
+  const [descriptionInput, setDescriptionInput] = useState('');
 
+  const editProps = {
+    editMutation, deleteMutation, isBug, setIsBug, isFeature, setIsFeature,
+    titleInput, setTitleInput, descriptionInput, setDescriptionInput, setIsEditing
+  };
   const handleMouseDown = e => {
     e.target.style.transform = 'scale(0.85)';
     setTimeout(() => { e.target.style.transform = 'scale(1)'; }, 200);
@@ -40,7 +66,7 @@ const Item = () => {
         </div>
 
         <div ref={container} className="mx-4 md:px-6 w-full min-h-[7rem] md:border-2 md:shadow border-gray-200 bg-white pt-2 pb-4 md:w-[35rem] max-w-xl md:mx-auto relative md:rounded-xl">
-          {isEditing ? <ItemEdit setIsEditing={setIsEditing} /> : <ItemView />}
+          {isEditing ? <ItemEdit props={editProps} /> : <ItemView />}
         </div >
       </div>
 
@@ -48,12 +74,10 @@ const Item = () => {
         <div className="flex h-16 fill-current text-red-600">
           {isEditing
             ? <>
-              <svg
-                //onClick={handleDelete}
+              <svg onClick={deleteMutation.mutate}
                 className="animate-fadeIn w-6 h-6 m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
               </svg>
-              <svg
-                //onClick={e => editMutation.mutate(e)}
+              <svg onClick={e => editMutation.mutate(e)}
                 className="animate-fadeIn w-6 h-6 m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </>

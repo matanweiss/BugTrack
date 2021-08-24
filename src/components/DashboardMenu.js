@@ -15,7 +15,7 @@ const DashboardMenu = ({ props }) => {
   }
 
   return (
-    <div className="relative animate-fadeIn bg-white self-start h-auto flex flex-col pb-2 items-start 
+    <div className="relative bg-white self-start h-auto flex flex-col pb-2 items-start 
       p-4 h-full space-y-2 md:rounded-xl md:border-2 md:shadow border-gray-200 md:mr-auto"
     >
       <button

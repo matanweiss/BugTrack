@@ -27,17 +27,10 @@ const Dashboard = () => {
 
   const checkIfNeedArrows = () => {
     if (!scrollXContainerRef.current) return null;
-    const offsetWidth = scrollXContainerRef.current.offsetWidth;
-    const scrollWidth = scrollXContainerRef.current.scrollWidth;
-    const scrollLeft = scrollXContainerRef.current.scrollLeft;
-    const currentPage = Math.round(scrollLeft / offsetWidth) + 1;
-    const numberOfPages = Math.round(scrollWidth / offsetWidth);
-
-
-    if (numberOfPages > currentPage) setNeedRightArrow(true);
-    else setNeedRightArrow(false);
-    if (currentPage > 1) setNeedLeftArrow(true);
-    else setNeedLeftArrow(false);
+    const currentPage = Math.round(scrollXContainerRef.current.scrollLeft / scrollXContainerRef.current.offsetWidth) + 1;
+    const numberOfPages = Math.round(scrollXContainerRef.current.scrollWidth / scrollXContainerRef.current.offsetWidth);
+    (numberOfPages > currentPage) ? setNeedRightArrow(true) : setNeedRightArrow(false);
+    (currentPage > 1) ? setNeedLeftArrow(true) : setNeedLeftArrow(false);
   }
 
   const listProps = {
@@ -51,8 +44,6 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    checkIfNeedArrows();
-
     let firstRun = true;
     scrollXContainerRef.current.addEventListener('scroll', () => {
       if (firstRun) {
@@ -73,7 +64,7 @@ const Dashboard = () => {
 
   return (
     <div className="font-body flex flex-col h-[calc(100vh-4rem)] md:bg-gray-50">
-      <div className='hidden md:flex pt-2 max-w-6xl mx-auto md:pr-28 space-x-8 max-h-[calc(100vh-8rem)]'>
+      <div className='hidden md:flex pt-2 animate-fadeIn max-w-6xl mx-auto md:pr-28 space-x-8 max-h-[calc(100vh-8rem)]'>
         <DashboardMenu props={dashboardMenuProps} />
         <Lists props={listProps} />
       </div>
@@ -84,16 +75,16 @@ const Dashboard = () => {
       {/* mobile buttons*/}
       <div className='md:hidden mt-auto relative'>
         {isMenuOpen && (
-          <div ref={menuContainer} id='mobile' className='absolute -top-36 w-screen'>
+          <div ref={menuContainer} id='mobile' className='absolute animate-fadeIn -top-36 w-screen'>
             <DashboardMenu props={dashboardMenuProps} />
           </div>
         )}
         <div className="flex h-16 fill-current text-red-600">
-          <svg className={`w-6 h-6 m-auto ${needLeftArrow ? null : 'opacity-0'}`} onClick={scrollBack}
+          <svg className={`w-6 h-6 m-auto ${!needLeftArrow && 'opacity-0'}`} onClick={scrollBack}
             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
           <svg className="w-7 h-7 m-auto cursor-pointer" onClick={handleMenuOpen}
             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
-          <svg className={`w-6 h-6 m-auto ${needRightArrow ? null : 'opacity-0'}`} onClick={scrollForward}
+          <svg className={`w-6 h-6 m-auto ${!needRightArrow && 'opacity-0'}`} onClick={scrollForward}
             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
         </div>
       </div>

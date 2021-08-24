@@ -9,15 +9,22 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import SelectProject from './components/SelectProject';
 import NavBar from './components/NavBar';
+import { useState } from "react";
+import Faq from "./pages/Faq";
+import TermsOfUse from "./TermsOfUse";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 function App() {
 
   const queryClient = new QueryClient();
   const location = useLocation();
+  const [projectTitle, setProjectTitle] = useState('');
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NavBar />
+      <NavBar projectTitle={projectTitle} />
       <Switch location={location} key={location.key}>
         <Route exact path="/">
           <Home />
@@ -29,7 +36,7 @@ function App() {
           <Register />
         </Route>
         <Route exact path="/dashboard">
-          <SelectProject />
+          <SelectProject setProjectTitle={setProjectTitle} />
           <Dashboard />
         </Route>
         <Route exact path="/dashboard/:projectId">
@@ -40,6 +47,21 @@ function App() {
         </Route>
         <Route path="/forgot-password">
           <ForgotPassword />
+        </Route>
+        <Route path="/faq">
+          <Faq />
+        </Route>
+        <Route path="/terms-of-use">
+          <TermsOfUse />
+        </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/*">
+          <NotFound />
         </Route>
       </Switch>
     </QueryClientProvider>

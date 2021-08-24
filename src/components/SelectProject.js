@@ -1,28 +1,57 @@
-import { useState } from "react";
-import { useQuery } from "react-query";
+import { useRef, useState } from "react";
+import { useMutation, useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
 
-const SelectProject = () => {
+const SelectProject = ({ setProjectTitle }) => {
 
-  const { isLoading, data } = useQuery('projects', () =>
+  const { isLoading, data, refetch } = useQuery('projects', () =>
     fetch('http://localhost:5000/get-projects').then(res => res.json())
   );
 
+  const mutation = useMutation(e => {
+    e.preventDefault();
+    return fetch('http://localhost:5000/create-project', {
+      method: 'post',
+      body: JSON.stringify({ title: input.current.value }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }, {
+    onSuccess: () => {
+      refetch();
+      setIsEditing(false);
+    }
+  }
+  );
+
+  const input = useRef();
   const history = useHistory();
   const [needToFadeOut, setNeedToFadeOut] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleSelection = e => {
+    setProjectTitle(e.target.textContent);
     setNeedToFadeOut(true);
     setTimeout(() => { history.push(`dashboard/${e.target.id}`) }, 290);
+  }
+
+  const handleEditMode = e => {
+    setIsEditing(!isEditing);
+    input.current.focus();
+    input.current.value = '';
   }
 
   const renderProjects = () =>
     <>
       {data.map(project =>
-        <button key={project._id} id={project._id} className="btn hover:bg-red-500 rounded-none" onClick={handleSelection}>{project.title}</button>
+        <button key={project._id} id={project._id} onClick={handleSelection} className="relative btn hover:bg-red-500 rounded-none" >
+          {project.title}
+        </button>
       )}
-      <button className="btn hover:bg-red-500 rounded-none rounded-b flex justify-center" onClick={handleSelection}>
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+
+      <button className="btn hover:bg-red-500 rounded-none rounded-b flex justify-center"
+        onClick={handleEditMode}
+      >
+        <svg className={`${isEditing && 'rotate-45'} transition w-6 h-6`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
         add project
       </button>
     </>
@@ -33,15 +62,19 @@ const SelectProject = () => {
     </div>
 
   return (
-    <div
-      style={{ backgroundColor: 'rgba(0, 0, 0, .4)' }}
-      className={`font-body w-screen h-screen z-50 absolute flex inset-0 
+    <div className={`font-body w-screen h-screen z-50 absolute flex inset-0 bg-black bg-opacity-40
       ${needToFadeOut ? 'animate-fadeOut' : 'animate-fadeIn'}`}
     >
-      <div
-        className="pt-4 shadow-xl w-full rounded max-w-3xl flex flex-col bg-white mx-4 my-auto md:m-auto md:w-2/3">
-        <h3 className="text-center mb-4 text-red-600 md:text-4xl">Select your project:</h3>
-        {isLoading ? renderSpinner() : renderProjects()}
+      <div className="relative pt-4 shadow-xl w-full rounded max-w-3xl flex flex-col bg-white mx-4 my-auto md:m-auto md:w-2/3">
+        <p className={`${!isEditing && 'opacity-0'} transition absolute md:text-xl -top-10 text-white left-1/2 -translate-x-1/2`}>
+          <span className='hidden md:inline'>press </span>ENTER to add!
+        </p>
+        <form onSubmit={mutation.mutate}>
+          <input className={`${!isEditing && 'opacity-0 absolute'} text-red-600 text-center w-full md:text-4xl outline-none px-4 mb-3`}
+            placeholder='New Project Title:' ref={input} />
+        </form>
+        <h4 className={`${isEditing && 'hidden'} text-center mb-4 text-red-600 md:text-4xl`}>Select your project:</h4>
+        {isLoading || mutation.isLoading ? renderSpinner() : renderProjects()}
       </div>
     </div>
   );
