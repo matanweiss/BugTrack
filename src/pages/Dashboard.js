@@ -48,7 +48,7 @@ const Dashboard = () => {
     scrollXContainerRef.current.addEventListener('scroll', () => {
       if (firstRun) {
         firstRun = false;
-        setTimeout(() => { checkIfNeedArrows(); }, 400);
+        setTimeout(() => { checkIfNeedArrows(); }, 500);
         setTimeout(() => { firstRun = true; }, 1000);
       }
     });
@@ -64,11 +64,9 @@ const Dashboard = () => {
 
   return (
     <div className="font-body flex flex-col h-[calc(100vh-4rem)] md:bg-gray-50">
-      <div className='hidden md:flex pt-2 animate-fadeIn max-w-6xl mx-auto md:pr-28 space-x-8 max-h-[calc(100vh-8rem)]'>
-        <DashboardMenu props={dashboardMenuProps} />
-        <Lists props={listProps} />
-      </div>
-      <div className="md:hidden min-h-0 h-full flex-shrink">
+
+      <div className= 'md:flex md:pt-2 md:animate-fadeIn md:pr-28 md:max-w-6xl md:mx-auto md:space-x-8 md:max-h-[calc(100vh-8rem)] h-auto min-h-0 h-full flex-shrink'>
+        <span className='hidden md:inline'> <DashboardMenu props={dashboardMenuProps} /></span>
         <Lists props={listProps} />
       </div>
 

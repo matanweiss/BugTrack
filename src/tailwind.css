@@ -833,20 +833,32 @@ h4{
   left: 0px;
 }
 
-.-right-36{
-  right: -9rem;
-}
-
 .top-0{
   top: 0px;
 }
 
-.top-2{
-  top: 0.5rem;
+.right-0{
+  right: 0px;
 }
 
-.right-3{
-  right: 0.75rem;
+.bottom-4{
+  bottom: 1rem;
+}
+
+.-right-36{
+  right: -9rem;
+}
+
+.top-5{
+  top: 1.25rem;
+}
+
+.left-4{
+  left: 1rem;
+}
+
+.right-4{
+  right: 1rem;
 }
 
 .-top-10{
@@ -861,16 +873,12 @@ h4{
   top: -9rem;
 }
 
-.right-0{
-  right: 0px;
+.z-50{
+  z-index: 50;
 }
 
 .z-10{
   z-index: 10;
-}
-
-.z-50{
-  z-index: 50;
 }
 
 .col-span-full{
@@ -923,6 +931,10 @@ h4{
 .my-12{
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+
+.mt-4{
+  margin-top: 1rem;
 }
 
 .ml-2{
@@ -979,10 +991,6 @@ h4{
 
 .mb-8{
   margin-bottom: 2rem;
-}
-
-.mt-4{
-  margin-top: 1rem;
 }
 
 .block{
@@ -1058,16 +1066,16 @@ h4{
   height: 6rem;
 }
 
-.max-h-\[calc\(100vh-8rem\)\]{
-  max-height: calc(100vh - 8rem);
-}
-
 .min-h-\[3\.5rem\]{
   min-height: 3.5rem;
 }
 
 .min-h-0{
   min-height: 0px;
+}
+
+.min-h-full{
+  min-height: 100%;
 }
 
 .min-h-\[4rem\]{
@@ -1124,10 +1132,6 @@ h4{
 
 .max-w-3xl{
   max-width: 48rem;
-}
-
-.max-w-6xl{
-  max-width: 72rem;
 }
 
 .max-w-lg{
@@ -1381,10 +1385,10 @@ h4{
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
-.space-x-8 > :not([hidden]) ~ :not([hidden]){
+.space-x-4 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
-  margin-right: calc(2rem * var(--tw-space-x-reverse));
-  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-y-8 > :not([hidden]) ~ :not([hidden]){
@@ -1397,18 +1401,6 @@ h4{
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-
-.space-x-2 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-x-4 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .self-start{
@@ -1555,31 +1547,26 @@ h4{
   padding-right: 0.5rem;
 }
 
-.px-4{
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-4{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .pb-2{
   padding-bottom: 0.5rem;
 }
 
-.pt-6{
-  padding-top: 1.5rem;
-}
-
 .pt-4{
   padding-top: 1rem;
+}
+
+.pt-6{
+  padding-top: 1.5rem;
 }
 
 .pb-1{
@@ -1663,6 +1650,11 @@ h4{
 .text-black{
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
+
+.text-red-400{
+  --tw-text-opacity: 1;
+  color: rgba(248, 113, 113, var(--tw-text-opacity));
 }
 
 .text-gray-600{
@@ -1786,6 +1778,11 @@ h4{
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
+.hover\:text-red-500:hover{
+  --tw-text-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-text-opacity));
+}
+
 .hover\:text-red-600:hover{
   --tw-text-opacity: 1;
   color: rgba(220, 38, 38, var(--tw-text-opacity));
@@ -1832,14 +1829,6 @@ h4{
     margin-bottom: 2.5rem;
   }
 
-  .md\:mt-0{
-    margin-top: 0px;
-  }
-
-  .md\:ml-4{
-    margin-left: 1rem;
-  }
-
   .md\:block{
     display: block;
   }
@@ -1857,6 +1846,10 @@ h4{
     display: none;
   }
 
+  .md\:max-h-\[calc\(100vh-8rem\)\]{
+    max-height: calc(100vh - 8rem);
+  }
+
   .md\:w-\[30rem\]{
     width: 30rem;
   }
@@ -1869,8 +1862,45 @@ h4{
     width: 35rem;
   }
 
+  .md\:max-w-6xl{
+    max-width: 72rem;
+  }
+
   .md\:max-w-3xl{
     max-width: 48rem;
+  }
+
+  @-webkit-keyframes fadeIn{
+    0%{
+      opacity: 0;
+      -webkit-transform: rotateX(20deg);
+              transform: rotateX(20deg);
+    }
+
+    100%{
+      opacity: 1;
+      -webkit-transform: rotateX(0);
+              transform: rotateX(0);
+    }
+  }
+
+  @keyframes fadeIn{
+    0%{
+      opacity: 0;
+      -webkit-transform: rotateX(20deg);
+              transform: rotateX(20deg);
+    }
+
+    100%{
+      opacity: 1;
+      -webkit-transform: rotateX(0);
+              transform: rotateX(0);
+    }
+  }
+
+  .md\:animate-fadeIn{
+    -webkit-animation: fadeIn .6s;
+            animation: fadeIn .6s;
   }
 
   .md\:grid-cols-3{
@@ -1895,16 +1925,16 @@ h4{
     margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
-  .md\:space-y-0 > :not([hidden]) ~ :not([hidden]){
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0px * var(--tw-space-y-reverse));
-  }
-
   .md\:space-x-8 > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 0;
     margin-right: calc(2rem * var(--tw-space-x-reverse));
     margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:space-y-0 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
   .md\:overflow-hidden{
@@ -1943,9 +1973,8 @@ h4{
     padding-right: 3rem;
   }
 
-  .md\:py-4{
+  .md\:pt-4{
     padding-top: 1rem;
-    padding-bottom: 1rem;
   }
 
   .md\:pt-2{
@@ -1954,10 +1983,6 @@ h4{
 
   .md\:pr-28{
     padding-right: 7rem;
-  }
-
-  .md\:pt-4{
-    padding-top: 1rem;
   }
 
   .md\:text-4xl{

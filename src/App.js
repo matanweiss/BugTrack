@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import SelectProject from './components/SelectProject';
 import NavBar from './components/NavBar';
-import { useState } from "react";
 import Faq from "./pages/Faq";
 import TermsOfUse from "./TermsOfUse";
 import Contact from "./pages/Contact";
@@ -20,11 +19,10 @@ function App() {
 
   const queryClient = new QueryClient();
   const location = useLocation();
-  const [projectTitle, setProjectTitle] = useState('');
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NavBar projectTitle={projectTitle} />
+      <NavBar />
       <Switch location={location} key={location.key}>
         <Route exact path="/">
           <Home />
@@ -36,7 +34,7 @@ function App() {
           <Register />
         </Route>
         <Route exact path="/dashboard">
-          <SelectProject setProjectTitle={setProjectTitle} />
+          <SelectProject />
           <Dashboard />
         </Route>
         <Route exact path="/dashboard/:projectId">

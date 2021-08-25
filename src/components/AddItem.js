@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useMutation } from "react-query";
 
-const AddItem = ({ listId, refetch }) => {
+const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
 
   const mutation = useMutation(e => {
     e.preventDefault();
@@ -21,7 +21,6 @@ const AddItem = ({ listId, refetch }) => {
 
   const input = useRef();
   const div = useRef();
-  const [isAddingItem, setIsAddingItem] = useState(false);
 
   useEffect(() => {
     document.addEventListener("mousedown", clickOutsideInput);

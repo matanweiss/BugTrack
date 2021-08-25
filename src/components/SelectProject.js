@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
 
-const SelectProject = ({ setProjectTitle }) => {
+const SelectProject = () => {
 
   const { isLoading, data, refetch } = useQuery('projects', () =>
     fetch('http://localhost:5000/get-projects').then(res => res.json())
@@ -28,8 +28,13 @@ const SelectProject = ({ setProjectTitle }) => {
   const [needToFadeOut, setNeedToFadeOut] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
+
   const handleSelection = e => {
-    setProjectTitle(e.target.textContent);
+    localStorage.setItem('projectTitle', e.target.textContent);
     setNeedToFadeOut(true);
     setTimeout(() => { history.push(`dashboard/${e.target.id}`) }, 290);
   }
