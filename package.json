@@ -1,6 +1,6 @@
 {
   "name": "bug-track",
-  "homepage": "https://matanweiss.github.io/BugTrack/",
+  "homepage": "https://matanweiss.github.io/BugTrack",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

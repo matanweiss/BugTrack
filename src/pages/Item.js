@@ -10,7 +10,7 @@ const Item = () => {
 
   const editMutation = useMutation(e => {
     e.preventDefault();
-    return fetch(`http://localhost:5000/edit-item/${listId}/${itemId}`, {
+    return fetch(`https://mw-bugtrack.herokuapp.com/edit-item/${listId}/${itemId}`, {
       method: 'post',
       body: JSON.stringify({ title: titleInput, bug: isBug, feature: isFeature, description: descriptionInput }),
       headers: { 'Content-Type': 'application/json' },
@@ -19,7 +19,7 @@ const Item = () => {
   );
 
   const deleteMutation = useMutation(() =>
-    fetch(`http://localhost:5000/delete-item/${listId}/${itemId}`, { method: 'DELETE', }),
+    fetch(`https://mw-bugtrack.herokuapp.com/delete-item/${listId}/${itemId}`, { method: 'DELETE', }),
     { onSuccess: () => history.goBack() }
   );
 

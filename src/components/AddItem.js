@@ -5,7 +5,7 @@ const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
 
   const mutation = useMutation(e => {
     e.preventDefault();
-    return fetch(`http://localhost:5000/create-item/${listId}`, {
+    return fetch(`https://mw-bugtrack.herokuapp.com/create-item/${listId}`, {
       method: 'post',
       body: JSON.stringify({ title: input.current.value }),
       headers: { 'Content-Type': 'application/json' },

@@ -5,7 +5,7 @@ const ItemView = () => {
 
   const { itemId } = useParams();
   const { isLoading, data } = useQuery('item', () =>
-    fetch(`http://localhost:5000/get-item/${itemId}`).then(res => res.json())
+    fetch(`https://mw-bugtrack.herokuapp.com/get-item/${itemId}`).then(res => res.json())
   );
 
   const renderSpinner = () =>

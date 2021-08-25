@@ -6,7 +6,7 @@ const EmptyList = ({ refetch, title, id, projectId, deleteListMutation, isAdding
 
   const mutation = useMutation(e => {
     e.preventDefault();
-    return fetch(`http://localhost:5000/create-list/${projectId}`, {
+    return fetch(`https://mw-bugtrack.herokuapp.com/create-list/${projectId}`, {
       method: 'post',
       body: JSON.stringify({ title: titleInput }),
       headers: { 'Content-Type': 'application/json' },

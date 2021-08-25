@@ -5,12 +5,12 @@ import { useHistory } from "react-router-dom";
 const SelectProject = () => {
 
   const { isLoading, data, refetch } = useQuery('projects', () =>
-    fetch('http://localhost:5000/get-projects').then(res => res.json())
+    fetch('https://mw-bugtrack.herokuapp.com/get-projects').then(res => res.json())
   );
 
   const mutation = useMutation(e => {
     e.preventDefault();
-    return fetch('http://localhost:5000/create-project', {
+    return fetch('https://mw-bugtrack.herokuapp.com/create-project', {
       method: 'post',
       body: JSON.stringify({ title: input.current.value }),
       headers: { 'Content-Type': 'application/json' },
