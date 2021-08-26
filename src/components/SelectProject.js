@@ -40,8 +40,8 @@ const SelectProject = () => {
   }
 
   const handleEditMode = e => {
+    isEditing ? input.current.blur() : input.current.focus();
     setIsEditing(!isEditing);
-    input.current.focus();
     input.current.value = '';
   }
 
