@@ -7,9 +7,9 @@ const Login = () => {
   }
 
   return (
-    <div className='animate-fadeIn max-w-lg font-body mx-4 sm:mx-auto border-2 border-red-200 rounded-md p-8 md:px-12 my-8'>
+    <div className='animate-fadeIn max-w-lg font-body mx-4 sm:mx-auto border-2 border-red-200 rounded-md p-8 sm:px-12 my-8'>
       <form onSubmit={handleLogin} className="flex flex-col">
-        <h4 className="mx-auto font-medium mb-6">Please enter your login details:</h4>
+        <h4 className="mx-auto font-medium mb-6">Enter your details:</h4>
         <div className='relative'>
           <input required type="email" placeholder='Email address' className="peer placeholder-input" />
           <label className='placeholder-label'>Email address</label>

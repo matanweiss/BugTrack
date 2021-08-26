@@ -16,7 +16,7 @@ const DashboardMenu = ({ props }) => {
 
   return (
     <div className="relative bg-white self-start h-auto flex flex-col pb-2 items-start 
-      p-4 h-full space-y-2 md:rounded-xl md:border-2 md:shadow border-gray-200 md:mr-auto"
+      p-4 h-full space-y-2 lg:rounded-xl lg:border-2 lg:shadow border-gray-200 lg:mr-auto"
     >
       <button
         onClick={e => { handleClick('all', e) }} onMouseDown={handleMouseDown}

@@ -70,15 +70,15 @@ const SelectProject = () => {
     <div className={`font-body w-screen h-screen z-50 absolute flex inset-0 bg-black bg-opacity-40
       ${needToFadeOut ? 'animate-fadeOut' : 'animate-fadeIn'}`}
     >
-      <div className="relative pt-4 shadow-xl w-full rounded max-w-3xl flex flex-col bg-white mx-4 my-auto md:m-auto md:w-2/3">
-        <p className={`${!isEditing && 'opacity-0'} transition absolute md:text-xl -top-10 text-white left-1/2 -translate-x-1/2`}>
-          <span className='hidden md:inline'>press </span>ENTER to add!
+      <div className="relative pt-4 shadow-xl w-full rounded max-w-3xl flex flex-col bg-white mx-4 my-auto lg:m-auto lg:w-2/3">
+        <p className={`${!isEditing && 'opacity-0'} transition absolute lg:text-xl -top-10 text-white left-1/2 -translate-x-1/2`}>
+          <span className='hidden lg:inline'>press </span>ENTER to add!
         </p>
         <form onSubmit={mutation.mutate}>
-          <input className={`${!isEditing && 'opacity-0 absolute'} text-red-600 text-center w-full md:text-4xl outline-none px-4 mb-3`}
+          <input className={`${!isEditing && 'opacity-0 absolute'} text-red-600 text-center w-full lg:text-4xl outline-none px-4 mb-3`}
             placeholder='New Project Title:' ref={input} />
         </form>
-        <h4 className={`${isEditing && 'hidden'} text-center mb-4 text-red-600 md:text-4xl`}>Select your project:</h4>
+        <h4 className={`${isEditing && 'hidden'} text-center mb-4 text-red-600 lg:text-4xl`}>Select your project:</h4>
         {isLoading || mutation.isLoading ? renderSpinner() : renderProjects()}
       </div>
     </div>

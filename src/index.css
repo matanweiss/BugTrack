@@ -27,7 +27,7 @@
     @apply hover:shadow-lg hover:bg-red-500 transition
   }
   .placeholder-input{
-    @apply placeholder-transparent w-full py-2 outline-none border-b-2 border-red-300 transition focus:border-red-500;
+    @apply placeholder-transparent appearance-none w-full py-2 outline-none border-b-2 border-red-300 transition focus:border-red-500;
   }
   .placeholder-label{
     @apply pointer-events-none text-red-700 text-sm transition-all absolute left-0 -top-3 peer-placeholder-shown:text-red-500 peer-placeholder-shown:text-base peer-placeholder-shown:top-2;

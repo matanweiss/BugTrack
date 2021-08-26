@@ -51,10 +51,10 @@ const Item = () => {
   }
 
   return (
-    <div className="font-body flex flex-col h-[calc(100vh-4rem)] md:bg-gray-50">
+    <div className="font-body flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
 
-      <div className="flex relative md:mx-auto pt-2 md:space-x-8 md:pr-28 animate-fadeIn">
-        <div className='hidden md:block self-start rounded-xl bg-white p-4 border-2 shadow border-gray-200'>
+      <div className="flex relative lg:mx-auto pt-2 lg:space-x-8 lg:pr-28 animate-fadeIn">
+        <div className='hidden lg:block self-start rounded-xl bg-white p-4 border-2 shadow border-gray-200'>
           <button className="flex transition items-center" onClick={() => history.goBack()} onMouseDown={handleMouseDown}>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             Back
@@ -65,12 +65,12 @@ const Item = () => {
           </button>
         </div>
 
-        <div ref={container} className="mx-4 md:px-6 w-full min-h-[7rem] md:border-2 md:shadow border-gray-200 bg-white pt-2 pb-4 md:w-[35rem] max-w-xl md:mx-auto relative md:rounded-xl">
+        <div ref={container} className="mx-4 lg:px-6 w-full min-h-[7rem] lg:border-2 lg:shadow border-gray-200 bg-white pt-2 pb-4 lg:w-[35rem] lg:mx-auto relative lg:rounded-xl">
           {isEditing ? <ItemEdit props={editProps} /> : <ItemView />}
         </div >
       </div>
 
-      <div className='md:hidden mt-auto'>
+      <div className='lg:hidden mt-auto'>
         <div className="flex h-16 fill-current text-red-600">
           {isEditing
             ? <>

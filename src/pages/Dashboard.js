@@ -63,15 +63,15 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="font-body flex flex-col h-[calc(100vh-4rem)] md:bg-gray-50">
+    <div className="font-body flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
 
-      <div className= 'md:flex md:pt-2 md:animate-fadeIn md:pr-28 md:max-w-6xl md:mx-auto md:space-x-8 md:max-h-[calc(100vh-8rem)] h-auto min-h-0 h-full flex-shrink'>
-        <span className='hidden md:inline'> <DashboardMenu props={dashboardMenuProps} /></span>
+      <div className= 'lg:flex lg:pt-2 lg:animate-fadeIn lg:pr-28 lg:max-w-6xl lg:mx-auto lg:space-x-8 lg:max-h-[calc(100vh-8rem)] h-auto min-h-0 h-full flex-shrink'>
+        <span className='hidden lg:inline'> <DashboardMenu props={dashboardMenuProps} /></span>
         <Lists props={listProps} />
       </div>
 
       {/* mobile buttons*/}
-      <div className='md:hidden mt-auto relative'>
+      <div className='lg:hidden mt-auto relative'>
         {isMenuOpen && (
           <div ref={menuContainer} id='mobile' className='absolute animate-fadeIn -top-36 w-screen'>
             <DashboardMenu props={dashboardMenuProps} />
@@ -86,7 +86,7 @@ const Dashboard = () => {
             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
         </div>
       </div>
-      <div className="min-h-[4rem] hidden md:block"></div>
+      <div className="min-h-[4rem] hidden lg:block"></div>
     </div>
 
   );

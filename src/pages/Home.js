@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
+import phone from '../phone.png';
 
 const Home = () => {
   return (
     <>
-      <div className="animate-fadeIn leading-7 font-body md:max-w-3xl px-4 sm:max-w-xl sm:mx-auto">
-        <div className="mb-12 mt-8 relative">
+      <div className="animate-fadeIn leading-7 font-body md:max-w-3xl md:px-8 lg:px-0 px-4 sm:max-w-xl sm:mx-auto">
+        <div className="mb-12 mt-8 relative lg:mt-36 lg:pr-56 lg:my-[25rem]">
           <h1 className="mb-2 font-medium tracking-wide">TRACK EVERY ASPECT OF YOUR PROJECT</h1>
           <p>We built the best platform to keep track of your projects with your team</p>
-          <span className='hidden md:inline absolute right-0 w-80 h-80 -translate-y-64 translate-x-[30rem] text-gray-300 scale-150 -rotate-90'>insert screenshot</span>
+          {/* <span className='hidden md:inline absolute right-0 w-80 h-80 -translate-y-64 translate-x-[30rem] text-gray-300 scale-150 -rotate-90'>insert screenshot</span> */}
+          <img src={phone} className='hidden lg:inline absolute origin-top-right scale-50 -top-40 -right-36' alt="phone running the website" />
+          
           <Link to='/login' className="btn-hover inline-block mt-6 btn">GET STARTED</Link>
         </div>
         <h3 className="mb-4 md:mb-10 mt-20 font-medium text-center tracking-wide text-red-600">BugTrack benefits</h3>
-        <div className="space-y-8 mb-20 grid gap-x-10 items-stretch md:space-y-0 md:grid-cols-3">
+        <div className="space-y-8 mb-20 md:px-16 lg:px-0  grid gap-x-10 items-stretch lg:space-y-0 lg:grid-cols-3">
           <div className="flex flex-col items-center space-y-4 border-2 border-red-300 p-4 rounded-lg">
             <h3>Real Time</h3>
             <svg className="h-24" viewBox="0 0 78.02 54.8"><defs><style>{`.cls-14{fill:none;stroke:#732e54;stroke-miterlimit:10;stroke-linecap:round;stroke-width:2px}`}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path strokeWidth="6" strokeLinecap="round" fill="none" stroke="#732e54" strokeMiterlimit="10" d="M61.33 25.62l10.14-10.14" /><path fill="#732e54" d="M78.02 8.93l-1.95 7.27-1.95 7.27-5.32-5.32-5.33-5.33 7.28-1.94 7.27-1.95z" /><path d="M53.75 11.86L33.68 24.91a2.64 2.64 0 11-2.88-4.43l20.07-13a2.64 2.64 0 012.88 4.43z" opacity=".8" fill="#389bf3" /><path d="M26.93 29.3L13.51 38a2.64 2.64 0 11-2.88-4.43l13.42-8.72a2.64 2.64 0 012.88 4.43z" fill="#ff9d23" opacity=".8" /><path d="M44.32 8.79L24.26 21.84a2.64 2.64 0 11-2.88-4.43l20.06-13a2.64 2.64 0 112.88 4.43z" fill="#aa7dff" /><path d="M17.5 26.23L4.08 35a2.64 2.64 0 01-2.88-4.48l13.42-8.72a2.64 2.64 0 112.88 4.43z" fill="#389bf3" /><path d="M50.38 4.86l-.13.08A2.64 2.64 0 0147.37.51l.13-.08a2.64 2.64 0 012.88 4.43z" fill="#ff9d23" /><path d="M52.73 21.72L32.66 34.77a2.65 2.65 0 01-2.88-4.44l20.07-13a2.64 2.64 0 012.88 4.43z" opacity=".5" fill="#389bf3" /><path d="M25.91 39.16l-13.42 8.72a2.64 2.64 0 11-2.88-4.43L23 34.72a2.65 2.65 0 012.88 4.44z" opacity=".5" fill="#aa7dff" /><path d="M58.78 17.79l-.12.08a2.65 2.65 0 01-2.88-4.44l.12-.08a2.65 2.65 0 112.88 4.44z" opacity=".5" fill="#ff9d23" /><path d="M73.64 36.73a17.06 17.06 0 00-17.06-17.06 17.37 17.37 0 00-5.28.83 14 14 0 00-26.74 5.66 13.27 13.27 0 00.16 2A12.85 12.85 0 0026 53.8h30.83a17.05 17.05 0 0016.81-17.07z" fill="#fff" /><path d="M73.49 37.46a17.06 17.06 0 01-16.8 17.06H25.85a12.82 12.82 0 01-10.64-5.65 12.78 12.78 0 007.21 2.22h30.83a17.06 17.06 0 0013.42-27.27 17 17 0 016.82 13.64z" fill="#cec1bc" /><path d="M73.64 36.73a17.06 17.06 0 00-17.06-17.06 17.37 17.37 0 00-5.28.83 14 14 0 00-26.74 5.66 13.27 13.27 0 00.16 2A12.85 12.85 0 0026 53.8h30.83a17.05 17.05 0 0016.81-17.07z" strokeWidth="2" fill="none" stroke="#732e54" strokeMiterlimit="10" /><path className="cls-14" d="M25.41 28.12a12.28 12.28 0 0110.18 5.41M55.84 19.7a12.24 12.24 0 00-9.86 5" /></g></g></svg>
@@ -30,8 +33,8 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-red-600 font-body text-white" style={{ height: '50vh' }}>
-        <div className="max-w-3xl mx-4 grid grid-cols-2  grid-rows-4 h-full md:grid-cols-4 md:mx-auto">
-          <h2 className="text-red-900 col-span-full row-span-2 md:row-span-3 m-auto" >©MW</h2>
+        <div className="max-w-3xl mx-4 grid grid-cols-2  grid-rows-4 h-full lg:grid-cols-4 md:mx-auto">
+          <h2 className="text-red-900 col-span-full row-span-2 lg:row-span-3 m-auto" >©MW</h2>
           <Link to='/about' className="underline-hover m-auto">About</Link>
           <Link to='/faq' className="underline-hover m-auto">FAQ</Link>
           <Link to='/terms-of-use' className="underline-hover m-auto">Terms of use</Link>

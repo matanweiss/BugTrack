@@ -42,15 +42,15 @@ const Lists = ({ props }) => {
     <div key={id} className="overflow-y-auto w-full flex-shrink-0 "
       style={{ scrollbarWidth: 'none', scrollSnapAlign: 'center' }} >
       <div className='min-h-full relative'>
-        <h3 className='pt-4 pb-1 flex md:block items-center justify-between sticky top-0 bg-white text-center '>
-          <span className='md:hidden opacity-0 w-6'>to center</span>
+        <h3 className='pt-4 pb-1 flex lg:block items-center justify-between sticky top-0 bg-white text-center '>
+          <span className='lg:hidden opacity-0 w-6'>to center</span>
           {title}
-          <svg onClick={() => deleteListMutation.mutate(id)} className="md:hidden text-red-400 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+          <svg onClick={() => deleteListMutation.mutate(id)} className="lg:hidden text-red-400 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
         </h3>
         {list.map(item => <ItemPreview listId={id} item={item} key={item._id} />)}
         <AddItem setIsAddingItem={setIsAddingItem} isAddingItem={isAddingItem} listId={id} refetch={refetch} />
         <svg onClick={() => deleteListMutation.mutate(id)}
-          className={`hidden ${!isAddingItem && 'md:inline'} hover:text-red-500 duration-300 cursor-pointer absolute right-0 text-red-400 bottom-4 w-6 h-6`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          className={`hidden ${!isAddingItem && 'lg:inline'} hover:text-red-500 duration-300 cursor-pointer absolute right-0 text-red-400 bottom-4 w-6 h-6`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
         </svg>
 
       </div>
@@ -68,9 +68,9 @@ const Lists = ({ props }) => {
     </div>
 
   return (
-    <div className='flex md:w-[30rem] h-full bg-white border-gray-200 md:shadow px-4 md:relative md:border-2 md:rounded-xl md:overflow-hidden'>
+    <div className='flex lg:w-[30rem] h-full bg-white border-gray-200 lg:shadow px-4 lg:relative lg:border-2 lg:rounded-xl lg:overflow-hidden'>
 
-      {props.needLeftArrow && <svg className="w-6 h-6 cursor-pointer absolute top-5 left-4 z-50 hidden md:inline text-gray-400" onClick={props.scrollBack}
+      {props.needLeftArrow && <svg className="w-6 h-6 cursor-pointer absolute top-5 left-4 z-50 hidden lg:inline text-gray-400" onClick={props.scrollBack}
         fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
       }
       <div className="animate-fadeIn  flex w-full overflow-x-auto" ref={props.scrollXContainerRef}
@@ -88,7 +88,7 @@ const Lists = ({ props }) => {
 
       </div>
       {props.needRightArrow &&
-        <svg className="w-6 h-6 absolute top-5 right-4 hidden cursor-pointer md:block text-gray-400" onClick={props.scrollForward} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+        <svg className="w-6 h-6 absolute top-5 right-4 hidden cursor-pointer lg:block text-gray-400" onClick={props.scrollForward} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
       }
     </div>
   );
