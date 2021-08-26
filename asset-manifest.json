@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/BugTrack/static/css/main.36d16573.chunk.css",
-    "main.js": "/BugTrack/static/js/main.0486de99.chunk.js",
-    "main.js.map": "/BugTrack/static/js/main.0486de99.chunk.js.map",
+    "main.css": "/BugTrack/static/css/main.d2d88b9d.chunk.css",
+    "main.js": "/BugTrack/static/js/main.34818a21.chunk.js",
+    "main.js.map": "/BugTrack/static/js/main.34818a21.chunk.js.map",
     "runtime-main.js": "/BugTrack/static/js/runtime-main.2aeac85a.js",
     "runtime-main.js.map": "/BugTrack/static/js/runtime-main.2aeac85a.js.map",
     "static/js/2.c9125883.chunk.js": "/BugTrack/static/js/2.c9125883.chunk.js",
     "static/js/2.c9125883.chunk.js.map": "/BugTrack/static/js/2.c9125883.chunk.js.map",
     "index.html": "/BugTrack/index.html",
-    "static/css/main.36d16573.chunk.css.map": "/BugTrack/static/css/main.36d16573.chunk.css.map",
-    "static/js/2.c9125883.chunk.js.LICENSE.txt": "/BugTrack/static/js/2.c9125883.chunk.js.LICENSE.txt"
+    "static/css/main.d2d88b9d.chunk.css.map": "/BugTrack/static/css/main.d2d88b9d.chunk.css.map",
+    "static/js/2.c9125883.chunk.js.LICENSE.txt": "/BugTrack/static/js/2.c9125883.chunk.js.LICENSE.txt",
+    "static/media/phone.34914fc4.png": "/BugTrack/static/media/phone.34914fc4.png"
   },
   "entrypoints": [
     "static/js/runtime-main.2aeac85a.js",
     "static/js/2.c9125883.chunk.js",
-    "static/css/main.36d16573.chunk.css",
-    "static/js/main.0486de99.chunk.js"
+    "static/css/main.d2d88b9d.chunk.css",
+    "static/js/main.34818a21.chunk.js"
   ]
 }
