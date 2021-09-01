@@ -1,11 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { useHistory, useParams } from "react-router-dom";
 import ItemEdit from "../components/ItemEdit";
 import ItemView from "../components/ItemView";
 
 const Item = () => {
-  
+
   const { listId, itemId } = useParams();
 
   const editMutation = useMutation(e => {
@@ -49,6 +49,11 @@ const Item = () => {
       { duration: 300 });
     setTimeout(() => { setIsEditing(!isEditing); }, 150);
   }
+
+  useEffect(() => {
+    fetch('https://mw-bugtrack.herokuapp.com/auth/verify', { credentials: 'include' })
+      .then(res => { if (!res.ok) history.push('/login') });
+  }, []);
 
   return (
     <div className="font-body flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">

@@ -10,28 +10,30 @@ import Register from './pages/Register';
 import SelectProject from './components/SelectProject';
 import NavBar from './components/NavBar';
 import Faq from "./pages/Faq";
-import TermsOfUse from "./TermsOfUse";
+import TermsOfUse from "./pages/TermsOfUse";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import { useState } from "react";
 
 function App() {
 
   const queryClient = new QueryClient();
   const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Switch location={location} key={location.key}>
         <Route exact path="/">
           <Home />
         </Route>
         <Route path="/login">
-          <Login />
+          <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route path="/register">
-          <Register />
+          <Register setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route exact path="/dashboard">
           <SelectProject />

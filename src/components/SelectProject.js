@@ -1,19 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
 
 const SelectProject = () => {
 
   const { isLoading, data, refetch } = useQuery('projects', () =>
-    fetch('https://mw-bugtrack.herokuapp.com/get-projects').then(res => res.json())
+    fetch('https://mw-bugtrack.herokuapp.com/get-projects', { credentials: 'include' }).then(res => res.json()),
+    { onSuccess: (res => { if (res.needAuth) history.push('/login'); }) }
   );
 
   const mutation = useMutation(e => {
     e.preventDefault();
     return fetch('https://mw-bugtrack.herokuapp.com/create-project', {
       method: 'post',
-      body: JSON.stringify({ title: input.current.value }),
-      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: input.current.value, user: data[1] }),
+      headers: { 'Content-Type': 'application/json' }
     })
   }, {
     onSuccess: () => {
@@ -28,9 +29,12 @@ const SelectProject = () => {
   const [needToFadeOut, setNeedToFadeOut] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
+  // useEffect(() => {
+  //   localStorage.clear();
+  //   fetch('http://localhost:5000/auth/verify', { credentials: 'include' })
+  //     // fetch('https://heroku/auth/verify')
+  //     .then(res => { if (!res.ok) history.push('/login') });
+  // }, []);
 
 
   const handleSelection = e => {
@@ -47,7 +51,7 @@ const SelectProject = () => {
 
   const renderProjects = () =>
     <>
-      {data.map(project =>
+      {data[0].map(project =>
         <button key={project._id} id={project._id} onClick={handleSelection} className="relative btn hover:bg-red-500 rounded-none" >
           {project.title}
         </button>

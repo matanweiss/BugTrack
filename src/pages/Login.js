@@ -1,26 +1,58 @@
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { useMutation } from "react-query";
+import { Link, useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
 
-  const handleLogin = e => {
+  const mutation = useMutation(e => {
     e.preventDefault();
+    return fetch('https://mw-bugtrack.herokuapp.com/auth/login', {
+      method: 'post',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    })
+  }, {
+    onSuccess: user => user.json().then(user => {
+      if (user.err) throw new Error(user.err);
+      else {
+        setIsLoggedIn(true);
+        history.push('/dashboard');
+      }
+    })
+  });
+
+  const form = useRef();
+  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleGuestLogin = e => {
+    setEmail('guest@user.com');
+    setPassword('shalom');
+    setTimeout(() => { mutation.mutate(e); }, 100);
   }
 
+  useEffect(() => {
+    if (isLoggedIn) history.push('/dashboard');
+  }, [])
+
   return (
-    <div className='animate-fadeIn max-w-lg font-body mx-4 sm:mx-auto border-2 border-red-200 rounded-md p-8 sm:px-12 my-8'>
-      <form onSubmit={handleLogin} className="flex flex-col">
-        <h4 className="mx-auto font-medium mb-6">Enter your details:</h4>
+    <div className='animate-fadeIn max-w-sm sm:max-w-md md:max-w-lg font-body px-4 mx-auto sm:border-2 border-red-200 rounded-md sm:px-12 my-8'>
+      <form ref={form} onSubmit={mutation.mutate} className="flex flex-col min-h-[24rem] justify-evenly">
+        <h4 className="mx-auto font-medium">Enter your details:</h4>
         <div className='relative'>
-          <input required type="email" placeholder='Email address' className="peer placeholder-input" />
+          <input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder='Email address' className="peer placeholder-input" />
           <label className='placeholder-label'>Email address</label>
         </div>
-        <div className='relative mt-6 mb-8'>
-          <input required type="password" placeholder='Password' className="peer placeholder-input" />
+        <div className='relative'>
+          <input required minLength='6' value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder='Password' className="peer placeholder-input" />
           <label className='placeholder-label'>Password</label>
         </div>
+        {mutation.isError && <p className='text-center text-red-600'>{mutation.error.message}</p>}
         <div className="grid md:grid-cols-2 gap-x-4 gap-y-3 md:gap-y-6">
           <button className="btn btn-hover">Login</button>
-          <Link to='/dashboard' className='btn2 btn-hover hover:bg-white text-center'>Login as guest</Link>
+          <button type='button' onClick={handleGuestLogin} className='btn2 btn-hover hover:bg-white text-center'>Login as guest</button>
           <Link to='/forgot-password' className="m-auto self-center font-medium text-red-600 underline-hover">Forgot your password?</Link>
           <Link to='/register' className='m-auto text-sm font-medium text-red-600 underline-hover'>No account? Register here!</Link>
         </div>
