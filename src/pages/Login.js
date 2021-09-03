@@ -34,8 +34,9 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   }
 
   useEffect(() => {
-    if (isLoggedIn) history.push('/dashboard');
-  }, [])
+    fetch('https://mw-bugtrack.herokuapp.com/auth/verify', { credentials: 'include' })
+      .then(res => { if (res.ok) history.push('/dashboard') });
+  }, []);
 
   return (
     <div className='animate-fadeIn max-w-sm sm:max-w-md md:max-w-lg font-body px-4 mx-auto sm:border-2 border-red-200 rounded-md sm:px-12 my-8'>
