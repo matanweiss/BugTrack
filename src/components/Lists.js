@@ -30,11 +30,6 @@ const Lists = ({ props }) => {
     if (data) checkIfNeedArrows();
   }, [data, checkIfNeedArrows]);
 
-  useEffect(() => {
-    fetch('https://mw-bugtrack.herokuapp.com/auth/verify', { credentials: 'include' })
-      .then(res => { if (!res.ok) history.push('/login') });
-  }, []);
-
   const filterList = (id, title, list) => {
     if (!list.length && props.sideBarActiveItem === 'all') return <EmptyList key={id} deleteListMutation={deleteListMutation} refetch={refetch} id={id} title={title} isAddingItem={isAddingItem} setIsAddingItem={setIsAddingItem} />
     const filteredList = list.filter(item => (props.sideBarActiveItem === 'bugs') ? item.bug : true)
