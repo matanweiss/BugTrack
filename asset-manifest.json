@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/BugTrack/static/css/main.f65b8d5d.chunk.css",
+    "main.css": "/BugTrack/static/css/main.213b83c3.chunk.css",
     "main.js": "/BugTrack/static/js/main.6bf57d4a.chunk.js",
     "main.js.map": "/BugTrack/static/js/main.6bf57d4a.chunk.js.map",
     "runtime-main.js": "/BugTrack/static/js/runtime-main.2aeac85a.js",
@@ -8,14 +8,14 @@
     "static/js/2.472334d1.chunk.js": "/BugTrack/static/js/2.472334d1.chunk.js",
     "static/js/2.472334d1.chunk.js.map": "/BugTrack/static/js/2.472334d1.chunk.js.map",
     "index.html": "/BugTrack/index.html",
-    "static/css/main.f65b8d5d.chunk.css.map": "/BugTrack/static/css/main.f65b8d5d.chunk.css.map",
+    "static/css/main.213b83c3.chunk.css.map": "/BugTrack/static/css/main.213b83c3.chunk.css.map",
     "static/js/2.472334d1.chunk.js.LICENSE.txt": "/BugTrack/static/js/2.472334d1.chunk.js.LICENSE.txt",
     "static/media/phone.34914fc4.png": "/BugTrack/static/media/phone.34914fc4.png"
   },
   "entrypoints": [
     "static/js/runtime-main.2aeac85a.js",
     "static/js/2.472334d1.chunk.js",
-    "static/css/main.f65b8d5d.chunk.css",
+    "static/css/main.213b83c3.chunk.css",
     "static/js/main.6bf57d4a.chunk.js"
   ]
 }
