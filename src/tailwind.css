@@ -688,6 +688,7 @@ h4{
   width: 100%;
   -webkit-appearance: none;
           appearance: none;
+  border-radius: 0px;
   border-bottom-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgba(252, 165, 165, var(--tw-border-opacity));
@@ -787,11 +788,6 @@ h4{
   --tw-scale-x: 1;
   -webkit-transform: var(--tw-transform);
           transform: var(--tw-transform);
-}
-
-input{
-  -webkit-appearance: none;
-          appearance: none;
 }
 
 .container{
