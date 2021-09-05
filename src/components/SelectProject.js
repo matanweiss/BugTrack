@@ -5,13 +5,13 @@ import { useHistory } from "react-router-dom";
 const SelectProject = () => {
 
   const { isLoading, data, refetch } = useQuery('projects', () =>
-    fetch('https://mw-bugtrack.herokuapp.com/get-projects', { credentials: 'include' }).then(res => res.json()),
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/get-projects', { credentials: 'include' }).then(res => res.json()),
     { onSuccess: (res => { if (res.needAuth) history.push('/login'); }) }
   );
 
   const mutation = useMutation(e => {
     e.preventDefault();
-    return fetch('https://mw-bugtrack.herokuapp.com/create-project', {
+    return fetch(process.env.REACT_APP_SERVER_BASE_URL + '/create-project', {
       method: 'post',
       body: JSON.stringify({ title: input.current.value, user: data[1] }),
       headers: { 'Content-Type': 'application/json' }
@@ -28,14 +28,6 @@ const SelectProject = () => {
   const history = useHistory();
   const [needToFadeOut, setNeedToFadeOut] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-
-  // useEffect(() => {
-  //   localStorage.clear();
-  //   fetch('http://localhost:5000/auth/verify', { credentials: 'include' })
-  //     // fetch('https://heroku/auth/verify')
-  //     .then(res => { if (!res.ok) history.push('/login') });
-  // }, []);
-
 
   const handleSelection = e => {
     localStorage.setItem('projectTitle', e.target.textContent);

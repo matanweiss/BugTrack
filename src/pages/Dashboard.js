@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router";
 import DashboardMenu from "../components/DashboardMenu";
 import Lists from "../components/Lists";
 
 const Dashboard = () => {
 
+  const history = useHistory();
   const menuContainer = useRef();
   const scrollXContainerRef = useRef();
   const [sideBarActiveItem, setSideBarActiveItem] = useState('all');
@@ -44,7 +46,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    fetch('https://mw-bugtrack.herokuapp.com/auth/verify', { credentials: 'include' })
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
       .then(res => { if (!res.ok) history.push('/login') });
 
     let firstRun = true;

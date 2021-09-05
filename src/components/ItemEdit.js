@@ -6,7 +6,7 @@ const ItemEdit = ({ props }) => {
 
   const { itemId } = useParams();
   const { data } = useQuery('item', () =>
-    fetch(`https://mw-bugtrack.herokuapp.com/get-item/${itemId}`).then(res => res.json())
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + `/get-item/${itemId}`).then(res => res.json())
   );
   
   const setIsBug = props.setIsBug;

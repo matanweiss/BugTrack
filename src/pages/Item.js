@@ -10,7 +10,7 @@ const Item = () => {
 
   const editMutation = useMutation(e => {
     e.preventDefault();
-    return fetch(`https://mw-bugtrack.herokuapp.com/edit-item/${listId}/${itemId}`, {
+    return fetch(process.env.REACT_APP_SERVER_BASE_URL + `/edit-item/${listId}/${itemId}`, {
       method: 'post',
       body: JSON.stringify({ title: titleInput, bug: isBug, feature: isFeature, description: descriptionInput }),
       headers: { 'Content-Type': 'application/json' },
@@ -19,7 +19,7 @@ const Item = () => {
   );
 
   const deleteMutation = useMutation(() =>
-    fetch(`https://mw-bugtrack.herokuapp.com/delete-item/${listId}/${itemId}`, { method: 'DELETE', }),
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + `/delete-item/${listId}/${itemId}`, { method: 'DELETE', }),
     { onSuccess: () => history.goBack() }
   );
 
@@ -51,7 +51,7 @@ const Item = () => {
   }
 
   useEffect(() => {
-    fetch('https://mw-bugtrack.herokuapp.com/auth/verify', { credentials: 'include' })
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
       .then(res => { if (!res.ok) history.push('/login') });
   }, []);
 

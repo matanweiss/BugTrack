@@ -6,7 +6,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const mutation = useMutation(e => {
     e.preventDefault();
-    return fetch('https://mw-bugtrack.herokuapp.com/auth/login', {
+    return fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/login', {
       method: 'post',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -34,7 +34,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   }
 
   useEffect(() => {
-    fetch('https://mw-bugtrack.herokuapp.com/auth/verify', { credentials: 'include' })
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
       .then(res => { if (res.ok) history.push('/dashboard') });
   }, []);
 

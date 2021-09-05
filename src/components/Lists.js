@@ -12,16 +12,16 @@ const Lists = ({ props }) => {
   const history = useHistory();
   const { projectId } = useParams();
   const { isLoading, data, refetch } = useQuery('lists', () =>
-    fetch(`https://mw-bugtrack.herokuapp.com/get-lists/${projectId}`).then(res => res.json())
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + `/get-lists/${projectId}`).then(res => res.json())
   );
 
   const deleteProjectMutation = useMutation(() =>
-    fetch(`https://mw-bugtrack.herokuapp.com/delete-project/${projectId}`, { method: 'DELETE', }),
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + `/delete-project/${projectId}`, { method: 'DELETE', }),
     { onSuccess: () => history.push('/dashboard') }
   );
 
   const deleteListMutation = useMutation(id =>
-    fetch(`https://mw-bugtrack.herokuapp.com/delete-list/${id}`, { method: 'DELETE', }),
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + `/delete-list/${id}`, { method: 'DELETE', }),
     { onSuccess: () => refetch() }
   );
 

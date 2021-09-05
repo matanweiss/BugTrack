@@ -20,7 +20,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
     history.push('/dashboard');
   }
 
-  const handleLogout = () => fetch('https://mw-bugtrack.herokuapp.com/auth/logout', { credentials: 'include' })
+  const handleLogout = () => fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/logout', { credentials: 'include' })
     .then(() => {
       setIsLoggedIn(false);
       if (location.pathname.includes('dashboard')) history.push('/login');
@@ -28,7 +28,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
     );
 
   useEffect(() => {
-    fetch('https://mw-bugtrack.herokuapp.com/auth/verify', { credentials: 'include' })
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
       .then(res => { if (res.ok) setIsLoggedIn(true) });
   }, []);
 

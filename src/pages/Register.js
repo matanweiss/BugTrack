@@ -6,7 +6,7 @@ const Register = ({ setIsLoggedIn }) => {
 
   const mutation = useMutation(e => {
     e.preventDefault();
-    return fetch('https://mw-bugtrack.herokuapp.com/auth/register', {
+    return fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/register', {
       method: 'post',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
