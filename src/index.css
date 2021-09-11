@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  h1{
+    @apply text-4xl;
+  }
+  h2{
+    @apply text-3xl;
+  }
+  h3{
+    @apply text-2xl;
+  }
+  h4{
+    @apply text-xl;
+  }
+  .btn{
+    @apply bg-red-600 text-white p-2 rounded-md transition;
+  }
+  .btn2{
+    @apply border-2 border-red-600 text-red-600 p-2 rounded-md transition-all;
+  }
+  .btn-hover{
+    @apply hover:shadow-lg hover:bg-red-500 transition;
+  }
+  .placeholder-input{
+    @apply placeholder-transparent rounded-none appearance-none w-full py-2 outline-none border-b-2 border-red-300 transition focus:border-red-500;
+  }
+  .placeholder-label{
+    @apply pointer-events-none text-red-700 text-sm transition-all absolute left-0 -top-3 peer-placeholder-shown:text-red-500 peer-placeholder-shown:text-base peer-placeholder-shown:top-2;
+  }
+  .underline-hover{
+    @apply after:border-red-400 after:border-b-2 after:block after:transform after:transition after:scale-x-0 hover:after:scale-x-100 transition;
+  }
+}
