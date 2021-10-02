@@ -1,5 +1,5 @@
-![bugtrack logo](https://user-images.githubusercontent.com/83246516/135730593-a65bfd1d-09c8-4351-907a-2785d8b8ee4d.png)
+![bugtrack logo(1)](https://user-images.githubusercontent.com/83246516/135730703-90fc04be-3118-4421-8b93-209b00e0c778.png)
 
 Website to keep track of your projects.
 
-Have a [look](matanweiss.github.io/BugTrack)!
+Have a [look](https://matanweiss.github.io/BugTrack)!
