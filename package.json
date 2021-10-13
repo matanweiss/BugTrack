@@ -1,6 +1,6 @@
 {
   "name": "bug-track",
-  "homepage": "https://mw-bugtrack.herokuapp.com",
+  "homepage": "https://matanweiss.github.io/BugTrack",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/index.css -o ./src/tailwind.css -w",
     "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

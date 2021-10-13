@@ -30,7 +30,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/login">
-          <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          <Login setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route path="/register">
           <Register setIsLoggedIn={setIsLoggedIn} />
