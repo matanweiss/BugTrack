@@ -46,17 +46,24 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
-      .then(res => { if (!res.ok) history.push('/login') });
+    const checkToken = () => {
+      fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
+        .then(res => { if (!res.ok) history.push('/login') });
+    }
 
-    let firstRun = true;
-    scrollXContainerRef.current.addEventListener('scroll', () => {
-      if (firstRun) {
-        firstRun = false;
-        setTimeout(() => { checkIfNeedArrows(); }, 500);
-        setTimeout(() => { firstRun = true; }, 1000);
-      }
-    });
+    const initScrollListener = () => {
+      let firstRun = true;
+      scrollXContainerRef.current.addEventListener('scroll', () => {
+        if (firstRun) {
+          firstRun = false;
+          setTimeout(() => { checkIfNeedArrows(); }, 500);
+          setTimeout(() => { firstRun = true; }, 1000);
+        }
+      });
+    }
+
+    checkToken();
+    initScrollListener();
   }, [history]);
 
   const handleMenuOpen = () => {

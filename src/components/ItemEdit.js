@@ -4,9 +4,9 @@ import { useEffect } from "react";
 
 const ItemEdit = ({ props }) => {
 
-  const { itemId } = useParams();
+  const { itemId, listId } = useParams();
   const { data } = useQuery('item', () =>
-    fetch(process.env.REACT_APP_SERVER_BASE_URL + `/get-item/${itemId}`).then(res => res.json())
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + `/get-item/${listId}/${itemId}`).then(res => res.json())
   );
   
   const setIsBug = props.setIsBug;

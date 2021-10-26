@@ -34,8 +34,13 @@ const Login = ({ setIsLoggedIn }) => {
   }
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
+
+    const checkToken = () => {
+      fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
       .then(res => { if (res.ok) history.push('/dashboard') });
+    }
+    
+    checkToken();
   }, [history]);
 
   return (
