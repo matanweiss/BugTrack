@@ -1,4 +1,3 @@
-import "./tailwind.css";
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Dashboard from './pages/Dashboard';

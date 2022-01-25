@@ -1,9 +1,7 @@
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './src/**/*.js'
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
@@ -24,9 +22,6 @@ module.exports = {
         fadeOut: 'fadeOut .3s'
       }
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 }

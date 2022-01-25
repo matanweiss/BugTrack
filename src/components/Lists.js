@@ -81,7 +81,7 @@ const Lists = ({ props }) => {
           ? (deleteProjectMutation.isLoading ? renderSpinner() :
             <div className='m-auto space-x-4 flex'>
               <p>delete project?</p>
-              <button onClick={deleteProjectMutation.mutate} className='text-red-600'>yep</button>
+              <button onClick={deleteProjectMutation.mutate} className='text-red-600'>yes</button>
             </div>)
           : isLoading || deleteListMutation.isLoading ? renderSpinner() : printLists()
         }
