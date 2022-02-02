@@ -24,6 +24,16 @@ const ItemEdit = ({ props }) => {
     e.target.style.height = `${e.target.scrollHeight}px`;
   }
 
+  const handleFeatureCheck = e =>{
+    props.setIsFeature(e.target.checked);
+    props.setIsBug(false);
+  }
+  
+  const handleBugCheck = e =>{
+    props.setIsBug(e.target.checked);
+    props.setIsFeature(false);
+  }
+
   useEffect(() => {
     if (data) {
       setIsBug(data.bug);
@@ -39,12 +49,12 @@ const ItemEdit = ({ props }) => {
     <form onSubmit={props.editMutation.mutate}>
       <div className='text-right pb-2'>
         <label>
-          <input className='opacity-0 absolute' type="checkbox" checked={props.isBug} onChange={e => props.setIsBug(e.target.checked)} />
-          <span className={`btn text-sm p-2 lg:p-1 ${props.isBug ? 'bg-red-600' : 'bg-red-400'}`}>bug</span>
+          <input className='pointer-events-none opacity-0 absolute' type="checkbox" checked={props.isBug} onChange={e => handleBugCheck(e)} />
+          <span className={`select-none cursor-pointer btn text-sm p-2 lg:p-1 ${props.isBug ? 'bg-red-600' : 'bg-red-400'}`}>bug</span>
         </label>
         <label>
-          <input className='opacity-0 absolute' type="checkbox" checked={props.isFeature} onChange={e => props.setIsFeature(e.target.checked)} />
-          <span className={`btn ml-2 text-sm p-2 lg:p-1 ${props.isFeature ? 'bg-green-600' : 'bg-green-300'}`}>feature</span>
+          <input className='pointer-events-none opacity-0 absolute' type="checkbox" checked={props.isFeature} onChange={e => handleFeatureCheck(e)} />
+          <span className={`select-none cursor-pointer btn ml-2 text-sm p-2 lg:p-1 ${props.isFeature ? 'bg-green-600' : 'bg-green-300'}`}>done✔</span>
         </label>
       </div>
       <div className="relative w-full">

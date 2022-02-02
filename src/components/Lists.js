@@ -73,7 +73,7 @@ const Lists = ({ props }) => {
       {props.needLeftArrow && <svg className="w-6 h-6 cursor-pointer absolute top-5 left-4 z-50 hidden lg:inline text-gray-400" onClick={props.scrollBack}
         fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
       }
-      <div className="animate-fadeIn  flex w-full overflow-x-auto" ref={props.scrollXContainerRef}
+      <div className="animate-fadeIn  flex w-full overflow-x-auto relative" ref={props.scrollXContainerRef}
         style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none' }}
       >
 

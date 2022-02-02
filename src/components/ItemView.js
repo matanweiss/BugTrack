@@ -19,13 +19,13 @@ const ItemView = () => {
     <>
       <div className="flex justify-end">
         {data.bug && (<div className='lg:hidden btn ml-2 self-start text-sm p-1 hover:bg-red-600' >bug</div>)}
-        {data.feature && (<div className='lg:hidden btn mx-2 self-start bg-green-600 hover:bg-green-600 text-sm inline p-1' >feature</div>)}
+        {data.feature && (<div className='lg:hidden btn mx-2 self-start bg-green-600 hover:bg-green-600 text-sm inline p-1' >done✔</div>)}
       </div>
 
       <div className="flex lg:pt-2 w-full">
         <h3 className=''>{data.title}</h3>
         {data.bug && (<div className='hidden lg:block btn ml-2 self-start text-sm p-1 hover:bg-red-600' >bug</div>)}
-        {data.feature && (<div className='hidden lg:block btn mx-2 self-start bg-green-600 hover:bg-green-600 text-sm inline p-1' >feature</div>)}
+        {data.feature && (<div className='hidden lg:block btn mx-2 self-start bg-green-600 hover:bg-green-600 text-sm inline p-1' >done✔</div>)}
       </div>
       <p className='pt-4 text-gray-400'>
         {data.description ? data.description : 'no description yet'}

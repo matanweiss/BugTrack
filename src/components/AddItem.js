@@ -22,17 +22,18 @@ const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
   const input = useRef();
   const div = useRef();
 
-  useEffect(() => {
-    document.addEventListener("mousedown", clickOutsideInput);
-    return () => document.removeEventListener("mousedown", clickOutsideInput)
-  })
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", clickOutsideInput);
+  //   return () => document.removeEventListener("mousedown", clickOutsideInput)
+  // })
 
-  const clickOutsideInput = e => {
-    if (!div.current.contains(e.target)) {
-      setIsAddingItem(false);
-      input.current.value = '';
-    }
-  }
+  // const clickOutsideInput = e => {
+  //   console.log(e.target);
+  //   if (!div.current.contains(e.target)) {
+  //     setIsAddingItem(false);
+  //     input.current.value = '';
+  //   }
+  // }
 
   const handleClick = () => {
     setIsAddingItem(!isAddingItem);
