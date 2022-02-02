@@ -50,7 +50,7 @@ const ItemEdit = ({ props }) => {
       <div className='text-right pb-2'>
         <label>
           <input className='pointer-events-none opacity-0 absolute' type="checkbox" checked={props.isBug} onChange={e => handleBugCheck(e)} />
-          <span className={`select-none cursor-pointer btn text-sm p-2 lg:p-1 ${props.isBug ? 'bg-red-600' : 'bg-red-400'}`}>bug</span>
+          <span className={`select-none cursor-pointer btn text-sm p-2 lg:p-1 ${props.isBug ? 'bg-red-600' : 'bg-red-300'}`}>bug</span>
         </label>
         <label>
           <input className='pointer-events-none opacity-0 absolute' type="checkbox" checked={props.isFeature} onChange={e => handleFeatureCheck(e)} />

@@ -22,24 +22,28 @@ const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
   const input = useRef();
   const div = useRef();
 
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", clickOutsideInput);
-  //   return () => document.removeEventListener("mousedown", clickOutsideInput)
-  // })
-
-  // const clickOutsideInput = e => {
-  //   console.log(e.target);
-  //   if (!div.current.contains(e.target)) {
-  //     setIsAddingItem(false);
-  //     input.current.value = '';
-  //   }
-  // }
-
-  const handleClick = () => {
+  const handlePlusClick = () => {
     setIsAddingItem(!isAddingItem);
     input.current.value = '';
     input.current.focus();
   }
+
+  const handleEscKey = e => {
+    if (e.key === 'Escape') setIsAddingItem(false);
+  }
+
+  const handleClickOutside = e => {
+    if (div.current && !div.current.contains(e.target)) setIsAddingItem(false);
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleEscKey, true);
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('keydown', handleEscKey, true);
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, []);
 
   return (
     <form onSubmit={mutation.mutate}>
@@ -51,7 +55,7 @@ const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
           :
           <>
             <span className={`select-none cursor-pointer duration-300 inline-block 
-              transform ${isAddingItem ? 'rotate-45' : ''}`} onClick={handleClick}>
+              transform ${isAddingItem ? 'rotate-45' : ''}`} onClick={handlePlusClick}>
               +
             </span>
             <button>
