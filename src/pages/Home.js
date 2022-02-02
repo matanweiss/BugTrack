@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <div className="animate-fadeIn leading-7 font-body md:max-w-3xl md:px-8 lg:px-0 px-4 sm:max-w-xl sm:mx-auto">
         <div className="mb-12 mt-8 relative lg:mt-36 lg:pr-56 lg:my-[25rem]">
-          <h1 className="mb-2 font-medium tracking-wide">THIS IS ANOTHER BRANCH</h1>
+          <h1 className="mb-2 font-medium tracking-wide">NOW LETS WRITE THIS PROJECT AGAIN</h1>
           <p>We built the best platform to keep track of your projects with your team</p>
           <img src={phone} className='hidden lg:inline absolute origin-top-right scale-50 -top-40 -right-36' alt="phone running the website" />
           <Link to='/login' className="btn-hover inline-block mt-6 btn">GET STARTED</Link>
