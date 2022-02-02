@@ -1,7 +1,6 @@
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Dashboard from './pages/Dashboard';
-import ForgotPassword from './pages/forgotPassword';
 import Home from './pages/Home';
 import Item from './pages/Item';
 import Login from './pages/Login';
@@ -43,9 +42,6 @@ function App() {
         </Route>
         <Route path="/dashboard/:listId/:itemId">
           <Item />
-        </Route>
-        <Route path="/forgot-password">
-          <ForgotPassword />
         </Route>
         <Route path="/faq">
           <Faq />
