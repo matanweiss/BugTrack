@@ -75,7 +75,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="font-body flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
+    <div className=" flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
 
       <div className='lg:flex lg:pt-2 lg:animate-fadeIn lg:pr-28 lg:max-w-6xl lg:mx-auto lg:space-x-8 lg:max-h-[calc(100vh-8rem)] h-auto min-h-0 h-full flex-shrink'>
         <span className='hidden lg:inline'> <DashboardMenu props={dashboardMenuProps} /></span>

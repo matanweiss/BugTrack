@@ -63,7 +63,7 @@ const SelectProject = () => {
     </div>
 
   return (
-    <div className={`font-body w-screen h-screen z-50 absolute flex inset-0 bg-black bg-opacity-40
+    <div className={` w-screen h-screen z-50 absolute flex inset-0 bg-black bg-opacity-40
       ${needToFadeOut ? 'animate-fadeOut' : 'animate-fadeIn'}`}
     >
       <div className="relative pt-4 shadow-xl w-full rounded max-w-3xl flex flex-col bg-white mx-4 my-auto lg:m-auto lg:w-2/3">

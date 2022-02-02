@@ -56,7 +56,7 @@ const Item = () => {
   }, [history]);
 
   return (
-    <div className="font-body flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
+    <div className=" flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
 
       <div className="flex relative lg:mx-auto pt-2 lg:space-x-8 lg:pr-28 animate-fadeIn">
         <div className='hidden lg:block self-start rounded-xl bg-white p-4 border-2 shadow border-gray-200'>

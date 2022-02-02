@@ -44,7 +44,7 @@ const Login = ({ setIsLoggedIn }) => {
   }, [history]);
 
   return (
-    <div className='animate-fadeIn max-w-sm sm:max-w-md md:max-w-lg font-body px-4 mx-auto sm:border-2 border-red-200 rounded-md sm:px-12 my-8'>
+    <div className='animate-fadeIn max-w-sm sm:max-w-md md:max-w-lg  px-4 mx-auto sm:border-2 border-red-200 rounded-md sm:px-12 my-8'>
       <form ref={form} onSubmit={mutation.mutate} className="flex flex-col min-h-[24rem] justify-evenly">
         <h4 className="mx-auto font-medium">Use your BugTrack account:</h4>
         <div className='relative'>

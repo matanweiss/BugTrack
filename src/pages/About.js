@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className='animate-fadeIn leading-10 h-56 max-w-xl flex flex-col font-body mx-4 lg:mx-auto'>
+    <div className='animate-fadeIn leading-10 h-56 max-w-xl flex flex-col  mx-4 lg:mx-auto'>
       <h2 className='text-center font-medium my-8'>About</h2>
       <p className=''>The purpuse of building the website is learning fullstack development.</p>
       <p className=''>Please try both mobile & desktop, <Link className='text-red-600' to='contact'> let me know</Link> if you found a bug!</p>
