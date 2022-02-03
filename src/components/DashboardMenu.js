@@ -15,8 +15,8 @@ const DashboardMenu = ({ props }) => {
   }
 
   return (
-    <div className="relative bg-white self-start h-auto flex flex-col pb-2 items-start 
-      p-4 h-full space-y-2 lg:rounded-xl lg:border-2 lg:shadow border-gray-200 lg:mr-auto"
+    <div className="relative bg-white self-start flex flex-col pb-2 items-start 
+      p-4 space-y-2 lg:rounded-xl lg:border-2 lg:shadow border-gray-200 lg:mr-auto"
     >
       <button
         onClick={e => { handleClick('all', e) }} onMouseDown={handleMouseDown}
@@ -26,8 +26,9 @@ const DashboardMenu = ({ props }) => {
       </button>
       <button onClick={e => { handleClick('features', e) }} onMouseDown={handleMouseDown}
         className={`${(props.sideBarActiveItem === 'features') ? 'text-red-600' : null} origin-left flex transition`}>
-        <svg className="w-6 h-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" /></svg>
-        Features
+        {/* <svg className="w-6 h-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" /></svg> */}
+        <svg className="w-6 h-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+        Done
       </button>
       <button onClick={e => { handleClick('bugs', e) }} onMouseDown={handleMouseDown}
         className={`${(props.sideBarActiveItem === 'bugs') ? 'text-red-600' : null} origin-left flex transition`}>

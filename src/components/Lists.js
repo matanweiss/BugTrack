@@ -34,7 +34,8 @@ const Lists = ({ props }) => {
     if (!list.length && props.sideBarActiveItem === 'all') return <EmptyList key={id} deleteListMutation={deleteListMutation} refetch={refetch} id={id} title={title} isAddingItem={isAddingItem} setIsAddingItem={setIsAddingItem} />
     const filteredList = list.filter(item => (props.sideBarActiveItem === 'bugs') ? item.bug : true)
       .filter(item => (props.sideBarActiveItem === 'features') ? item.feature : true)
-      .filter(item => (props.sideBarActiveItem === 'settings') ? false : true);
+      .filter(item => (props.sideBarActiveItem === 'settings') ? false : true)
+      .sort((a, b) => a.feature > b.feature);
     return filteredList.length ? showList(id, title, filteredList) : null
   }
 
