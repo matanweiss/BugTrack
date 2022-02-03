@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
+import InputEmail from "../components/InputEmail";
+import InputPassword from "../components/InputPassword";
 
 const Register = ({ setIsLoggedIn }) => {
 
@@ -30,13 +32,9 @@ const Register = ({ setIsLoggedIn }) => {
     <div className="animate-fadeIn max-w-sm sm:max-w-md md:max-w-lg  px-4 mx-auto sm:border-2 border-red-200 rounded-md sm:px-12 my-8">
       <form onSubmit={mutation.mutate} className="flex flex-col min-h-[22rem] justify-evenly">
         <h4 className='text-center font-medium'>Create your BugTrack account:</h4>
-        <div className='relative'>
-          <input required type="email" onChange={e => setEmail(e.target.value)} placeholder='Email address' className="peer placeholder-input" />
-          <label className='placeholder-label'>Email address</label>
-        </div>
-        <div className='relative'>
-          <input required minLength='6' type="password" onChange={e => setPassword(e.target.value)} placeholder='Password' className="peer placeholder-input" />
-          <label className='placeholder-label'>Password</label>
+        <div className="space-y-6">
+          <InputEmail email={email} setEmail={setEmail} />
+          <InputPassword password={password} setPassword={setPassword} />
         </div>
         {mutation.isError && <p className='text-center text-red-600 font-medium'>{mutation.error.message}</p>}
         <button className='btn btn-hover'>Register</button>

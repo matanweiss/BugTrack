@@ -60,8 +60,8 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             <button className='underline-hover' onClick={handleLogout}>Log Out</button>
           </>
           : <>
-            <NavLink className="ml-auto mr-3 underline-hover" to="/login" activeClassName="font-medium">Log In</NavLink>
-            <NavLink to="/register" className='underline-hover' activeClassName="font-medium">Register</NavLink>
+            <NavLink className="ml-auto mr-3 underline-hover" to="/login" activeClassName="font-bold">Log In</NavLink>
+            <NavLink to="/register" className='underline-hover' activeClassName="font-bold">Register</NavLink>
           </>
         )}
       </div>
