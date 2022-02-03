@@ -55,7 +55,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           <>
             {(location.pathname.includes('dashboard') && title) && <button className='group flex items-center lg:space-x-2' onClick={handleSelectProjectClick}>
               <h3 className='lg:text-4xl'>{title}</h3>
-              <svg className="w-6 h-6 opacity-0 group-hover:opacity-100 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              <svg className="w-6 h-6 opacity-0 max-w-0 group-hover:max-w-full group-hover:opacity-100 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </button>}
             <button className='underline-hover' onClick={handleLogout}>Log Out</button>
           </>
