@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
+import FormContainer from "../components/FormContainer";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
 
@@ -29,7 +30,7 @@ const Register = ({ setIsLoggedIn }) => {
   const [password, setPassword] = useState('');
 
   return (
-    <div className="animate-fadeIn max-w-sm sm:max-w-md md:max-w-lg  px-4 mx-auto sm:border-2 border-red-200 rounded-md sm:px-12 my-8">
+    <FormContainer>
       <form onSubmit={mutation.mutate} className="flex flex-col min-h-[22rem] justify-evenly">
         <h4 className='text-center font-medium'>Create your BugTrack account:</h4>
         <div className="space-y-6">
@@ -40,7 +41,7 @@ const Register = ({ setIsLoggedIn }) => {
         <button className='btn btn-hover'>Register</button>
         <Link to='/login' className='mx-auto text-sm font-medium text-red-600 underline-hover'>Have an account? Log in here</Link>
       </form>
-    </div>
+    </FormContainer>
   );
 }
 

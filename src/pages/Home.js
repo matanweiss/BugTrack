@@ -5,6 +5,7 @@ import { ReactComponent as RealTimeSVG } from '../assets/real time.svg';
 import { ReactComponent as CommentSVG } from '../assets/comment.svg';
 import { ReactComponent as ProgressSVG } from '../assets/progress.svg';
 import HomepageGridItem from "../components/HomepageGridItem";
+import Container from "../components/Container";
 
 const Home = () => {
 
@@ -14,7 +15,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="animate-fadeIn leading-7 md:max-w-3xl md:px-8 lg:px-0 px-4 sm:max-w-xl sm:mx-auto">
+      <Container>
         <div className="relative">
           <h1 className="font-medium tracking-wide">NOW LETS WRITE THIS PROJECT AGAIN</h1>
           <p>We built the best platform to keep track of your projects with your team</p>
@@ -27,7 +28,7 @@ const Home = () => {
           <HomepageGridItem title="Comment" svg={<CommentSVG />} description="Write important notes for easy communication. no other platform needed!" />
           <HomepageGridItem title="Progress" svg={<ProgressSVG />} description="You won't forget any task! the old ones stay at the top so you can't ignore them" />
         </div>
-      </div>
+      </Container>
       <div className="bg-red-600 text-white" style={{ height: '50vh' }}>
         <div className="max-w-3xl grid grid-cols-2 grid-rows-4 h-full lg:grid-cols-4 md:mx-auto">
           <h2 className="text-red-900 col-span-full row-span-2 lg:row-span-3 m-auto" >©MW</h2>
@@ -37,7 +38,6 @@ const Home = () => {
           <Link to='/contact' className="underline-hover m-auto">Contact</Link>
         </div>
       </div>
-
     </>
   );
 }
