@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/BugTrack/static/css/main.410407c2.css",
-    "main.js": "/BugTrack/static/js/main.6cdd8ff6.js",
+    "main.css": "/BugTrack/static/css/main.d10ccef1.css",
+    "main.js": "/BugTrack/static/js/main.d267768b.js",
     "static/media/phone.png": "/BugTrack/static/media/phone.2afc958b18d12666c33b.png",
     "static/media/progress.svg": "/BugTrack/static/media/progress.abf2b25b66ee5531e4d379f853ee3c57.svg",
     "static/media/comment.svg": "/BugTrack/static/media/comment.c8fd801a5235c1d829fbe018d094a9d5.svg",
@@ -12,13 +12,17 @@
     "static/media/settings.svg": "/BugTrack/static/media/settings.5d0b2d06b4f0388bf4dca23fa2c17549.svg",
     "index.html": "/BugTrack/index.html",
     "static/media/documents.svg": "/BugTrack/static/media/documents.76a335f48f4ac29e6a7b374c5524fa41.svg",
+    "static/media/TrashIcon.svg": "/BugTrack/static/media/TrashIcon.eb6d90241c02c31d90dd4912f7b8e6a0.svg",
+    "static/media/MenuIcon.svg": "/BugTrack/static/media/MenuIcon.c7b77908c11744c6983ae599dea536bc.svg",
+    "static/media/ChevronLeft.svg": "/BugTrack/static/media/ChevronLeft.55e0de3ae175731e7495a5aa2a7d3e57.svg",
     "static/media/ChevronDown.svg": "/BugTrack/static/media/ChevronDown.4fce1939293bfb060c3620851cba9244.svg",
     "static/media/check.svg": "/BugTrack/static/media/check.15be63b6a2ffe95b9de91e134d975c07.svg",
-    "main.410407c2.css.map": "/BugTrack/static/css/main.410407c2.css.map",
-    "main.6cdd8ff6.js.map": "/BugTrack/static/js/main.6cdd8ff6.js.map"
+    "static/media/ChevronRight.svg": "/BugTrack/static/media/ChevronRight.ea2a303aece0fc6601472f51f42aa32e.svg",
+    "main.d10ccef1.css.map": "/BugTrack/static/css/main.d10ccef1.css.map",
+    "main.d267768b.js.map": "/BugTrack/static/js/main.d267768b.js.map"
   },
   "entrypoints": [
-    "static/css/main.410407c2.css",
-    "static/js/main.6cdd8ff6.js"
+    "static/css/main.d10ccef1.css",
+    "static/js/main.d267768b.js"
   ]
 }
