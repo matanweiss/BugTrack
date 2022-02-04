@@ -71,9 +71,7 @@ const Lists = (props) => {
         <ChevronLeftSVG onClick={props.scrollBack} className="w-6 h-6 cursor-pointer absolute top-5 left-4 z-50 hidden lg:inline text-gray-400" />
       }
 
-      <div className="animate-fadeIn  flex w-full overflow-x-auto relative" ref={props.scrollXContainerRef}
-        style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none' }}
-      >
+      <div className="no-scrollbar animate-fadeIn flex w-full overflow-x-auto snap-mandatory snap-x" ref={props.scrollXContainerRef}>
 
         {(props.sideBarActiveItem === 'settings')
           ?  // delete project
