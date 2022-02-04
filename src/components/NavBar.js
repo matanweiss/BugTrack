@@ -8,12 +8,13 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const location = useLocation();
   const history = useHistory();
-  const [scrolledDown, setScrolledDown] = useState(false);
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
   const [title, setTitle] = useState('');
   const [showNavButtons, setShowNavButtons] = useState(false);
+  const isUserOnDashboard = location.pathname.includes('/dashboard');
 
   const checkScrollDirection = () => {
-    (window.scrollY > 0) ? setScrolledDown(true) : setScrolledDown(false);
+    (window.scrollY > 0) ? setIsScrolledDown(true) : setIsScrolledDown(false);
   }
 
   useEffect(() => {
@@ -50,9 +51,9 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
 
 
   return (
-    <nav className={`${scrolledDown ? 'bg-red-700 shadow-lg text-white' : 'bg-transparent text-red-700'} z-10 sticky top-0 h-16  pl-2 pr-3 transition`}>
+    <nav className={`${isScrolledDown ? 'bg-red-700 shadow-lg text-white' : `${isUserOnDashboard ? 'lg:bg-gray-50' : 'bg-transparent'} text-red-700`} z-10 sticky top-0 h-16 pl-2 pr-3 transition`}>
       <div className="max-w-3xl mx-auto flex h-16 items-center justify-between">
-        <NavLink to="/" onClick={() => window.scrollTo(window.top)} className={`${scrolledDown ? 'fill-white' : 'fill-red-700'}`}>
+        <NavLink to="/" onClick={() => window.scrollTo(window.top)} className={`${isScrolledDown ? 'fill-white' : 'fill-red-700'}`}>
           <BTSVG className=' lg:hidden transition w-16 h-16 fill-current' />
           <BugTrackSVG className='hidden lg:inline transition h-16 w-28 fill-current' />
         </NavLink>
@@ -61,7 +62,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           <>
             {(location.pathname.includes('dashboard') && title) && <button className='group flex items-center lg:space-x-2' onClick={handleSelectProjectClick}>
               <h3 className='lg:text-4xl'>{title}</h3>
-              <ChevronDownSVG className="w-6 h-6 opacity-0 max-w-0 group-hover:max-w-full group-hover:opacity-100 transition"/>
+              <ChevronDownSVG className="w-6 h-6 opacity-0 max-w-0 group-hover:max-w-full group-hover:opacity-100 transition" />
             </button>}
             <button className='underline-hover' onClick={handleLogout}>Log Out</button>
           </>
