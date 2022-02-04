@@ -5,7 +5,7 @@ import { useMutation, useQuery } from "react-query";
 import { useEffect, useState } from "react";
 import EmptyList from "./EmptyList";
 
-const Lists = ({ props }) => {
+const Lists = (props) => {
 
   const [isAddingItem, setIsAddingItem] = useState(false);
   const checkIfNeedArrows = props.checkIfNeedArrows;

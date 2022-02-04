@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
 import DashboardMenu from "../components/DashboardMenu";
 import Lists from "../components/Lists";
+import { ReactComponent as ChevronRightSVG } from '../assets/ChevronRight.svg';
+import { ReactComponent as MenuIconSVG } from '../assets/MenuIcon.svg';
+import { ReactComponent as ChevronLeftSVG } from '../assets/ChevronLeft.svg';
 
 const Dashboard = () => {
 
@@ -77,30 +80,27 @@ const Dashboard = () => {
   return (
     <div className=" flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
 
-      <div className='lg:flex lg:pt-2 lg:animate-fadeIn lg:pr-28 lg:max-w-6xl lg:mx-auto lg:space-x-8 lg:max-h-[calc(100vh-8rem)] h-auto min-h-0 h-full flex-shrink'>
+      <div className='lg:flex lg:pt-2 lg:animate-fadeIn lg:pr-28 lg:max-w-6xl lg:mx-auto lg:space-x-8 lg:max-h-[calc(100vh-8rem)] h-auto min-h-0 flex-shrink'>
         <span className='hidden lg:inline'> <DashboardMenu {...dashboardMenuProps} /></span>
-        <Lists props={listProps} />
+        <Lists {...listProps} />
       </div>
 
       {/* mobile buttons*/}
       <div className='lg:hidden fixed bottom-0 inset-x-0 z-10 bg-white'>
         {isMenuOpen && (
           <div ref={menuContainer} id='mobile' className='absolute animate-fadeIn -top-36 w-screen'>
-            <DashboardMenu props={dashboardMenuProps} />
+            <DashboardMenu {...dashboardMenuProps} />
           </div>
         )}
         <div className="flex h-16 fill-current text-red-600">
-          <svg className={`w-6 h-6 m-auto ${!needLeftArrow && 'opacity-0'}`} onClick={scrollBack}
-            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-          <svg className="w-7 h-7 m-auto cursor-pointer" onClick={handleMenuOpen}
-            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
-          <svg className={`w-6 h-6 m-auto ${!needRightArrow && 'opacity-0'}`} onClick={scrollForward}
-            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          <ChevronLeftSVG className={`w-6 h-6 m-auto ${!needLeftArrow && 'opacity-0'}`} onClick={scrollBack} />
+          <MenuIconSVG className="w-7 h-7 m-auto cursor-pointer" onClick={handleMenuOpen} />
+          <ChevronRightSVG className={`w-6 h-6 m-auto ${!needRightArrow && 'opacity-0'}`} onClick={scrollForward} />
         </div>
       </div>
       <div className="min-h-[4rem] hidden lg:block"></div>
-    </div>
 
+    </div>
   );
 }
 
