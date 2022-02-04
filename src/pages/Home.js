@@ -17,7 +17,7 @@ const Home = () => {
     <>
       <Container>
         <div className="relative space-y-4 lg:pr-64">
-          <h1 className="font-medium tracking-wide">NOW LETS WRITE THIS PROJECT AGAIN</h1>
+          <h1 className="font-medium tracking-wide">TRACK EVERY ASPECT OF YOUR PROJECT</h1>
           <p>We built the best platform to keep track of your projects with your team</p>
           <img src={phone} className='hidden lg:inline absolute origin-top-right scale-50 -top-44 -right-36' alt="phone running the website" />
           <Link to='/login' className="btn-hover inline-block btn">GET STARTED</Link>
@@ -31,9 +31,9 @@ const Home = () => {
           </div>
         </div>
       </Container>
-      <div className="bg-red-600 text-white" style={{ height: '50vh' }}>
+      <div className="lg:bg-red-600 lg:text-white text-red-600" style={{ height: '50vh' }}>
         <div className="max-w-3xl grid grid-cols-2 grid-rows-4 h-full lg:grid-cols-4 md:mx-auto">
-          <h2 className="text-red-900 hover:text-black transition cursor-default col-span-full row-span-2 lg:row-span-3 m-auto" >©MW</h2>
+          <h2 className="text-red-300 lg:text-red-900 hover:text-black transition cursor-default col-span-full row-span-2 lg:row-span-3 m-auto" >©MW</h2>
           <Link to='/about' className="underline-hover m-auto">About</Link>
           <Link to='/faq' className="underline-hover m-auto">FAQ</Link>
           <Link to='/terms-of-use' className="underline-hover m-auto">Terms of use</Link>
