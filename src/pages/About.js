@@ -13,7 +13,8 @@ const About = () => {
       <p className=''>The backend is built with
         <a className='text-green-600' target='_blank' href='//nodejs.org/'> node </a>
         and the database is stored at
-        <a className='text-green-600' target='_blank' href='//mongodb.com/'> mongoDB</a>. </p>
+        <a className='text-green-600' target='_blank' href='//mongodb.com/'> mongoDB</a>.
+      </p>
       <p className=''>You can view the code
         <a className='text-red-600' target='_blank' href="//github.com/matanweiss/BugTrack"> here</a>
         !
