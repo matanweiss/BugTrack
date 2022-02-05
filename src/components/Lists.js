@@ -40,7 +40,7 @@ const Lists = (props) => {
     const filteredList = list.filter(item => (props.sideBarActiveItem === 'bugs') ? item.bug : true)
       .filter(item => (props.sideBarActiveItem === 'features') ? item.feature : true)
       .filter(item => (props.sideBarActiveItem === 'settings') ? false : true)
-      .sort((a, b) => Number(a.feature > b.feature)); // move done items to end
+      .sort((a, b) => a.feature - b.feature); // move done items to end
     return filteredList.length ? showList(id, title, filteredList) : null
   }
 
