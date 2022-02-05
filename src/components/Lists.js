@@ -16,7 +16,7 @@ const Lists = (props) => {
   const history = useHistory();
   const { projectId } = useParams();
 
-  const { isLoading, data, refetch } = useQuery('lists', () =>
+  const { isLoading, data, refetch } = useQuery(['lists', projectId], () =>
     fetch(process.env.REACT_APP_SERVER_BASE_URL + `/get-lists/${projectId}`).then(res => res.json())
   );
 

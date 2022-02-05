@@ -1,4 +1,4 @@
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
@@ -17,49 +17,50 @@ import { useState } from "react";
 function App() {
 
   const queryClient = new QueryClient();
-  const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-      <Switch location={location} key={location.key}>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/login">
-          <Login setIsLoggedIn={setIsLoggedIn} />
-        </Route>
-        <Route path="/register">
-          <Register setIsLoggedIn={setIsLoggedIn} />
-        </Route>
-        <Route exact path="/dashboard">
-          <SelectProject />
-          <Dashboard />
-        </Route>
-        <Route exact path="/dashboard/:projectId">
-          <Dashboard />
-        </Route>
-        <Route path="/dashboard/:listId/:itemId">
-          <Item />
-        </Route>
-        <Route path="/faq">
-          <Faq />
-        </Route>
-        <Route path="/terms-of-use">
-          <TermsOfUse />
-        </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </QueryClientProvider>
+    <Router>
+      <QueryClientProvider client={queryClient}>
+        <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/login">
+            <Login setIsLoggedIn={setIsLoggedIn} />
+          </Route>
+          <Route path="/register">
+            <Register setIsLoggedIn={setIsLoggedIn} />
+          </Route>
+          <Route exact path="/dashboard">
+            <SelectProject />
+            <Dashboard />
+          </Route>
+          <Route exact path="/dashboard/:projectId">
+            <Dashboard />
+          </Route>
+          <Route path="/dashboard/:listId/:itemId">
+            <Item />
+          </Route>
+          <Route path="/faq">
+            <Faq />
+          </Route>
+          <Route path="/terms-of-use">
+            <TermsOfUse />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </QueryClientProvider>
+    </Router>
   );
 }
 

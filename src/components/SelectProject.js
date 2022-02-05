@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
+import Spinner from "./Spinner";
 
 const SelectProject = () => {
 
@@ -57,11 +58,6 @@ const SelectProject = () => {
       </button>
     </>
 
-  const renderSpinner = () =>
-    <div className='flex h-20 w-full'>
-      <svg className='animate-spin m-auto text-red-600' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12H19C19 15.866 15.866 19 12 19V22Z" fill="currentColor" /><path d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z" fill="currentColor" /></svg>
-    </div>
-
   return (
     <div className={` w-screen h-screen z-50 absolute flex inset-0 bg-black bg-opacity-40
       ${needToFadeOut ? 'animate-fadeOut' : 'animate-fadeIn'}`}
@@ -75,7 +71,7 @@ const SelectProject = () => {
             placeholder='New Project Title:' ref={input} />
         </form>
         <h4 className={`${isEditing && 'hidden'} text-center mb-4 text-red-600 lg:text-4xl`}>Select your project:</h4>
-        {isLoading || mutation.isLoading ? renderSpinner() : renderProjects()}
+        {isLoading || mutation.isLoading ? <Spinner /> : renderProjects()}
       </div>
     </div>
   );
