@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/BugTrack/static/css/main.b68f7b97.css",
-    "main.js": "/BugTrack/static/js/main.ee5a06ea.js",
+    "main.css": "/BugTrack/static/css/main.ee73207d.css",
+    "main.js": "/BugTrack/static/js/main.21ff58a3.js",
     "static/media/phone.png": "/BugTrack/static/media/phone.2afc958b18d12666c33b.png",
     "static/media/progress.svg": "/BugTrack/static/media/progress.abf2b25b66ee5531e4d379f853ee3c57.svg",
     "static/media/comment.svg": "/BugTrack/static/media/comment.c8fd801a5235c1d829fbe018d094a9d5.svg",
@@ -19,11 +19,11 @@
     "static/media/ChevronDown.svg": "/BugTrack/static/media/ChevronDown.4fce1939293bfb060c3620851cba9244.svg",
     "static/media/check.svg": "/BugTrack/static/media/check.15be63b6a2ffe95b9de91e134d975c07.svg",
     "static/media/ChevronRight.svg": "/BugTrack/static/media/ChevronRight.ea2a303aece0fc6601472f51f42aa32e.svg",
-    "main.b68f7b97.css.map": "/BugTrack/static/css/main.b68f7b97.css.map",
-    "main.ee5a06ea.js.map": "/BugTrack/static/js/main.ee5a06ea.js.map"
+    "main.ee73207d.css.map": "/BugTrack/static/css/main.ee73207d.css.map",
+    "main.21ff58a3.js.map": "/BugTrack/static/js/main.21ff58a3.js.map"
   },
   "entrypoints": [
-    "static/css/main.b68f7b97.css",
-    "static/js/main.ee5a06ea.js"
+    "static/css/main.ee73207d.css",
+    "static/js/main.21ff58a3.js"
   ]
 }
