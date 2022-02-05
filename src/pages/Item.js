@@ -60,7 +60,7 @@ const Item = () => {
   }, [history]);
 
   return (
-    <div className=" flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
+    <div className="fixed inset-0 top-16 flex flex-col lg:bg-gray-50">
 
       {/* left menu */}
       <div className="flex relative lg:mx-auto pt-2 lg:space-x-8 lg:pr-28 animate-fadeIn">
@@ -82,7 +82,7 @@ const Item = () => {
       </div>
 
       {/* mobile bottom buttons */}
-      <div className='lg:hidden fixed bottom-0 inset-x-0 z-10'>
+      <div className='lg:hidden mt-auto'>
         <div className="flex h-16 fill-current text-red-600">
           {isEditing
             ?
