@@ -45,7 +45,7 @@ const Lists = (props) => {
   }
 
   const showList = (id, title, list) =>
-    <div key={id} className="overflow-y-auto w-full mb-16 lg:mb-0 flex-shrink-0 snap-center no-scrollbar">
+    <div key={id} className="overflow-y-auto w-full flex-shrink-0 snap-center no-scrollbar">
       <div className='min-h-full relative'>
         <h3 className='pt-4 pb-1 flex lg:block items-center justify-between sticky top-0 bg-white text-center '>
           <span className='lg:hidden opacity-0 w-6 select-none'>to center</span>

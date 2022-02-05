@@ -78,7 +78,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className=" flex flex-col h-[calc(100vh-4rem)] lg:bg-gray-50">
+    <div className="fixed inset-0 top-16 flex flex-col lg:bg-gray-50">
 
       <div className='lg:flex lg:pt-2 lg:animate-fadeIn lg:pr-28 lg:max-w-6xl lg:mx-auto lg:space-x-8 lg:max-h-[calc(100vh-8rem)] h-auto min-h-0 flex-shrink'>
         <span className='hidden lg:inline'> <DashboardMenu {...dashboardMenuProps} /></span>
@@ -86,7 +86,7 @@ const Dashboard = () => {
       </div>
 
       {/* mobile bottom buttons*/}
-      <div className='lg:hidden fixed bottom-0 inset-x-0 z-10 bg-white'>
+      <div className='lg:hidden mt-auto bg-white'>
         {isMenuOpen && (
           <div ref={menuContainer} id='mobile' className='absolute animate-fadeIn -top-36 w-screen'>
             <DashboardMenu {...dashboardMenuProps} />
