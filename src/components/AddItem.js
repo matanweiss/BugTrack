@@ -26,6 +26,8 @@ const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
     setIsAddingItem(!isAddingItem);
     input.current.value = '';
     input.current.focus();
+    input.current.scrollIntoView();
+
   }
 
   const handleEscKey = e => {
