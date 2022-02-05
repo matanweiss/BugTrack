@@ -60,7 +60,7 @@ const Item = () => {
   }, [history]);
 
   return (
-    <div className="fixed inset-0 top-16 flex flex-col lg:bg-gray-50">
+    <div className="fixed inset-0 top-16 flex flex-col overflow-y-scroll no-scrollbar lg:bg-gray-50">
 
       {/* left menu */}
       <div className="flex relative lg:mx-auto pt-2 lg:space-x-8 lg:pr-28 animate-fadeIn">
