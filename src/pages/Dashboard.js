@@ -85,7 +85,7 @@ const Dashboard = () => {
         <Lists {...listProps} />
       </div>
 
-      {/* mobile buttons*/}
+      {/* mobile bottom buttons*/}
       <div className='lg:hidden fixed bottom-0 inset-x-0 z-10 bg-white'>
         {isMenuOpen && (
           <div ref={menuContainer} id='mobile' className='absolute animate-fadeIn -top-36 w-screen'>

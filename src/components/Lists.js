@@ -1,13 +1,13 @@
 import ItemPreview from "./ItemPreview";
 import AddItem from "./AddItem";
+import Spinner from "./Spinner";
+import EmptyList from "./EmptyList";
 import { useHistory, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "react-query";
 import { useEffect, useState } from "react";
-import EmptyList from "./EmptyList";
 import { ReactComponent as TrashIconSVG } from '../assets/TrashIcon.svg';
 import { ReactComponent as ChevronRightSVG } from '../assets/ChevronRight.svg';
 import { ReactComponent as ChevronLeftSVG } from '../assets/ChevronLeft.svg';
-import Spinner from "./Spinner";
 
 const Lists = (props) => {
 
