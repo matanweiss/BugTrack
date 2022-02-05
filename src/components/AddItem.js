@@ -26,7 +26,9 @@ const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
     setIsAddingItem(!isAddingItem);
     input.current.value = '';
     input.current.focus();
-    input.current.scrollIntoView();
+    setTimeout(() => {
+      input.current.scrollIntoView();
+    }, 500);
 
   }
 
