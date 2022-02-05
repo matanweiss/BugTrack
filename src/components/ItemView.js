@@ -21,7 +21,7 @@ const ItemView = () => {
         {data.feature && <DoneTag />}
       </div>
 
-      <p className='pt-4 text-gray-400'>
+      <p className='pt-4 text-slate-600'>
         {data.description ? data.description : 'no description yet'}
       </p>
     </>

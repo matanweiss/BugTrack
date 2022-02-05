@@ -77,7 +77,7 @@ const Item = () => {
 
         {/* item */}
         <div ref={container} className="mx-4 lg:px-6 w-full min-h-[7rem] lg:border-2 lg:shadow border-gray-200 bg-white pt-2 pb-4 lg:w-[35rem] lg:mx-auto relative lg:rounded-xl">
-          {isEditing ? <ItemEdit props={editProps} /> : <ItemView />}
+          {isEditing ? <ItemEdit {...editProps} /> : <ItemView />}
         </div >
       </div>
 

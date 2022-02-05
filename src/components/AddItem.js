@@ -41,10 +41,10 @@ const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
 
   useEffect(() => {
     document.addEventListener('keydown', handleEscKey, true);
-    document.addEventListener('click', handleClickOutside, true);
+    // document.addEventListener('click', handleClickOutside, true);
     return () => {
       document.removeEventListener('keydown', handleEscKey, true);
-      document.removeEventListener('click', handleClickOutside, true);
+      // document.removeEventListener('click', handleClickOutside, true);
     };
   }, []);
 
