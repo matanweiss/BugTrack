@@ -7,7 +7,7 @@ import Spinner from "./Spinner";
 const ItemView = () => {
 
   const { itemId, listId } = useParams();
-  const { isLoading, data } = useQuery('item', () =>
+  const { isLoading, data } = useQuery(['item', itemId], () =>
     fetch(process.env.REACT_APP_SERVER_BASE_URL + `/get-item/${listId}/${itemId}`).then(res => res.json())
   );
 

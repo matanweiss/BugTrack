@@ -10,7 +10,7 @@ import DoneTag from "./DoneTag";
 const ItemEdit = (props) => {
 
   const { itemId, listId } = useParams();
-  const { data } = useQuery('item', () =>
+  const { data } = useQuery(['item', itemId], () =>
     fetch(process.env.REACT_APP_SERVER_BASE_URL + `/get-item/${listId}/${itemId}`).then(res => res.json())
   );
 
