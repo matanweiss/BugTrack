@@ -27,7 +27,12 @@ const Lists = (props) => {
 
   const deleteListMutation = useMutation(id =>
     fetch(process.env.REACT_APP_SERVER_BASE_URL + `/delete-list/${id}`, { method: 'DELETE', }),
-    { onSuccess: () => refetch() }
+    {
+      onSuccess: () => {
+        checkIfNeedArrows();
+        refetch();
+      }
+    }
   );
 
 
