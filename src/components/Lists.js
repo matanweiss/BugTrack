@@ -11,6 +11,7 @@ import { ReactComponent as ChevronLeftSVG } from '../assets/ChevronLeft.svg';
 
 const Lists = (props) => {
 
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isAddingItem, setIsAddingItem] = useState(false);
   const checkIfNeedArrows = props.checkIfNeedArrows;
   const history = useHistory();
@@ -37,8 +38,16 @@ const Lists = (props) => {
 
 
   useEffect(() => {
-    if (data) checkIfNeedArrows();
+    if (data && !isScrolled) {
+      setIsScrolled(true);
+      props.scrollForward(localStorage.getItem('pagesToScroll'));
+      setTimeout(() => { checkIfNeedArrows(); }, 200);
+    }
+    else checkIfNeedArrows();
   }, [data, checkIfNeedArrows]);
+
+
+
 
   const filterList = (id, title, list) => {
     if (!list.length && props.sideBarActiveItem === 'all') return <EmptyList key={id} deleteListMutation={deleteListMutation} refetch={refetch} id={id} title={title} isAddingItem={isAddingItem} setIsAddingItem={setIsAddingItem} />
@@ -92,7 +101,7 @@ const Lists = (props) => {
 
       </div>
       {props.needRightArrow &&
-        <ChevronRightSVG onClick={props.scrollForward} className="w-6 h-6 absolute top-5 right-4 hidden cursor-pointer lg:block text-gray-400" />
+        <ChevronRightSVG onClick={() => props.scrollForward(1)} className="w-6 h-6 absolute top-5 right-4 hidden cursor-pointer lg:block text-gray-400" />
       }
     </div>
   );

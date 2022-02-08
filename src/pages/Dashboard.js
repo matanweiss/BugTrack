@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [needLeftArrow, setNeedLeftArrow] = useState(true);
   const [needRightArrow, setNeedRightArrow] = useState(true);
 
+
   const scrollBack = () => {
     scrollXContainerRef.current.scrollBy({
       left: -scrollXContainerRef.current.offsetWidth,
@@ -23,9 +24,9 @@ const Dashboard = () => {
     });
   }
 
-  const scrollForward = () => {
+  const scrollForward = page => {
     scrollXContainerRef.current.scrollBy({
-      left: scrollXContainerRef.current.offsetWidth,
+      left: scrollXContainerRef.current.offsetWidth * page,
       behavior: "smooth"
     });
   }
@@ -40,7 +41,7 @@ const Dashboard = () => {
 
   const listProps = {
     scrollXContainerRef, sideBarActiveItem, needLeftArrow, needRightArrow,
-    setSideBarActiveItem, setIsMenuOpen, scrollBack, scrollForward, checkIfNeedArrows,
+    setSideBarActiveItem, setIsMenuOpen, scrollBack, scrollForward, checkIfNeedArrows
   }
 
   const dashboardMenuProps = {
@@ -54,19 +55,25 @@ const Dashboard = () => {
         .then(res => { if (!res.ok) history.push('/login') });
     }
 
-    const initScrollListener = () => {
-      let firstRun = true;
-      scrollXContainerRef.current.addEventListener('scroll', () => {
-        if (firstRun) {
-          firstRun = false;
-          setTimeout(() => { checkIfNeedArrows(); }, 500);
-          setTimeout(() => { firstRun = true; }, 1000);
-        }
-      });
+    const handleScroll = () => {
+      if (firstRun) {
+        firstRun = false;
+        setTimeout(() => {
+          checkIfNeedArrows();
+          localStorage.setItem('pagesToScroll', Math.round(container.scrollLeft / 440));
+          firstRun = true;
+        }, 200);
+      }
     }
 
+    const container = scrollXContainerRef.current;
+    let firstRun = true;
     checkToken();
-    initScrollListener();
+    container.addEventListener('scroll', handleScroll, true);
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll, true);
+    }
   }, [history]);
 
   const handleMenuOpen = () => {
