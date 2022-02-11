@@ -15,7 +15,7 @@ const ItemEdit = (props) => {
   );
 
   const setIsBug = props.setIsBug;
-  const setIsFeature = props.setIsFeature;
+  const setIsDone = props.setIsDone;
   const setTitleInput = props.setTitleInput;
   const setDescriptionInput = props.setDescriptionInput;
 
@@ -24,24 +24,24 @@ const ItemEdit = (props) => {
     e.target.style.height = `${e.target.scrollHeight}px`;
   }
 
-  const handleFeatureCheck = e => {
-    props.setIsFeature(e.target.checked);
+  const handleDoneCheck = e => {
+    props.setIsDone(e.target.checked);
     props.setIsBug(false);
   }
 
   const handleBugCheck = e => {
     props.setIsBug(e.target.checked);
-    props.setIsFeature(false);
+    props.setIsDone(false);
   }
 
   useEffect(() => {
     if (data) {
       setIsBug(data.bug);
-      setIsFeature(data.feature);
+      setIsDone(data.done);
       setTitleInput(data.title);
       if (data.description) setDescriptionInput(data.description);
     }
-  }, [data, setIsBug, setIsFeature, setTitleInput, setDescriptionInput]);
+  }, [data, setIsBug, setIsDone, setTitleInput, setDescriptionInput]);
 
   if (props.editMutation.isLoading || props.deleteMutation.isLoading) return <Spinner />;
 
@@ -55,8 +55,8 @@ const ItemEdit = (props) => {
           <BugTag moreClassNames={`cursor-pointer h-8 flex items-center ${!props.isBug && 'bg-red-300 '}`} />
         </label>
         <label>
-          <input className='pointer-events-none opacity-0 absolute' type="checkbox" checked={props.isFeature} onChange={e => handleFeatureCheck(e)} />
-          <DoneTag moreClassNames={`cursor-pointer ${!props.isFeature && 'bg-green-300 '}`} />
+          <input className='pointer-events-none opacity-0 absolute' type="checkbox" checked={props.isDone} onChange={e => handleDoneCheck(e)} />
+          <DoneTag moreClassNames={`cursor-pointer ${!props.isDone && 'bg-green-300 '}`} />
         </label>
       </div>
 

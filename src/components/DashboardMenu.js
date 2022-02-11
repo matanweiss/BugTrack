@@ -29,8 +29,8 @@ const DashboardMenu = (props) => {
         <DocumentsSVG className="w-6 h-6 pointer-events-none" />
         All
       </button>
-      <button onClick={e => { handleClick('features', e) }} onMouseDown={handleMouseDown}
-        className={`${(props.sideBarActiveItem === 'features') ? 'text-red-600' : null} origin-left flex transition`}>
+      <button onClick={e => { handleClick('done', e) }} onMouseDown={handleMouseDown}
+        className={`${(props.sideBarActiveItem === 'done') ? 'text-red-600' : null} origin-left flex transition`}>
         <CheckSVG className="w-6 h-6 pointer-events-none" />
         Done
       </button>

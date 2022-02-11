@@ -19,7 +19,7 @@ const Item = () => {
     e.preventDefault();
     return fetch(process.env.REACT_APP_SERVER_BASE_URL + `/edit-item/${listId}/${itemId}`, {
       method: 'post',
-      body: JSON.stringify({ title: titleInput, bug: isBug, feature: isFeature, description: descriptionInput }),
+      body: JSON.stringify({ title: titleInput, bug: isBug, done: isDone, description: descriptionInput }),
       headers: { 'Content-Type': 'application/json' },
     })
   }, { onSuccess: () => setIsEditing(false) }
@@ -34,12 +34,12 @@ const Item = () => {
   const container = useRef();
   const [isEditing, setIsEditing] = useState(false);
   const [isBug, setIsBug] = useState(false);
-  const [isFeature, setIsFeature] = useState(false);
+  const [isDone, setIsDone] = useState(false);
   const [titleInput, setTitleInput] = useState('');
   const [descriptionInput, setDescriptionInput] = useState('');
 
   const editProps = {
-    editMutation, deleteMutation, isBug, setIsBug, isFeature, setIsFeature,
+    editMutation, deleteMutation, isBug, setIsBug, isDone, setIsDone,
     titleInput, setTitleInput, descriptionInput, setDescriptionInput, setIsEditing
   };
   const handleMouseDown = e => {
