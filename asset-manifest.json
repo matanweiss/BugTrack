@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/BugTrack/static/css/main.e4024c1e.css",
-    "main.js": "/BugTrack/static/js/main.e66dbeb4.js",
+    "main.js": "/BugTrack/static/js/main.809d4d1a.js",
     "static/media/phone.png": "/BugTrack/static/media/phone.2afc958b18d12666c33b.png",
     "static/media/progress.svg": "/BugTrack/static/media/progress.abf2b25b66ee5531e4d379f853ee3c57.svg",
     "static/media/comment.svg": "/BugTrack/static/media/comment.c8fd801a5235c1d829fbe018d094a9d5.svg",
@@ -20,10 +20,10 @@
     "static/media/check.svg": "/BugTrack/static/media/check.15be63b6a2ffe95b9de91e134d975c07.svg",
     "static/media/ChevronRight.svg": "/BugTrack/static/media/ChevronRight.ea2a303aece0fc6601472f51f42aa32e.svg",
     "main.e4024c1e.css.map": "/BugTrack/static/css/main.e4024c1e.css.map",
-    "main.e66dbeb4.js.map": "/BugTrack/static/js/main.e66dbeb4.js.map"
+    "main.809d4d1a.js.map": "/BugTrack/static/js/main.809d4d1a.js.map"
   },
   "entrypoints": [
     "static/css/main.e4024c1e.css",
-    "static/js/main.e66dbeb4.js"
+    "static/js/main.809d4d1a.js"
   ]
 }
