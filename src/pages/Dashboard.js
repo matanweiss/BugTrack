@@ -90,7 +90,7 @@ const Dashboard = () => {
       </div>
 
       {/* mobile bottom buttons*/}
-      <div className='lg:hidden mt-auto bg-white'>
+      <div className='lg:hidden relative mt-auto bg-white'>
         {isMenuOpen && (
           <div ref={menuContainer} id='mobile' className='absolute animate-fadeIn -top-36 w-screen'>
             <DashboardMenu {...dashboardMenuProps} />
@@ -99,7 +99,7 @@ const Dashboard = () => {
         <div className="flex h-16 fill-current text-red-600">
           <ChevronLeftSVG className={`w-6 h-6 m-auto ${!needLeftArrow && 'opacity-0'}`} onClick={scrollBack} />
           <MenuIconSVG className="w-7 h-7 m-auto cursor-pointer" onClick={handleMenuOpen} />
-          <ChevronRightSVG className={`w-6 h-6 m-auto ${!needRightArrow && 'opacity-0'}`} onClick={scrollForward} />
+          <ChevronRightSVG className={`w-6 h-6 m-auto ${!needRightArrow && 'opacity-0'}`} onClick={() => scrollForward(1)} />
         </div>
       </div>
       <div className="min-h-[4rem] hidden lg:block"></div>
