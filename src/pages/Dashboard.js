@@ -5,6 +5,7 @@ import Lists from "../components/Lists";
 import { ReactComponent as ChevronRightSVG } from '../assets/ChevronRight.svg';
 import { ReactComponent as MenuIconSVG } from '../assets/MenuIcon.svg';
 import { ReactComponent as ChevronLeftSVG } from '../assets/ChevronLeft.svg';
+import UseVerify from "../components/UseVerify";
 
 const Dashboard = () => {
 
@@ -50,10 +51,6 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    const checkToken = () => {
-      fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
-        .then(res => { if (!res.ok) history.push('/login') });
-    }
 
     const handleScroll = () => {
       if (firstRun) {
@@ -66,15 +63,15 @@ const Dashboard = () => {
       }
     }
 
+    UseVerify(history, 'dashboard');
     const container = scrollXContainerRef.current;
     let firstRun = true;
-    checkToken();
     container.addEventListener('scroll', handleScroll, true);
 
     return () => {
       container.removeEventListener('scroll', handleScroll, true);
     }
-  }, [history]);
+  }, []);
 
   const handleMenuOpen = () => {
     if (isMenuOpen) {

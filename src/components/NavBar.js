@@ -10,7 +10,6 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   const history = useHistory();
   const [isScrolledDown, setIsScrolledDown] = useState(false);
   const [title, setTitle] = useState('');
-  const [showNavButtons, setShowNavButtons] = useState(false);
   const isUserOnDashboard = location.pathname.includes('/dashboard');
 
   const checkScrollDirection = () => {
@@ -28,19 +27,16 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
     history.push('/dashboard');
   }
 
-  const handleLogout = () => fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/logout', { credentials: 'include' })
-    .then(() => {
-      setIsLoggedIn(false);
-      if (location.pathname.includes('dashboard')) history.push('/login');
-    }
-    );
+  const handleLogout = () => {
+    localStorage.removeItem('jwt');
+    setIsLoggedIn(false);
+    if (location.pathname.includes('dashboard')) history.push('/login');
+  };
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
-      .then(res => {
-        if (res.ok) setIsLoggedIn(true);
-        setShowNavButtons(true);
-      }).catch(err => console.error(err));
+    if (localStorage.getItem('jwt')) {
+      setIsLoggedIn(true);
+    }
   }, [setIsLoggedIn]);
 
   useEffect(() => {
@@ -58,7 +54,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           <BugTrackSVG className='hidden lg:inline transition h-16 w-28 fill-current' />
         </NavLink>
 
-        {showNavButtons && (isLoggedIn ?
+        {isLoggedIn ?
           <>
             {(location.pathname.includes('dashboard') && title) && <button className='group flex items-center lg:space-x-2' onClick={handleSelectProjectClick}>
               <h3 className='lg:text-4xl'>{title}</h3>
@@ -70,7 +66,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             <NavLink to="/login" className="ml-auto mr-3 underline-hover" activeClassName="font-bold">Log In</NavLink>
             <NavLink to="/register" className='underline-hover' activeClassName="font-bold">Register</NavLink>
           </>
-        )}
+        }
       </div>
     </nav>
   );

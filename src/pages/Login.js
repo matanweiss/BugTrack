@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
+import UseVerify from "../components/UseVerify";
 
 const Login = (props) => {
 
@@ -12,13 +13,13 @@ const Login = (props) => {
     return fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/login', {
       method: 'post',
       body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include'
+      headers: { 'Content-Type': 'application/json' }
     })
   }, {
     onSuccess: user => user.json().then(user => {
       if (user.err) throw new Error(user.err);
       else {
+        localStorage.setItem('jwt', user);
         props.setIsLoggedIn(true);
         history.push('/dashboard');
       }
@@ -37,13 +38,7 @@ const Login = (props) => {
   }
 
   useEffect(() => {
-
-    const checkToken = () => {
-      fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
-        .then(res => { if (res.ok) history.push('/dashboard') });
-    }
-
-    checkToken();
+    UseVerify(history, 'login');
   }, [history]);
 
   return (

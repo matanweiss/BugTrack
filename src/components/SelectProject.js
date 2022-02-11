@@ -6,7 +6,11 @@ import Spinner from "./Spinner";
 const SelectProject = () => {
 
   const { isLoading, data, refetch } = useQuery('projects', () =>
-    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/get-projects', { credentials: 'include' }).then(res => res.json()),
+    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/get-projects', {
+      method: 'post',
+      body: JSON.stringify({ user: localStorage.getItem('jwt') }),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json()).catch(err => console.error(err)),
     { onSuccess: (res => { if (res.needAuth) history.push('/login'); }) }
   );
 
@@ -32,6 +36,7 @@ const SelectProject = () => {
 
   const handleSelection = e => {
     localStorage.setItem('projectTitle', e.target.textContent);
+    localStorage.removeItem('pagesToScroll');
     setNeedToFadeOut(true);
     setTimeout(() => { history.push(`dashboard/${e.target.id}`) }, 290);
   }

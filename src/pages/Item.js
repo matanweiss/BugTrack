@@ -7,8 +7,11 @@ import { ReactComponent as ChevronLeftSVG } from '../assets/ChevronLeft.svg';
 import { ReactComponent as PencilSVG } from '../assets/pencil.svg';
 import { ReactComponent as TrashIconSVG } from '../assets/TrashIcon.svg';
 import { ReactComponent as CheckSVG } from '../assets/check.svg';
+import UseVerify from "../components/UseVerify";
 
 const Item = () => {
+
+
 
   const { listId, itemId } = useParams();
 
@@ -27,8 +30,8 @@ const Item = () => {
     { onSuccess: () => history.goBack() }
   );
 
-  const container = useRef();
   const history = useHistory();
+  const container = useRef();
   const [isEditing, setIsEditing] = useState(false);
   const [isBug, setIsBug] = useState(false);
   const [isFeature, setIsFeature] = useState(false);
@@ -55,9 +58,8 @@ const Item = () => {
   }
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/verify', { credentials: 'include' })
-      .then(res => { if (!res.ok) history.push('/login') });
-  }, [history]);
+    UseVerify(history, 'item');
+  }, []);
 
   return (
     <div className="fixed inset-0 top-16 flex flex-col overflow-y-scroll no-scrollbar lg:bg-gray-50">

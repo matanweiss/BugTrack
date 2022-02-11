@@ -10,7 +10,7 @@ import Container from "../components/Container";
 const Home = () => {
 
   useEffect(() => {
-    localStorage.clear();
+    localStorage.removeItem('projectTitle');
   }, []);
 
   return (

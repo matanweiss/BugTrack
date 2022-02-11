@@ -12,13 +12,13 @@ const Register = ({ setIsLoggedIn }) => {
     return fetch(process.env.REACT_APP_SERVER_BASE_URL + '/auth/register', {
       method: 'post',
       body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include'
+      headers: { 'Content-Type': 'application/json' }
     })
   }, {
     onSuccess: user => user.json().then(user => {
       if (user.err) throw new Error(user.err);
       else {
+        localStorage.setItem('jwt', user);
         setIsLoggedIn(true);
         history.push('/dashboard');
       }

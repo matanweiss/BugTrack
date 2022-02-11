@@ -96,7 +96,7 @@ const Lists = (props) => {
             </div>)
 
           : // render lists
-          isLoading || deleteListMutation.isLoading ? <Spinner /> : printLists()
+          isLoading || deleteListMutation.isLoading ? <Spinner /> : data && printLists()
         }
 
       </div>
