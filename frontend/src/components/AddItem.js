@@ -36,22 +36,22 @@ const AddItem = ({ isAddingItem, setIsAddingItem, listId, refetch }) => {
   }
 
   const handleClickOutside = e => {
-    if (div.current && !div.current.contains(e.target)) setIsAddingItem(false);
+    if (!e.target.id === 'NoNeedToClose' || !e.target.id) setIsAddingItem(false);
   }
 
   useEffect(() => {
     document.addEventListener('keydown', handleEscKey, true);
-    // document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener('click', handleClickOutside, true);
     return () => {
       document.removeEventListener('keydown', handleEscKey, true);
-      // document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener('click', handleClickOutside, true);
     };
   }, []);
 
   return (
     <form onSubmit={mutation.mutate}>
-      <div ref={div} className={`text-4xl min-h-[3.5rem] px-2 lg:mb-4 flex items-center justify-center text-gray-400 border-2 rounded-lg mx-1 duration-300 ${isAddingItem ? 'border-gray-400 shadow' : 'border-white'} `}>
-        <input required ref={input}
+      <div id="noNeedToClose" ref={div} className={`text-4xl min-h-[3.5rem] px-2 lg:mb-4 flex items-center justify-center text-gray-400 border-2 rounded-lg mx-1 duration-300 ${isAddingItem ? 'border-gray-400 shadow' : 'border-white'} `}>
+        <input id="noNeedToClose" required ref={input}
           className={`h-full outline-none w-full text-black text-base duration-500 ${isAddingItem ? 'max-w-full' : 'max-w-0'}`}
         />
         {mutation.isLoading ? <Spinner />
