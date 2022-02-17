@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
@@ -25,16 +25,22 @@ const Register = ({ setIsLoggedIn }) => {
     })
   });
 
+  const mailRef = useRef();
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    mailRef.current.focus();
+  }, []);
+
 
   return (
     <FormContainer>
       <form onSubmit={mutation.mutate} className="flex flex-col min-h-[22rem] justify-evenly">
         <h4 className='text-center font-medium'>Create your BugTrack account:</h4>
         <div className="space-y-6">
-          <InputEmail email={email} setEmail={setEmail} />
+          <InputEmail toRef={mailRef} email={email} setEmail={setEmail} />
           <InputPassword password={password} setPassword={setPassword} />
         </div>
         {mutation.isError && <p className='text-center text-red-600 font-medium'>{mutation.error.message}</p>}

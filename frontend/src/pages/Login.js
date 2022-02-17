@@ -27,6 +27,7 @@ const Login = (props) => {
   });
 
   const form = useRef();
+  const mailRef = useRef();
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,6 +40,7 @@ const Login = (props) => {
 
   useEffect(() => {
     UseVerify(history, 'login');
+    mailRef.current.focus();
   }, [history]);
 
   return (
@@ -46,7 +48,7 @@ const Login = (props) => {
       <form ref={form} onSubmit={mutation.mutate} className="flex flex-col min-h-[22rem] justify-between pt-8 pb-6">
         <h4 className="mx-auto font-medium">Use your BugTrack account:</h4>
         <div className="space-y-6">
-          <InputEmail email={email} setEmail={setEmail} />
+          <InputEmail toRef={mailRef} email={email} setEmail={setEmail} />
           <InputPassword password={password} setPassword={setPassword} />
         </div>
         {mutation.isError && <p className='text-center text-red-600'>{mutation.error.message}</p>}
