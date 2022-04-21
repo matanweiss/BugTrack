@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
+import Spinner from "../components/Spinner";
 import UseVerify from "../components/UseVerify";
 
 const Login = (props) => {
@@ -29,10 +30,12 @@ const Login = (props) => {
   const form = useRef();
   const mailRef = useRef();
   const history = useHistory();
+  const [isRegularLoginClicked, setIsRegularLoginClicked] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleGuestLogin = e => {
+    setIsRegularLoginClicked(false);
     setEmail('guest@user.com');
     setPassword('shalom');
     setTimeout(() => { mutation.mutate(e); }, 100);
@@ -53,8 +56,12 @@ const Login = (props) => {
         </div>
         {mutation.isError && <p className='text-center text-red-600'>{mutation.error.message}</p>}
         <div className="flex flex-wrap justify-between">
-          <button className="btn btn-hover w-[48%]">Login</button>
-          <button type='button' onClick={handleGuestLogin} className='w-[48%] btn2 btn-hover hover:bg-white text-center'>Login as guest</button>
+          <button className="btn btn-hover w-[48%]">
+            {mutation.isLoading && isRegularLoginClicked ? <Spinner /> : 'Login'}
+          </button>
+          <button type='button' onClick={handleGuestLogin} className='w-[48%] btn2 btn-hover hover:bg-white text-center'>
+            {mutation.isLoading && !isRegularLoginClicked ? <Spinner /> : 'Login as guest'}
+          </button>
           <Link to='/register' className='mx-auto mt-6 text-sm font-medium text-red-600 underline-hover'>No account? Register here!</Link>
         </div>
       </form>
