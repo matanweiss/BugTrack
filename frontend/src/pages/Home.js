@@ -6,7 +6,8 @@ import { ReactComponent as CommentSVG } from '../assets/comment.svg';
 import { ReactComponent as ProgressSVG } from '../assets/progress.svg';
 import HomepageGridItem from "../components/HomepageGridItem";
 import Container from "../components/Container";
-
+import githubLogoWhite from "../assets/githubLight.png"
+import githubLogoDark from "../assets/githubDark.png"
 const Home = () => {
 
   useEffect(() => {
@@ -36,7 +37,10 @@ const Home = () => {
           <h2 className="text-red-300 lg:text-red-900 hover:text-black transition cursor-default col-span-full row-span-2 lg:row-span-3 m-auto" >©MW</h2>
           <Link to='/about' className="underline-hover m-auto">About</Link>
           <Link to='/faq' className="underline-hover m-auto">FAQ</Link>
-          <Link to='/terms-of-use' className="underline-hover m-auto">Terms of use</Link>
+          <a className='m-auto' target='_blank' href="//github.com/matanweiss/BugTrack">
+            <img className="lg:inline hidden h-12 w-12 hover:opacity-70" src={githubLogoWhite} alt="" />
+            <img className=" lg:hidden h-12 w-12 hover:opacity-70" src={githubLogoDark} alt="" />
+          </a>
           <Link to='/contact' className="underline-hover m-auto">Contact</Link>
         </div>
       </div>

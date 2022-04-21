@@ -8,7 +8,6 @@ import Register from './pages/Register';
 import SelectProject from './components/SelectProject';
 import NavBar from './components/NavBar';
 import Faq from "./pages/Faq";
-import TermsOfUse from "./pages/TermsOfUse";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -45,9 +44,6 @@ function App() {
           </Route>
           <Route path="/faq">
             <Faq />
-          </Route>
-          <Route path="/terms-of-use">
-            <TermsOfUse />
           </Route>
           <Route path="/contact">
             <Contact />
