@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
+import Button from "../components/Button";
 import FormContainer from "../components/FormContainer";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
@@ -56,12 +57,10 @@ const Login = (props) => {
         </div>
         {mutation.isError && <p className='text-center text-red-600'>{mutation.error.message}</p>}
         <div className="flex flex-wrap justify-between">
-          <button className="btn btn-hover w-[48%]">
-            {mutation.isLoading && isRegularLoginClicked ? <Spinner /> : 'Login'}
-          </button>
-          <button type='button' onClick={handleGuestLogin} className='w-[48%] btn2 btn-hover hover:bg-white text-center'>
-            {mutation.isLoading && !isRegularLoginClicked ? <Spinner /> : 'Login as guest'}
-          </button>
+          <Button text={mutation.isLoading && isRegularLoginClicked ? <Spinner /> : 'Login'} classesToAdd="w-[48%]" />
+          <Button text={mutation.isLoading && !isRegularLoginClicked ? <Spinner /> : 'Login as guest'}
+            classesToAdd="w-[48%]" isSecondary={true} action={handleGuestLogin}
+          />
           <Link to='/register' className='mx-auto mt-6 text-sm font-medium text-red-600 underline-hover'>No account? Register here!</Link>
         </div>
       </form>

@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
+import Button from "../components/Button";
 import FormContainer from "../components/FormContainer";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
+import Spinner from "../components/Spinner";
 
 const Register = ({ setIsLoggedIn }) => {
 
@@ -44,7 +46,7 @@ const Register = ({ setIsLoggedIn }) => {
           <InputPassword password={password} setPassword={setPassword} />
         </div>
         {mutation.isError && <p className='text-center text-red-600 font-medium'>{mutation.error.message}</p>}
-        <button className='btn btn-hover'>Register</button>
+        <Button text={mutation.isLoading ? <Spinner /> : 'Register'} />
         <Link to='/login' className='mx-auto text-sm font-medium text-red-600 underline-hover'>Have an account? Log in here</Link>
       </form>
     </FormContainer>
